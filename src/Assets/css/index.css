@@ -1,11 +1,23 @@
-body {
-  margin: 0;
-  font-family: Roboto, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+	--brand-color-1: #98E000;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+	margin: 0;
+	padding: auto;
+	font-family: 'Inter', sans-serif;
+}
+
+.bg-theme-color-1 {
+	background-color: #98E000;
+}
+
+.title-component {
+	height: 660px;
+}
+
+@media (max-width: 768px) {
+	.title-component {
+		height: 300px;
+	}
 }

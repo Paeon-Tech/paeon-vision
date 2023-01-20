@@ -1,10 +1,13 @@
-import './Assets/css/App.css'
+import { Routes, Route } from 'react-router-dom'
+import { Homepage } from './Pages/Home'
 
 const App = () => {
     return (
-        <>
-			test
-        </>
+        <Routes>
+            <Route path="/">
+                <Route index element={<Homepage />} />
+            </Route>
+        </Routes>
     )
 }
 
