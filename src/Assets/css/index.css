@@ -1,23 +1,50 @@
 :root {
-	--brand-color-1: #98E000;
+    --brand-color-1: #98e000;
 }
 
 body {
-	margin: 0;
-	padding: auto;
-	font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: auto;
+    font-family: 'Inter', sans-serif;
 }
 
 .bg-theme-color-1 {
-	background-color: #98E000;
+    background-color: #98e000;
 }
 
 .title-component {
-	height: 660px;
+    height: 660px;
+}
+
+.title-component-1 {
+    height: 750px;
+}
+
+.brand-name {
+    font-size: 100px;
+    line-height: 100px;
+}
+
+.brand-logo {
+    width: auto;
+    height: auto;
+}
+
+.btn-get-started {
+	visibility: hidden;
 }
 
 @media (max-width: 768px) {
+    .brand-name {
+        font-size: 70px;
+        line-height: 70px;
+    }
+
 	.title-component {
-		height: 300px;
+		height: auto;
+	}
+
+	.btn-get-started {
+		visibility: visible;
 	}
 }
