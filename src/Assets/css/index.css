@@ -8,6 +8,12 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
+.slide-in-left {
+    -webkit-animation: slide-in-left 2.0s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+        both;
+    animation: slide-in-left 2.0s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
 .bg-theme-color-1 {
     background-color: #98e000;
 }
@@ -27,15 +33,15 @@ body {
 }
 
 .btn-get-started {
-	visibility: hidden;
+    visibility: hidden;
 }
 
 .row-height {
-	height: 100vh;
+    height: 100vh;
 }
 
 .nav-link:hover {
-	background-color: aliceblue;
+    background-color: aliceblue;
 }
 
 .entrance-text {
@@ -69,14 +75,38 @@ body {
     }
 }
 
+@-webkit-keyframes slide-in-left {
+  0% {
+    -webkit-transform: translateX(-1000px);
+            transform: translateX(-1000px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes slide-in-left {
+  0% {
+    -webkit-transform: translateX(-1000px);
+            transform: translateX(-1000px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 @media (max-width: 768px) {
     .brand-name {
         font-size: 70px;
         line-height: 70px;
     }
 
-	.btn-get-started {
-		visibility: visible;
-	}
+    .btn-get-started {
+        visibility: visible;
+    }
 }
-

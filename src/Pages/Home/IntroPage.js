@@ -24,7 +24,7 @@ const IntroPage = () => {
             className="title-component bg-theme-color-1 px-1 px-md-4 pt-3"
         >
             <MDBNavbar expand="lg" className="shadow-0">
-                <MDBContainer fluid className="mb-3 mb-lg-3 px-2 px-md-3">
+                <MDBContainer fluid className="mb-3 mb-lg-3 px-5">
                     <MDBNavbarBrand href="#" className="text-reset">
                         Paeon Vision
                     </MDBNavbarBrand>
@@ -78,7 +78,7 @@ const IntroPage = () => {
                 </MDBContainer>
             </MDBNavbar>
             <div className="px-5">
-                <img src={Logo} alt="" className="img-fluid" />
+                <img src={Logo} alt="" className="img-fluid slide-in-left" />
                 <figure className="mt-3 mt-md-4 mt-lg-5">
                     <MDBTypography blockquote>
                         <p className='entrance-text'>
@@ -88,14 +88,16 @@ const IntroPage = () => {
                             lesion.
                         </p>
                     </MDBTypography>
-                    <figcaption className="blockquote-footer mt-3 mt-md-4 mt-lg-5">
+                    <figcaption className="blockquote-footer mt-3 mt-md-4">
                         Created by Paeon Tech from AICS Commonwealth Branch
                     </figcaption>
                 </figure>
-                <div className="text-center mt-4 mb-3">
+                <div className="text-center mt-4 mb-5">
                     <MDBBtn
+						tag="a"
                         className="btn-get-started text-center"
                         color="dark"
+						href='#login'
                     >
                         Get started
                     </MDBBtn>
