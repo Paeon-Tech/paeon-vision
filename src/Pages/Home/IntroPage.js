@@ -11,6 +11,7 @@ import {
     MDBCollapse,
     MDBTypography,
     MDBBtn,
+    MDBRipple,
 } from 'mdb-react-ui-kit'
 import Logo from '../../Assets/img/brand-name.png'
 
@@ -41,45 +42,57 @@ const IntroPage = () => {
                     >
                         <MDBIcon icon="bars" fas />
                     </MDBNavbarToggler>
-                    <MDBCollapse navbar show={showNavSecond}>
+                    <MDBCollapse
+                        navbar
+                        show={showNavSecond}
+                        className="z-index-1 text-center"
+                    >
                         <MDBNavbarNav>
-                            <MDBNavbarLink
-                                active
-                                aria-current="page"
-                                href="#"
-                                className="text-reset"
-                            >
-                                Home
-                            </MDBNavbarLink>
-                            <MDBNavbarLink href="#" className="text-reset">
-                                Contact
-                            </MDBNavbarLink>
-                            <MDBNavbarLink href="#" className="text-reset">
-                                About us
-                            </MDBNavbarLink>
-                            <MDBNavbarLink href="#" className="text-reset">
-                                FAQ
-                            </MDBNavbarLink>
+                            <MDBRipple>
+                                <MDBNavbarLink
+                                    active
+                                    aria-current="page"
+                                    href="#"
+                                    className="text-reset"
+                                >
+                                    Home
+                                </MDBNavbarLink>
+                            </MDBRipple>
+                            <MDBRipple>
+                                <MDBNavbarLink href="#" className="text-reset">
+                                    Contact
+                                </MDBNavbarLink>
+                            </MDBRipple>
+                            <MDBRipple>
+                                <MDBNavbarLink href="#" className="text-reset">
+                                    About us
+                                </MDBNavbarLink>
+                            </MDBRipple>
+                            <MDBRipple>
+                                <MDBNavbarLink href="#" className="text-reset">
+                                    FAQ
+                                </MDBNavbarLink>
+                            </MDBRipple>
                         </MDBNavbarNav>
                     </MDBCollapse>
                 </MDBContainer>
             </MDBNavbar>
             <div className="px-5">
                 <img src={Logo} alt="" className="img-fluid" />
-                <figure className="mt-3">
+                <figure className="mt-3 mt-md-4 mt-lg-5">
                     <MDBTypography blockquote>
-                        <p>
+                        <p className='entrance-text'>
                             Paeon Vision is an image recognition application
                             that uses machine learning model based on microsoft
                             custom vision to detect monkeypox based on skin
                             lesion.
                         </p>
                     </MDBTypography>
-                    <figcaption className="blockquote-footer mt-3">
+                    <figcaption className="blockquote-footer mt-3 mt-md-4 mt-lg-5">
                         Created by Paeon Tech from AICS Commonwealth Branch
                     </figcaption>
                 </figure>
-                <div className="text-center mt-4 mb-5">
+                <div className="text-center mt-4 mb-3">
                     <MDBBtn
                         className="btn-get-started text-center"
                         color="dark"

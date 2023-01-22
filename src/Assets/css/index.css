@@ -13,11 +13,7 @@ body {
 }
 
 .title-component {
-    height: 660px;
-}
-
-.title-component-1 {
-    height: 750px;
+    height: auto;
 }
 
 .brand-name {
@@ -34,17 +30,53 @@ body {
 	visibility: hidden;
 }
 
+.row-height {
+	height: 100vh;
+}
+
+.nav-link:hover {
+	background-color: aliceblue;
+}
+
+.entrance-text {
+    animation: entrance 1s ease-in-out;
+}
+
+.entrance-text-2 {
+    animation: typing 1s steps(30, end);
+    animation-fill-mode: forwards;
+    white-space: nowrap;
+    overflow-wrap: break-word;
+}
+
+@keyframes entrance {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
 @media (max-width: 768px) {
     .brand-name {
         font-size: 70px;
         line-height: 70px;
     }
 
-	.title-component {
-		height: auto;
-	}
-
 	.btn-get-started {
 		visibility: visible;
 	}
 }
+
