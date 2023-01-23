@@ -5,29 +5,45 @@ import {
     MDBInput,
     MDBBtn,
     MDBIcon,
-	MDBFooter
+    MDBFooter,
+    MDBCheckbox,
 } from 'mdb-react-ui-kit'
 
 const LoginPage = () => {
     return (
-        <MDBCol lg="4" className="p-5">
-            <form action="" method="post" className="square border p-5 mt-4 mb-2 " id='login'>
-                <MDBTypography tag="h3" className="mb-4">
+        <MDBCol lg="4" className="px-5 pt-5 bg-theme-color-2">
+            <form
+                action=""
+                method="post"
+                className="square border px-5 pt-5 mx-4 pb-4 mb-3 mt-4 bg-theme-color-3 shadow-3"
+                id="login"
+            >
+                <MDBTypography tag="h5" className="mb-4">
                     Login
                 </MDBTypography>
                 <MDBInput
                     label="Email"
                     id="Email"
                     type="text"
-                    className="mb-3"
+                    className="mb-3 shadow-3"
+                    wrapperClass="small"
                 />
                 <MDBInput
                     label="Password"
                     id="Password"
                     type="password"
-                    className="mb-3"
+                    className="mb-3 shadow-3"
+                    wrapperClass="small"
                 />
-                <MDBBtn className="mb-3" color='dark' style={{ width: '100%' }}>
+                <MDBCheckbox
+                    name="flexCheck"
+                    value=""
+                    id="flexCheckDefault"
+                    label="Show Password"
+                    className="mb-3 small"
+                    wrapperClass="small"
+                />
+                <MDBBtn className="mb-3" color="dark" style={{ width: '100%' }}>
                     LOGIN
                 </MDBBtn>
                 <Link
@@ -36,45 +52,46 @@ const LoginPage = () => {
                 >
                     Forgot password?
                 </Link>
-                <p className="small">
-                    Not yet registered?{' '}
-                    <Link to="/signup" className="text-decoration-none">
-                        Sign up.
-                    </Link>
-                </p>
+
                 <hr />
                 <p className="small mb-3 text-center">
-                    Alternative sign in option
+                    Login using other option
                 </p>
                 <div className="text-center mb-3">
                     <MDBBtn
-                        className="m-1"
-                        style={{ backgroundColor: '#dd4b39' }}
+                        color="light"
+                        className="m-1 border border-1 bg-theme-color-2 shadow-3"
                         href="#"
                     >
                         <MDBIcon fab icon="google" />
                     </MDBBtn>
                     <MDBBtn
-                        className="m-1"
-                        style={{ backgroundColor: '#3b5998' }}
+                        color="light"
+                        className="m-1 border border-1 bg-theme-color-2 shadow-3"
                         href="#"
                     >
-                        <MDBIcon fab icon="facebook-f" />
+                        <MDBIcon fab icon="windows" />
                     </MDBBtn>
                     <MDBBtn
-                        className="m-1"
-                        style={{ backgroundColor: '#333333' }}
+                        color="light"
+                        className="m-1 border border-1 bg-theme-color-2 shadow-3"
                         href="#"
                     >
                         <MDBIcon fab icon="github" />
                     </MDBBtn>
                 </div>
+                <p className="small text-center">
+                    Not yet registered?{' '}
+                    <Link to="/signup" className="text-decoration-none">
+                        Sign&nbsp;up.
+                    </Link>
+                </p>
             </form>
             <MDBFooter>
-                <div className="text-center p-3 small">
-					&copy; {new Date().getFullYear()} Copyright:{' '}
+                <div className="text-center mt-4 pb-3 small text-dark">
+                    &copy; {new Date().getFullYear()} Copyright:{' '}
                     <a
-                        className="text-dark"
+                        className="text-reset"
                         href="https://learning-arithmetic.web.app"
                     >
                         paeonvision.web.app

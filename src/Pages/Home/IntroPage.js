@@ -12,8 +12,10 @@ import {
     MDBTypography,
     MDBBtn,
     MDBRipple,
+    MDBRow,
 } from 'mdb-react-ui-kit'
-import Logo from '../../Assets/img/brand-name.png'
+import Logo from '../../Assets/img/paeon-vision-logo-transparent.png'
+import Banner from '../../Assets/img/cross-platform-banner.png'
 
 const IntroPage = () => {
     const [showNavSecond, setShowNavSecond] = useState(false)
@@ -21,12 +23,12 @@ const IntroPage = () => {
     return (
         <MDBCol
             lg="8"
-            className="title-component bg-theme-color-1 px-1 px-md-4 pt-3"
+            className="title-component px-1 px-md-4 pt-3 bg-theme-color-1"
         >
             <MDBNavbar expand="lg" className="shadow-0">
                 <MDBContainer fluid className="mb-3 mb-lg-3 px-5">
-                    <MDBNavbarBrand href="#" className="text-reset">
-                        Paeon Vision
+                    <MDBNavbarBrand href="#" className="text-light">
+                        <img src={Logo} alt="Logo" height="40" />
                     </MDBNavbarBrand>
                     <MDBNavbarToggler
                         type="button"
@@ -40,12 +42,12 @@ const IntroPage = () => {
                             console.log(showNavSecond)
                         }}
                     >
-                        <MDBIcon icon="bars" fas />
+                        <MDBIcon className="text-light" icon="bars" fas />
                     </MDBNavbarToggler>
                     <MDBCollapse
                         navbar
                         show={showNavSecond}
-                        className="z-index-1 text-center"
+                        className="z-index-1 text-center small text-light"
                     >
                         <MDBNavbarNav>
                             <MDBRipple>
@@ -78,26 +80,31 @@ const IntroPage = () => {
                 </MDBContainer>
             </MDBNavbar>
             <div className="px-5">
-                <img src={Logo} alt="" className="img-fluid slide-in-left" />
-                <figure className="mt-3 mt-md-4 mt-lg-5">
+                <MDBTypography className="text-light text-center text-lg-start title-text my-5 pb-3">
+                    PAEON
+                    <br /> VISION
+                </MDBTypography>
+                <figure className="mt-3 mt-md-4">
                     <MDBTypography blockquote>
-                        <p className='entrance-text'>
+                        <p className="slide-in-left  text-color-1">
                             Paeon Vision is an image recognition application
-                            that uses machine learning model based on microsoft
-                            custom vision to detect monkeypox based on skin
-                            lesion.
+                            that uses{' '}
+                            <span className="text-light">
+                                machine learning model based on microsoft custom
+                                vision to detect monkeypox based on skin lesion.
+                            </span>
                         </p>
                     </MDBTypography>
-                    <figcaption className="blockquote-footer mt-3 mt-md-4">
+                    <figcaption className="blockquote-footer mt-3">
                         Created by Paeon Tech from AICS Commonwealth Branch
                     </figcaption>
                 </figure>
                 <div className="text-center mt-4 mb-5">
                     <MDBBtn
-						tag="a"
+                        tag="a"
                         className="btn-get-started text-center"
-                        color="dark"
-						href='#login'
+                        color="success"
+                        href="#login"
                     >
                         Get started
                     </MDBBtn>
