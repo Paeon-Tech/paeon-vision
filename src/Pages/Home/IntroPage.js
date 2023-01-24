@@ -12,17 +12,15 @@ import {
     MDBTypography,
     MDBBtn,
     MDBRipple,
-    MDBRow,
 } from 'mdb-react-ui-kit'
 import Logo from '../../Assets/img/paeon-vision-logo-transparent.png'
-import Banner from '../../Assets/img/cross-platform-banner.png'
 
 const IntroPage = () => {
     const [showNavSecond, setShowNavSecond] = useState(false)
 
     return (
         <MDBCol
-            lg="8"
+            xl="8"
             className="title-component px-1 px-md-4 pt-3 bg-theme-color-1"
         >
             <MDBNavbar expand="lg" className="shadow-0">
