@@ -57,6 +57,16 @@ body {
     height: auto;
 }
 
+.input-width {
+	width: 250px;
+	margin: auto;
+}
+
+.form-width {
+	width: 320px;
+	margin: auto;
+}
+
 .btn-get-started {
     visibility: hidden;
 }
