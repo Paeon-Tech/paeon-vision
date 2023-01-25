@@ -52,6 +52,11 @@ body {
     line-height: 100px;
 }
 
+.navbar-brand-text {
+	font-weight: 700;
+	color: var(--brand-color-4);
+}
+
 .brand-logo {
     width: auto;
     height: auto;
