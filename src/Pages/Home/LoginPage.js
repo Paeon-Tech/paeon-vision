@@ -47,7 +47,7 @@ const LoginPage = () => {
                         Login
                     </MDBTypography>
                     <div className="text-center my-2">
-                        {error && <p className="text-danger small"><MDBIcon fas icon="exclamation-circle" /> {error}</p>}
+                        {error && <p className="text-danger small"><MDBIcon fas icon="exclamation-circle" fixed /> {error}</p>}
                         {loading && (
                             <MDBSpinner
                                 className="ms-2 text=center"

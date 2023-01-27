@@ -4,14 +4,12 @@ import { MDBContainer, MDBRow } from 'mdb-react-ui-kit'
 
 const Homepage = () => {
     return (
-        <main>
-            <MDBContainer fluid className="p-0">
-                <MDBRow className="gx-0 row-height">
-                    <IntroPage />
-                    <LoginPage />
-                </MDBRow>
-            </MDBContainer>
-        </main>
+        <MDBContainer breakpoint="xxl" className="p-0" tag="main">
+            <MDBRow className="gx-0 row-height">
+                <IntroPage />
+                <LoginPage />
+            </MDBRow>
+        </MDBContainer>
     )
 }
 

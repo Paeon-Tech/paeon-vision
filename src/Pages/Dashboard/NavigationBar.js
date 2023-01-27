@@ -32,7 +32,7 @@ const NavigationBar = () => {
                         <MDBIcon icon="bars" fas />
                     </MDBNavbarToggler>
                     <MDBCollapse navbar show={showNav}>
-                        <MDBNavbarNav right fullWidth={false} className="small">
+                        <MDBNavbarNav right fullWidth={false} className="small text-start">
                             <MDBNavbarItem>
                                 <MDBNavbarLink
                                     active
@@ -44,7 +44,7 @@ const NavigationBar = () => {
                             </MDBNavbarItem>
                             <MDBNavbarItem>
                                 <MDBNavbarLink href="#">
-                                    <MDBIcon far icon="question-circle" /> Help
+                                    <MDBIcon far icon="question-circle"  /> Help
                                 </MDBNavbarLink>
                             </MDBNavbarItem>
                             <MDBNavbarItem>
