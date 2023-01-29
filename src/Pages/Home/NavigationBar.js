@@ -12,8 +12,10 @@ import {
     MDBNavbarItem,
 } from 'mdb-react-ui-kit'
 import Logo from '../../Assets/img/paeon-vision-logo-transparent.png'
+import { API } from '../../Api'
 
 const NavigationBar = () => {
+    const { nav_menu } = API
     const [showNavSecond, setShowNavSecond] = useState(false)
 
     return (
@@ -40,40 +42,22 @@ const NavigationBar = () => {
                     className="z-index-1 text-start text-light small"
                 >
                     <MDBNavbarNav>
-                        <MDBNavbarItem>
-                            <MDBNavbarLink
-                                active={false}
-                                tag={NavLink}
-                                aria-current="page"
-                                to="/"
-                                className="text-reset"
-                            >
-                                Home
-                            </MDBNavbarLink>
-                            <hr className="d-block d-md-none m-0 p-0" />
-                        </MDBNavbarItem>
-                        <MDBNavbarItem>
-                            <MDBNavbarLink
-                                active={false}
-                                tag={NavLink}
-                                to="/Contact"
-                                className="text-reset"
-                            >
-                                Contact
-                            </MDBNavbarLink>
-                            <hr className="d-block d-md-none m-0 p-0" />
-                        </MDBNavbarItem>
-                        <MDBNavbarItem>
-                            <MDBNavbarLink
-                                active={false}
-                                tag={NavLink}
-                                to="/About"
-                                className="text-reset"
-                            >
-                                About
-                            </MDBNavbarLink>
-                            <hr className="d-block d-md-none m-0 p-0" />
-                        </MDBNavbarItem>
+                        {nav_menu.map((data, index) => {
+                            console.log(data)
+                            return (
+                                <MDBNavbarItem key={index}>
+                                    <MDBNavbarLink
+                                        active={false}
+                                        tag={NavLink}
+                                        to={data.path}
+                                        className="text-reset"
+                                    >
+                                        {data.menu}
+                                    </MDBNavbarLink>
+                                    <hr className="d-block d-md-none m-0 p-0" />
+                                </MDBNavbarItem>
+                            )
+                        })}
                     </MDBNavbarNav>
                 </MDBCollapse>
             </MDBContainer>

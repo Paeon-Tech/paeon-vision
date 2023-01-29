@@ -22,7 +22,7 @@ const WelcomeContent = () => {
                     Created by Paeon Tech from AICS Commonwealth Branch
                 </figcaption>
             </figure>
-            <div className="text-center mt-4 mb-5">
+            <div className="text-center mt-4 py-5 py-md-0 mb-5">
                 <MDBBtn
                     tag="a"
                     className="btn-get-started text-center"

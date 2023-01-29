@@ -4,13 +4,14 @@ import {
     MDBRow,
     MDBCol,
     MDBTypography,
-    MDBIcon,
     MDBListGroup,
     MDBListGroupItem,
     MDBBadge,
 } from 'mdb-react-ui-kit'
+import { API } from '../../Api'
 
 const About = () => {
+    const { team_member } = API
     return (
         <>
             <MDBContainer className="bg-theme-color-2 m-0 p-0" fluid>
@@ -50,288 +51,58 @@ const About = () => {
                         >
                             Meet the Team.
                         </MDBTypography>
-                        <MDBCol xl="6" className="small">
-                            <MDBListGroup light>
-                                <MDBListGroupItem className="d-flex bg-theme-color-2 justify-content-between align-items-center">
-                                    <div className="d-flex align-items-center">
-                                        <img
-                                            src="https://mdbootstrap.com/img/new/avatars/8.jpg"
-                                            alt=""
-                                            style={{
-                                                width: '45px',
-                                                height: '45px',
-                                            }}
-                                            className="rounded-circle"
-                                        />
-                                        <div className="ms-3">
-                                            <p className="fw-bold mb-1">
-                                                John Carlo T. Fababeir
-                                            </p>
-                                            <p className="text-muted mb-0">
-                                                johncarlofababeir@outlook.com
-                                            </p>
-                                            <MDBBadge
-                                                pill
-                                                light
-                                                color="success"
-                                            >
-                                                Software Developer
-                                            </MDBBadge>
-                                            <MDBBadge
-                                                pill
-                                                light
-                                                color="info"
-                                                className="ms-2"
-                                            >
-                                                Project Manager
-                                            </MDBBadge>
-                                        </div>
-                                    </div>
-                                </MDBListGroupItem>
-                                <MDBListGroupItem className="d-flex bg-theme-color-2 justify-content-between align-items-center">
-                                    <div className="d-flex align-items-center">
-                                        <img
-                                            src="https://mdbootstrap.com/img/new/avatars/8.jpg"
-                                            alt=""
-                                            style={{
-                                                width: '45px',
-                                                height: '45px',
-                                            }}
-                                            className="rounded-circle"
-                                        />
-                                        <div className="ms-3">
-                                            <p className="fw-bold mb-1">
-                                                Cedric Paul B. Dawal
-                                            </p>
-                                            <p className="text-muted mb-0">
-                                                bernabecedric1@gmail.com
-                                            </p>
-                                            <MDBBadge
-                                                pill
-                                                light
-                                                color="warning"
-                                            >
-                                                Researcher
-                                            </MDBBadge>
-                                        </div>
-                                    </div>
-                                </MDBListGroupItem>
-                                <MDBListGroupItem className="d-flex bg-theme-color-2 justify-content-between align-items-center">
-                                    <div className="d-flex align-items-center">
-                                        <img
-                                            src="https://mdbootstrap.com/img/new/avatars/8.jpg"
-                                            alt=""
-                                            style={{
-                                                width: '45px',
-                                                height: '45px',
-                                            }}
-                                            className="rounded-circle"
-                                        />
-                                        <div className="ms-3">
-                                            <p className="fw-bold mb-1">
-                                                Romano D. Lotao
-                                            </p>
-                                            <p className="text-muted mb-0">
-                                                lutaolester10@gmail.com
-                                            </p>
-                                            <MDBBadge
-                                                pill
-                                                light
-                                                color="warning"
-                                            >
-                                                Researcher
-                                            </MDBBadge>
-                                        </div>
-                                    </div>
-                                </MDBListGroupItem>
-                            </MDBListGroup>
-                        </MDBCol>
-                        <MDBCol xl="6">
-                            <MDBListGroup light className="small">
-                                <MDBListGroupItem className="d-flex bg-theme-color-2 justify-content-between align-items-center">
-                                    <div className="d-flex align-items-center">
-                                        <img
-                                            src="https://mdbootstrap.com/img/new/avatars/8.jpg"
-                                            alt=""
-                                            style={{
-                                                width: '45px',
-                                                height: '45px',
-                                            }}
-                                            className="rounded-circle"
-                                        />
-                                        <div className="ms-3">
-                                            <p className="fw-bold mb-1">
-                                                Crischelle Jay D. Florita
-                                            </p>
-                                            <p className="text-muted mb-0">
-                                                cjflorita01@gmail.com
-                                            </p>
-                                            <MDBBadge
-                                                pill
-                                                light
-                                                color="warning"
-                                            >
-                                                Researcher
-                                            </MDBBadge>
-                                        </div>
-                                    </div>
-                                </MDBListGroupItem>
-                                <MDBListGroupItem className="d-flex bg-theme-color-2 justify-content-between align-items-center">
-                                    <div className="d-flex align-items-center">
-                                        <img
-                                            src="https://mdbootstrap.com/img/new/avatars/8.jpg"
-                                            alt=""
-                                            style={{
-                                                width: '45px',
-                                                height: '45px',
-                                            }}
-                                            className="rounded-circle"
-                                        />
-                                        <div className="ms-3">
-                                            <p className="fw-bold mb-1">
-                                                Fely L. Mariano
-                                            </p>
-                                            <p className="text-muted mb-0">
-                                                felymariano0211@gmail.com
-                                            </p>
-                                            <MDBBadge
-                                                pill
-                                                light
-                                                color="warning"
-                                            >
-                                                Researcher
-                                            </MDBBadge>
-                                        </div>
-                                    </div>
-                                </MDBListGroupItem>
+                        <MDBCol className="small">
+                            <MDBListGroup light className='d-flex justify-content-center'>
+                                {team_member.map((data, index) => {
+                                    return (
+                                        <MDBListGroupItem
+                                            key={index}
+                                            className="d-flex bg-theme-color-2 justify-content-between align-items-center"
+                                        >
+                                            <div className="d-flex align-items-center">
+                                                <img
+                                                    src={data.img_src}
+                                                    alt="Team Member"
+                                                    style={{
+                                                        width: '45px',
+                                                        height: '45px',
+                                                    }}
+                                                    className="rounded-circle"
+                                                />
+                                                <div className="ms-3">
+                                                    <p className="fw-bold mb-1">
+                                                        {data.name}
+                                                    </p>
+                                                    <p className="text-muted mb-0">
+                                                        {data.email}
+                                                    </p>
+                                                    {data.badge.map(
+                                                        (data, index) => {
+                                                            return (
+                                                                <MDBBadge
+                                                                    key={index}
+                                                                    pill
+                                                                    light
+                                                                    color={
+                                                                        data.color
+                                                                    }
+                                                                >
+                                                                    {
+                                                                        data.badge_name
+                                                                    }
+                                                                </MDBBadge>
+                                                            )
+                                                        }
+                                                    )}
+                                                </div>
+                                            </div>
+                                        </MDBListGroupItem>
+                                    )
+                                })}
                             </MDBListGroup>
                         </MDBCol>
                     </MDBRow>
                 </div>
-                <MDBRow className="gx-0 px-2 px-md-4">
-                    <MDBContainer className="px-2 px-md-3">
-                        <MDBRow className="pt-4 px-3 px-md-5">
-                            <MDBCol md="6" lg="2" className="pb-3 pb-md-0">
-                                <MDBTypography
-                                    variant="h6"
-                                    className="text-dark mb-4"
-                                >
-                                    <MDBIcon
-                                        fas
-                                        icon="share-alt"
-                                        className="me-2"
-                                        fixed
-                                    />
-                                    Social Links
-                                </MDBTypography>
-                                <div className="small">
-                                    <p>
-                                        <MDBIcon
-                                            fab
-                                            icon="facebook"
-                                            className="me-2 rounded-circle"
-                                            border
-                                        />
-                                        Facebook
-                                    </p>
-                                    <p>
-                                        <MDBIcon
-                                            fab
-                                            icon="twitter"
-                                            className="me-2 rounded-circle"
-                                            border
-                                        />
-                                        Twitter
-                                    </p>
-                                    <p>
-                                        <MDBIcon
-                                            fab
-                                            icon="instagram"
-                                            className="me-2 rounded-circle"
-                                            border
-                                        />
-                                        Instagram
-                                    </p>
-                                    <p>
-                                        <MDBIcon
-                                            fab
-                                            icon="github"
-                                            className="me-2 rounded-circle"
-                                            border
-                                        />
-                                        Github
-                                    </p>
-                                </div>
-                                <hr className="d-block d-md-none" />
-                            </MDBCol>
-                            <MDBCol md="6" lg="3" className="pb-3 pb-md-0">
-                                <MDBTypography
-                                    variant="h6"
-                                    className="text-dark mb-4"
-                                >
-                                    <MDBIcon
-                                        fas
-                                        icon="envelope"
-                                        className="me-2"
-                                        fixed
-                                    />
-                                    Contact
-                                </MDBTypography>
-                                <p className="small">
-                                    <MDBIcon
-                                        far
-                                        icon="envelope"
-                                        className="me-2 rounded-circle"
-                                        border
-                                    />
-                                    paeonvision@gmail.com
-                                </p>
-                                <hr className="d-block d-md-none" />
-                            </MDBCol>
-                            <MDBCol md="6" lg="4" className="pb-3 pb-md-0">
-                                <MDBTypography
-                                    variant="h6"
-                                    className="text-dark mb-4"
-                                >
-                                    <MDBIcon
-                                        fas
-                                        icon="map-marker-alt"
-                                        className="me-2"
-                                        fixed
-                                    />
-                                    Address
-                                </MDBTypography>
-                                <p className="small">
-                                    AICS Bldg., Commonwealth Avenue, Corner Holy
-                                    Spirit Drive, Don Antonio Heights, Holy
-                                    Spirit, Quezon City, Metro Manila,
-                                    Philippines.
-                                </p>
-                                <hr className="d-block d-md-none" />
-                            </MDBCol>
-                            <MDBCol md="6" lg="3" className="pb-3 pb-md-0">
-                                <MDBTypography
-                                    variant="h6"
-                                    className="text-dark mb-4"
-                                >
-                                    <MDBIcon
-                                        fas
-                                        icon="building"
-                                        className="me-2"
-                                        fixed
-                                    />
-                                    Paeon Tech
-                                </MDBTypography>
-                                <p className="small">
-                                    Paeon Tech is composed of BSCS Student from
-                                    Asian Institute of Computer Studies from
-                                    batch 2019.
-                                </p>
-                                <hr className="d-block d-md-none" />
-                            </MDBCol>
-                        </MDBRow>
-                    </MDBContainer>
-                </MDBRow>
                 <div className="text-center small pb-4 bg-theme-color-2">
                     &copy; {new Date().getFullYear()} Copyright:{' '}
                     <a
