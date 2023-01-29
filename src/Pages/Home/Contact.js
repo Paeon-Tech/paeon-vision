@@ -4,7 +4,7 @@ import {
     MDBRow,
     MDBCol,
     MDBTypography,
-    MDBIcon
+    MDBIcon,
 } from 'mdb-react-ui-kit'
 
 const Contact = () => {
@@ -43,7 +43,13 @@ const Contact = () => {
                                     variant="h6"
                                     className="text-dark mb-4"
                                 >
-                                    <MDBIcon fas icon="share-alt" className='me-2' fixed/>Social Links
+                                    <MDBIcon
+                                        fas
+                                        icon="share-alt"
+                                        className="me-2"
+                                        fixed
+                                    />
+                                    Social Links
                                 </MDBTypography>
                                 <div className="small">
                                     <p>
@@ -83,14 +89,20 @@ const Contact = () => {
                                         Github
                                     </p>
                                 </div>
-								<hr className='d-block d-md-none'/>
+                                <hr className="d-block d-md-none" />
                             </MDBCol>
                             <MDBCol md="6" lg="3" className="pb-3 pb-md-0">
                                 <MDBTypography
                                     variant="h6"
                                     className="text-dark mb-4"
                                 >
-                                    <MDBIcon fas icon="envelope" className='me-2' fixed/>Contact
+                                    <MDBIcon
+                                        fas
+                                        icon="envelope"
+                                        className="me-2"
+                                        fixed
+                                    />
+                                    Contact
                                 </MDBTypography>
                                 <p className="small">
                                     <MDBIcon
@@ -101,14 +113,20 @@ const Contact = () => {
                                     />
                                     paeonvision@gmail.com
                                 </p>
-								<hr className='d-block d-md-none'/>
+                                <hr className="d-block d-md-none" />
                             </MDBCol>
                             <MDBCol md="6" lg="4" className="pb-3 pb-md-0">
                                 <MDBTypography
                                     variant="h6"
                                     className="text-dark mb-4"
                                 >
-                                    <MDBIcon fas icon="map-marker-alt" className='me-2' fixed/>Address
+                                    <MDBIcon
+                                        fas
+                                        icon="map-marker-alt"
+                                        className="me-2"
+                                        fixed
+                                    />
+                                    Address
                                 </MDBTypography>
                                 <p className="small">
                                     AICS Bldg., Commonwealth Avenue, Corner Holy
@@ -116,21 +134,27 @@ const Contact = () => {
                                     Spirit, Quezon City, Metro Manila,
                                     Philippines.
                                 </p>
-								<hr className='d-block d-md-none'/>
+                                <hr className="d-block d-md-none" />
                             </MDBCol>
                             <MDBCol md="6" lg="3" className="pb-3 pb-md-0">
                                 <MDBTypography
                                     variant="h6"
                                     className="text-dark mb-4"
                                 >
-                                    <MDBIcon fas icon="building" className='me-2' fixed/>Paeon Tech
+                                    <MDBIcon
+                                        fas
+                                        icon="building"
+                                        className="me-2"
+                                        fixed
+                                    />
+                                    Paeon Tech
                                 </MDBTypography>
                                 <p className="small">
                                     Paeon Tech is composed of BSCS Student from
                                     Asian Institute of Computer Studies from
                                     batch 2019.
                                 </p>
-								<hr className='d-block d-md-none'/>
+                                <hr className="d-block d-md-none" />
                             </MDBCol>
                         </MDBRow>
                     </MDBContainer>

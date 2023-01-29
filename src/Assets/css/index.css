@@ -37,6 +37,10 @@ body {
 	color: var(--brand-color-4);
 }
 
+.text-color-2 {
+	color: var(--brand-color-2);
+}
+
 .title-text {
 	font-size: 90px;
 	font-weight: 800;

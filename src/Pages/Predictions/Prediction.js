@@ -1,12 +1,7 @@
-import React from 'react';
+import React from 'react'
 
 const Prediction = () => {
-	return (
-		<div>
-			test
-			
-		</div>
-	);
-};
+    return <div>test</div>
+}
 
-export default Prediction;
+export default Prediction

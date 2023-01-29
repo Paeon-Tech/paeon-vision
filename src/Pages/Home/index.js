@@ -1,4 +1,5 @@
 import Homepage from './Homepage'
 import Contact from './Contact'
+import About from './About'
 
-export { Homepage, Contact }
+export { Homepage, Contact, About }

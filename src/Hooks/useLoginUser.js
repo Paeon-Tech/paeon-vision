@@ -3,17 +3,16 @@ import { useNavigate } from 'react-router-dom'
 import { UserAuth } from '../Context/AuthContext'
 
 const useLoginUser = () => {
-
     const { userLogin, setUser } = UserAuth()
     const [error, setError] = useState('')
-	const [errname, setErrname] = useState("")
+    const [errname, setErrname] = useState('')
     const [loading, setLoading] = useState('')
     const navigate = useNavigate()
 
     const loginUser = async (email, password) => {
         setLoading('Loading')
         setError('')
-		setErrname('')
+        setErrname('')
 
         try {
             const response = await userLogin(email, password)
@@ -33,28 +32,26 @@ const useLoginUser = () => {
 
                 case 'auth/user-not-found':
                     setError('Email not found please try again')
-					setErrname("Email")
+                    setErrname('Email')
                     break
 
                 case 'auth/wrong-password':
                     setError('Wrong password please try again')
-					setErrname("Password")
+                    setErrname('Password')
                     break
 
-				case 'auth/invalid-email':
-					setError('Please input email and password.')
-					setErrname("NoCredential")
-					break
+                case 'auth/invalid-email':
+                    setError('Please input email and password.')
+                    setErrname('NoCredential')
+                    break
 
-				case 'auth/too-many-requests':
-					setError('Too many attempts, Try again later')
-					break
+                case 'auth/too-many-requests':
+                    setError('Too many attempts, Try again later')
+                    break
 
                 default:
-					console.table(error)
-                    setError(
-                        'There is an error signing in'
-                    )
+                    console.table(error)
+                    setError('There is an error signing in')
             }
         }
     }

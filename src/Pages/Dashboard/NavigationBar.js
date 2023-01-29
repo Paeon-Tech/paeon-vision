@@ -21,7 +21,7 @@ const NavigationBar = () => {
                 <MDBContainer fluid className="mx-md-5">
                     <MDBNavbarBrand href="#">
                         <img src={Logo} alt="Logo" height="25" />
-                        <span className='small'>Paeon Vision</span>
+                        <span className="small">Paeon Vision</span>
                     </MDBNavbarBrand>
                     <MDBNavbarToggler
                         type="button"
@@ -32,7 +32,11 @@ const NavigationBar = () => {
                         <MDBIcon icon="bars" fas />
                     </MDBNavbarToggler>
                     <MDBCollapse navbar show={showNav}>
-                        <MDBNavbarNav right fullWidth={false} className="small text-start">
+                        <MDBNavbarNav
+                            right
+                            fullWidth={false}
+                            className="small text-start"
+                        >
                             <MDBNavbarItem>
                                 <MDBNavbarLink
                                     active
@@ -44,7 +48,7 @@ const NavigationBar = () => {
                             </MDBNavbarItem>
                             <MDBNavbarItem>
                                 <MDBNavbarLink href="#">
-                                    <MDBIcon far icon="question-circle"  /> Help
+                                    <MDBIcon far icon="question-circle" /> Help
                                 </MDBNavbarLink>
                             </MDBNavbarItem>
                             <MDBNavbarItem>
