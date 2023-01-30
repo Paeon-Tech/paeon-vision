@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import useLoginUser from '../../Hooks/useLoginUser'
+import { useLoginUser }from '../../Hooks'
 import {
     MDBCol,
     MDBTypography,
@@ -76,6 +76,7 @@ const LoginPage = () => {
                         onChange={onChangeValue(setEmail)}
                         autoComplete="off"
                         placeholder="Email"
+						required
                     />
                     <input
                         label="Password"
@@ -89,6 +90,7 @@ const LoginPage = () => {
                         onChange={onChangeValue(setPassword)}
                         autoComplete="off"
                         placeholder="Password"
+						required
                     />
                     <MDBCheckbox
                         name="flexCheck"
@@ -135,7 +137,7 @@ const LoginPage = () => {
                     </div>
                     <MDBTypography className="text-center">
                         Not yet registered?{' '}
-                        <Link to="/signup" className="text-decoration-none">
+                        <Link to="/Signup" className="text-decoration-none">
                             Sign&nbsp;up.
                         </Link>
                     </MDBTypography>

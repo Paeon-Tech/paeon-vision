@@ -41,7 +41,7 @@ const useLoginUser = () => {
                     break
 
                 case 'auth/invalid-email':
-                    setError('Please input email and password.')
+                    setError('Wrong email and password.')
                     setErrname('NoCredential')
                     break
 

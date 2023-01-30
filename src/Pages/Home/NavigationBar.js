@@ -43,7 +43,6 @@ const NavigationBar = () => {
                 >
                     <MDBNavbarNav>
                         {nav_menu.map((data, index) => {
-                            console.log(data)
                             return (
                                 <MDBNavbarItem key={index}>
                                     <MDBNavbarLink

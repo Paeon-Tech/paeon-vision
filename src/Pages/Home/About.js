@@ -15,7 +15,7 @@ const About = () => {
     return (
         <>
             <MDBContainer className="bg-theme-color-2 m-0 p-0" fluid>
-                <MDBRow className="bg-theme-color-1 gx-0 px-3 px-md-4">
+                <MDBRow className="bg-theme-color-1 gx-0 px-md-4">
                     <MDBContainer
                         breakpoint="xxl"
                         className="pt-2 pt-md-3 bg-theme-color-1"
