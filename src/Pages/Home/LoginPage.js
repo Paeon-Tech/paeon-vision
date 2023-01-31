@@ -1,38 +1,96 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useLoginUser }from '../../Hooks'
 import {
     MDBCol,
     MDBTypography,
-    MDBInput,
     MDBBtn,
     MDBIcon,
     MDBFooter,
     MDBCheckbox,
+    MDBSpinner,
 } from 'mdb-react-ui-kit'
 
 const LoginPage = () => {
+    const [loading, error, loginUser, errname] = useLoginUser()
+    const [passwordShown, setPasswordShown] = useState(false)
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    const onChangeValue = (callback) => {
+        return (event) => {
+            callback(event.target.value)
+        }
+    }
+
+    const handleSubmit = () => {
+        return (event) => {
+            event.preventDefault()
+            loginUser(email, password)
+        }
+    }
+
+    const togglePassword = () => {
+        setPasswordShown((isShown) => !isShown)
+    }
+
     return (
         <MDBCol xl="4" className="px-md-5 pt-5 bg-theme-color-2">
             <form
-                action=""
-                method="post"
+                method="POST"
                 className="form-width px-4 py-5 square border bg-theme-color-3 shadow-3"
                 id="login"
+                onSubmit={handleSubmit()}
             >
                 <div className="small input-width">
                     <MDBTypography tag="h5" className="mb-4">
                         Login
                     </MDBTypography>
-                    <MDBInput
+                    <div className="text-center my-2">
+                        {error && (
+                            <p className="text-danger small">
+                                <MDBIcon fas icon="exclamation-circle" fixed />{' '}
+                                {error}
+                            </p>
+                        )}
+                        {loading && (
+                            <MDBSpinner
+                                className="ms-2 text=center"
+                                color="dark"
+                            >
+                                <span className="visually-hidden text-center">
+                                    Loading...
+                                </span>
+                            </MDBSpinner>
+                        )}
+                    </div>
+                    <input
                         label="Email"
                         id="Email"
                         type="text"
-                        className="mb-3 shadow-3"
+                        className={`mb-3 shadow-3 square border border-1 border-squircle ${
+                            errname === 'Email' || errname === 'NoCredential'
+                                ? 'border-danger'
+                                : ''
+                        }`}
+                        onChange={onChangeValue(setEmail)}
+                        autoComplete="off"
+                        placeholder="Email"
+						required
                     />
-                    <MDBInput
+                    <input
                         label="Password"
                         id="Password"
-                        type="password"
-                        className="mb-3 shadow-3"
+                        type={passwordShown ? 'text' : 'password'}
+                        className={`mb-3 shadow-3 square border border-1 border-squircle ${
+                            errname === 'Password' || errname === 'NoCredential'
+                                ? 'border-danger'
+                                : ''
+                        }`}
+                        onChange={onChangeValue(setPassword)}
+                        autoComplete="off"
+                        placeholder="Password"
+						required
                     />
                     <MDBCheckbox
                         name="flexCheck"
@@ -40,16 +98,14 @@ const LoginPage = () => {
                         id="flexCheckDefault"
                         label="Show Password"
                         className="mb-3"
+                        onChange={togglePassword}
                     />
                     <div className="text-center">
                         <MDBBtn className="mb-3 btn input-width" color="dark">
                             LOGIN
                         </MDBBtn>
                     </div>
-                    <Link
-                        to="/forgot-password"
-                        className="text-decoration-none mb-3"
-                    >
+                    <Link to="dashboard" className="text-decoration-none mb-3">
                         Forgot password?
                     </Link>
                     <hr />
@@ -81,14 +137,14 @@ const LoginPage = () => {
                     </div>
                     <MDBTypography className="text-center">
                         Not yet registered?{' '}
-                        <Link to="/signup" className="text-decoration-none">
+                        <Link to="/Signup" className="text-decoration-none">
                             Sign&nbsp;up.
                         </Link>
                     </MDBTypography>
                 </div>
             </form>
             <MDBFooter>
-                <div className="text-center mt-4 pb-5 small text-dark">
+                <div className="text-center mt-4 pb-4 small text-dark">
                     &copy; {new Date().getFullYear()} Copyright:{' '}
                     <a
                         className="text-reset"
