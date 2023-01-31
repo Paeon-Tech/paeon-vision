@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { UserAuth } from '../../Context/AuthContext'
 import {
     MDBContainer,
     MDBNavbar,
@@ -14,6 +16,17 @@ import Logo from '../../Assets/img/paeon-vision-logo-transparent.png'
 
 const NavigationBar = () => {
     const [showNav, setShowNav] = useState(false)
+	const { userLogout } = UserAuth()
+    const navigate = useNavigate()
+
+    const handleLogout = async () => {
+        try {
+            await userLogout()
+            navigate('/')
+        } catch (error) {
+            console.log(error.message)
+        }
+    }
 
     return (
         <>
@@ -58,7 +71,7 @@ const NavigationBar = () => {
                                 </MDBNavbarLink>
                             </MDBNavbarItem>
                             <MDBNavbarItem>
-                                <MDBNavbarLink href="#">
+                                <MDBNavbarLink tag={Link} onClick={handleLogout}>
                                     <MDBIcon fas icon="sign-out-alt" /> Logout
                                 </MDBNavbarLink>
                             </MDBNavbarItem>

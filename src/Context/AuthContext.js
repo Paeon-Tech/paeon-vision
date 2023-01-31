@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
 import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
@@ -7,6 +7,7 @@ import {
     signInWithPopup,
     sendPasswordResetEmail,
     GithubAuthProvider,
+    onAuthStateChanged,
 } from 'firebase/auth'
 import { auth } from '../Firebase'
 
@@ -44,6 +45,23 @@ export const AuthContextProvider = ({ children }) => {
         })
     }
 
+    useEffect(() => {
+        onAuthStateChanged(auth, (data) => {
+            if (data) {
+                const dat = {
+                    isAuthenticated: true,
+                    data,
+                }
+                localStorage.setItem('paeon-user', JSON.stringify(dat))
+                setUser(dat)
+            } else {
+                setUser(data)
+                console.log(data)
+                localStorage.clear()
+            }
+        })
+    }, [])
+
     return (
         <UserContext.Provider
             value={{
@@ -51,7 +69,6 @@ export const AuthContextProvider = ({ children }) => {
                 user,
                 userLogout,
                 userLogin,
-                setUser,
                 signInWithGoogle,
                 forgotPassword,
                 signInWithGithub,

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { UserAuth } from '../Context/AuthContext'
 
 const useLoginUser = () => {
-    const { userLogin, setUser } = UserAuth()
+    const { userLogin } = UserAuth()
     const [error, setError] = useState('')
     const [errname, setErrname] = useState('')
     const [loading, setLoading] = useState('')
@@ -15,13 +15,7 @@ const useLoginUser = () => {
         setErrname('')
 
         try {
-            const response = await userLogin(email, password)
-
-            localStorage.setItem(
-                'arithmetic-user',
-                JSON.stringify(response.user)
-            )
-            setUser(response.user)
+            await userLogin(email, password)
             navigate('/Home')
         } catch (error) {
             setLoading('')
