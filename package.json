@@ -1,6 +1,6 @@
 {
     "name": "paeon-vision",
-	"homepage": "paeonvision.tech",
+	"homepage": "https://paeonvision.tech/",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
