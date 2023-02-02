@@ -35,7 +35,7 @@
         "eject": "react-scripts eject",
         "format": "prettier --write ./src/**/*.js",
         "format-check": "prettier --check ./src/**/*.js",
-		"build:deploy": "env-cmd -f .env.local npm run build && firebase deploy -P learning-arithmetic"
+		"build:deploy": "env-cmd -f .env.local npm run build && firebase deploy -P paeon-vision"
     },
     "eslintConfig": {
         "extends": [
