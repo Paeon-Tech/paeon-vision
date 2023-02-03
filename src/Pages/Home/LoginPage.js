@@ -123,10 +123,10 @@ const LoginPage = () => {
                         <hr />
                     </div>
                 </form>
-                <MDBTypography className="mb-3 text-center">
+                <MDBTypography className="mb-3 text-center small">
                     Login using other option
                 </MDBTypography>
-                <div className="text-center mb-3">
+                <div className="text-center mb-3 small">
                     <MDBBtn
                         color="light"
                         className="m-1 border border-1 bg-theme-color-2 shadow-3"
@@ -161,7 +161,7 @@ const LoginPage = () => {
                         <MDBIcon fab icon="github" />
                     </MDBBtn>
                 </div>
-                <MDBTypography className="text-center">
+                <MDBTypography className="text-center small">
                     Not yet registered?{' '}
                     <Link to="/Signup" className="text-decoration-none">
                         Sign&nbsp;up.
