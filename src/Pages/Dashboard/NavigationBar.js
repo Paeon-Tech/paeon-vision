@@ -16,7 +16,7 @@ import Logo from '../../Assets/img/paeon-vision-logo-transparent.png'
 
 const NavigationBar = () => {
     const [showNav, setShowNav] = useState(false)
-	const { userLogout } = UserAuth()
+    const { userLogout } = UserAuth()
     const navigate = useNavigate()
 
     const handleLogout = async () => {
@@ -71,7 +71,10 @@ const NavigationBar = () => {
                                 </MDBNavbarLink>
                             </MDBNavbarItem>
                             <MDBNavbarItem>
-                                <MDBNavbarLink tag={Link} onClick={handleLogout}>
+                                <MDBNavbarLink
+                                    tag={Link}
+                                    onClick={handleLogout}
+                                >
                                     <MDBIcon fas icon="sign-out-alt" /> Logout
                                 </MDBNavbarLink>
                             </MDBNavbarItem>

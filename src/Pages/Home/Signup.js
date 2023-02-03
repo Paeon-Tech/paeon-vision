@@ -66,7 +66,10 @@ const Signup = () => {
                             {success && (
                                 <p className="text-success">
                                     {success} <br /> Click here to{' '}
-                                    <Link to="/" className="text-decoration-none">
+                                    <Link
+                                        to="/"
+                                        className="text-decoration-none"
+                                    >
                                         Login.
                                     </Link>
                                 </p>

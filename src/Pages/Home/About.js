@@ -52,7 +52,10 @@ const About = () => {
                             Meet the Team.
                         </MDBTypography>
                         <MDBCol className="small">
-                            <MDBListGroup light className='d-flex justify-content-center'>
+                            <MDBListGroup
+                                light
+                                className="d-flex justify-content-center"
+                            >
                                 {team_member.map((data, index) => {
                                     return (
                                         <MDBListGroupItem
