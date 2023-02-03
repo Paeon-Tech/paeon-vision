@@ -1,6 +1,6 @@
 {
     "name": "paeon-vision",
-	"homepage": "https://paeonvision.tech/",
+    "homepage": "https://paeonvision.tech/",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
@@ -36,7 +36,7 @@
         "eject": "react-scripts eject",
         "format": "prettier --write ./src/**/*.js",
         "format-check": "prettier --check ./src/**/*.js",
-		"build:deploy": "env-cmd -f .env.local npm run build && firebase deploy -P paeon-vision"
+        "build:deploy": "env-cmd -f .env.local npm run build && firebase deploy -P paeon-vision"
     },
     "eslintConfig": {
         "extends": [

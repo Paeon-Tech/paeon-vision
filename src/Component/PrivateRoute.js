@@ -3,12 +3,13 @@ import { UserAuth } from '../Context/AuthContext'
 
 const PrivateRoute = ({ children }) => {
     const { user } = UserAuth()
-    const user_data = JSON.parse(localStorage.getItem('paeon-user')) || false
+    const user_data = JSON.parse(localStorage.getItem('paeon-user')) || null
 
-    if (user_data.isAuthenticated || user.isAuthenticated === true) {
+    if (user_data || user) {
+        console.log('The user is authenticated')
         return children
     }
-
+    console.log('The user is not authenticated')
     return <Navigate to="/" />
 }
 

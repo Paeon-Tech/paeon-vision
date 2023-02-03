@@ -1,5 +1,12 @@
 import { Routes, Route } from 'react-router-dom'
-import { Homepage, Contact, About, Signup, LoginPage } from './Pages/Home'
+import {
+    Homepage,
+    Contact,
+    About,
+    Signup,
+    LoginPage,
+    Error,
+} from './Pages/Home'
 import { PrivateRoute } from './Component'
 import { Dashboard } from './Pages/Dashboard'
 
@@ -19,8 +26,10 @@ const App = () => {
                         </PrivateRoute>
                     }
                 />
+
                 <Route path="Contact" element={<Contact />} />
                 <Route path="About" element={<About />} />
+                <Route path="*" element={<Error />} />
             </Route>
         </Routes>
     )

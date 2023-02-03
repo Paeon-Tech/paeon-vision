@@ -48,12 +48,12 @@ export const AuthContextProvider = ({ children }) => {
     useEffect(() => {
         onAuthStateChanged(auth, (data) => {
             if (data) {
-                const dat = {
+                const isAuth = {
                     isAuthenticated: true,
                     data,
                 }
-                localStorage.setItem('paeon-user', JSON.stringify(dat))
-                setUser(dat)
+                localStorage.setItem('paeon-user', JSON.stringify(isAuth))
+                setUser(isAuth)
             } else {
                 setUser(data)
                 console.log(data)

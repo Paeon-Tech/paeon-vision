@@ -6,7 +6,7 @@ import { UserAuth } from '../../Context/AuthContext'
 
 const Homepage = () => {
     const { user } = UserAuth()
-    const user_data = JSON.parse(localStorage.getItem('paeon-user')) || false
+    const user_data = JSON.parse(localStorage.getItem('paeon-user')) || null
 
     if (user_data || user) {
         return <Navigate to="/Home" />
