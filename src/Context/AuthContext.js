@@ -8,6 +8,7 @@ import {
     sendPasswordResetEmail,
     GithubAuthProvider,
     onAuthStateChanged,
+    OAuthProvider,
 } from 'firebase/auth'
 import { auth } from '../Firebase'
 
@@ -27,6 +28,11 @@ export const AuthContextProvider = ({ children }) => {
 
     const signInWithGithub = () => {
         const provider = new GithubAuthProvider()
+        return signInWithPopup(auth, provider)
+    }
+
+    const signInWithMicrosoft = () => {
+        const provider = new OAuthProvider('microsoft.com')
         return signInWithPopup(auth, provider)
     }
 
@@ -72,6 +78,7 @@ export const AuthContextProvider = ({ children }) => {
                 signInWithGoogle,
                 forgotPassword,
                 signInWithGithub,
+                signInWithMicrosoft,
             }}
         >
             {children}

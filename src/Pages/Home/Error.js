@@ -4,7 +4,7 @@ import { MDBContainer, MDBRow, MDBIcon, MDBTypography } from 'mdb-react-ui-kit'
 const Error = () => {
     return (
         <MDBContainer>
-            <MDBRow className="p-5 m-5">
+            <MDBRow className="p-5 m-5 text-center text-md-start">
                 <MDBTypography tag="h1">
                     <MDBIcon fas icon="exclamation-circle" /> Page not found
                 </MDBTypography>
