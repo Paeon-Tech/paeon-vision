@@ -6,9 +6,9 @@ import {
     GoogleAuthProvider,
     signInWithPopup,
     sendPasswordResetEmail,
-    GithubAuthProvider,
     onAuthStateChanged,
     OAuthProvider,
+    FacebookAuthProvider,
 } from 'firebase/auth'
 import { auth } from '../Firebase'
 
@@ -23,11 +23,6 @@ export const AuthContextProvider = ({ children }) => {
 
     const signInWithGoogle = () => {
         const provider = new GoogleAuthProvider()
-        return signInWithPopup(auth, provider)
-    }
-
-    const signInWithGithub = () => {
-        const provider = new GithubAuthProvider()
         return signInWithPopup(auth, provider)
     }
 
@@ -47,8 +42,13 @@ export const AuthContextProvider = ({ children }) => {
 
     const forgotPassword = (email) => {
         return sendPasswordResetEmail(auth, email, {
-            url: 'http://localhost:3000/',
+            url: 'http://paeonvision.tech/',
         })
+    }
+
+    const signInWithFacebook = () => {
+        const provider = new FacebookAuthProvider()
+        return signInWithPopup(auth, provider)
     }
 
     useEffect(() => {
@@ -77,7 +77,7 @@ export const AuthContextProvider = ({ children }) => {
                 userLogin,
                 signInWithGoogle,
                 forgotPassword,
-                signInWithGithub,
+                signInWithFacebook,
                 signInWithMicrosoft,
             }}
         >

@@ -154,9 +154,9 @@ const Signup = () => {
                         &copy; {new Date().getFullYear()} Copyright:{' '}
                         <a
                             className="text-reset"
-                            href="https://learning-arithmetic.web.app"
+                            href="https://paeonvision.tech/"
                         >
-                            paeonvision.web.app
+                            paeonvision.tech
                         </a>
                     </div>
                 </MDBFooter>

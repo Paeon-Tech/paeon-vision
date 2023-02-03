@@ -14,7 +14,7 @@ import {
 
 const LoginPage = () => {
     const navigate = useNavigate()
-    const { signInWithGoogle, signInWithGithub, signInWithMicrosoft } =
+    const { signInWithGoogle, signInWithFacebook, signInWithMicrosoft } =
         UserAuth()
     const [loading, error, loginUser, errname] = useLoginUser()
     const [passwordShown, setPasswordShown] = useState(false)
@@ -153,12 +153,12 @@ const LoginPage = () => {
                         color="light"
                         className="m-1 border border-1 bg-theme-color-2 shadow-3"
                         onClick={() =>
-                            signInWithGithub().then(() => {
+                            signInWithFacebook().then(() => {
                                 navigate('/Home')
                             })
                         }
                     >
-                        <MDBIcon fab icon="github" />
+                        <MDBIcon fab icon="facebook-square" />
                     </MDBBtn>
                 </div>
                 <MDBTypography className="text-center small">
@@ -171,11 +171,8 @@ const LoginPage = () => {
             <MDBFooter>
                 <div className="text-center mt-4 pb-4 small text-dark">
                     &copy; {new Date().getFullYear()} Copyright:{' '}
-                    <a
-                        className="text-reset"
-                        href="https://learning-arithmetic.web.app"
-                    >
-                        paeonvision.web.app
+                    <a className="text-reset" href="https://paeonvision.tech/">
+                        paeonvision.tech
                     </a>
                 </div>
             </MDBFooter>

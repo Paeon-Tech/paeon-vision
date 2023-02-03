@@ -110,9 +110,9 @@ const About = () => {
                     &copy; {new Date().getFullYear()} Copyright:{' '}
                     <a
                         className="text-reset fw-bold"
-                        href="https://paeonvision.web.app/"
+                        href="https://paeonvision.tech/"
                     >
-                        paeonvision.web.app
+                        paeonvision.tech
                     </a>
                 </div>
             </MDBContainer>
