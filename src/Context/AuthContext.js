@@ -32,7 +32,6 @@ export const AuthContextProvider = ({ children }) => {
     }
 
     const userLogout = () => {
-        setUser(false)
         return signOut(auth)
     }
 
@@ -79,6 +78,7 @@ export const AuthContextProvider = ({ children }) => {
                 forgotPassword,
                 signInWithFacebook,
                 signInWithMicrosoft,
+				setUser
             }}
         >
             {children}

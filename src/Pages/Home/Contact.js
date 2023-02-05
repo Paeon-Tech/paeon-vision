@@ -111,7 +111,7 @@ const Contact = () => {
                                         className="me-2 rounded-circle"
                                         border
                                     />
-                                    paeonvision@gmail.com
+                                    customer-service@paeonvision.tech
                                 </p>
                                 <hr className="d-block d-md-none" />
                             </MDBCol>

@@ -33,7 +33,7 @@ const NavigationBar = () => {
             <MDBNavbar expand="lg" dark className="bg-theme-color-1">
                 <MDBContainer fluid className="mx-md-5">
                     <MDBNavbarBrand href="#">
-                        <img src={Logo} alt="Logo" height="25" />
+                        <img src={Logo} alt="Logo" height="25" className='me-2'/>
                         <span className="small">Paeon Vision</span>
                     </MDBNavbarBrand>
                     <MDBNavbarToggler
@@ -56,17 +56,18 @@ const NavigationBar = () => {
                                     aria-current="page"
                                     href="#"
                                 >
-                                    <MDBIcon fas icon="home" /> Home
+                                    <MDBIcon fas icon="home" className="me-2"
+                                            /> Home
                                 </MDBNavbarLink>
                             </MDBNavbarItem>
                             <MDBNavbarItem>
                                 <MDBNavbarLink href="#">
-                                    <MDBIcon far icon="question-circle" /> Help
+                                    <MDBIcon far icon="question-circle" className="me-2" /> Help
                                 </MDBNavbarLink>
                             </MDBNavbarItem>
                             <MDBNavbarItem>
                                 <MDBNavbarLink href="#">
-                                    <MDBIcon fas icon="user-circle" /> Account
+                                    <MDBIcon fas icon="user-circle" className="me-2" /> Account
                                     Settings
                                 </MDBNavbarLink>
                             </MDBNavbarItem>
@@ -75,7 +76,7 @@ const NavigationBar = () => {
                                     tag={Link}
                                     onClick={handleLogout}
                                 >
-                                    <MDBIcon fas icon="sign-out-alt" /> Logout
+                                    <MDBIcon fas icon="sign-out-alt" className="me-2" /> Logout
                                 </MDBNavbarLink>
                             </MDBNavbarItem>
                         </MDBNavbarNav>

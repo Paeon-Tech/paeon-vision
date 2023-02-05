@@ -13,7 +13,7 @@
 		}
 	],
 	"start_url": "https://paeonvision.tech/",
-	"theme_color":"#0D1116",
-	"background_color":"#7DE686",
+	"theme_color":"#24292f",
+	"background_color":"#24292f",
 	"display":"standalone"
 }

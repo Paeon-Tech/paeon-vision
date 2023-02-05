@@ -1,4 +1,3 @@
-import { StrictMode } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import { createRoot } from 'react-dom/client'
 import { AuthContextProvider } from './Context'
@@ -10,13 +9,11 @@ import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 
 const root = createRoot(document.getElementById('root'))
 root.render(
-    <StrictMode>
-        <BrowserRouter>
-            <AuthContextProvider>
-                <App />
-            </AuthContextProvider>
-        </BrowserRouter>
-    </StrictMode>
+    <BrowserRouter>
+        <AuthContextProvider>
+            <App />
+        </AuthContextProvider>
+    </BrowserRouter>
 )
 
 serviceWorkerRegistration.register()
