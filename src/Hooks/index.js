@@ -1,4 +1,4 @@
-import useCreateUser from "./useCreateUser";
-import useLoginUser from "./useLoginUser";
+import useCreateUser from './useCreateUser'
+import useLoginUser from './useLoginUser'
 
-export { useCreateUser, useLoginUser}
+export { useCreateUser, useLoginUser }

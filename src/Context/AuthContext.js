@@ -6,8 +6,9 @@ import {
     GoogleAuthProvider,
     signInWithPopup,
     sendPasswordResetEmail,
-    GithubAuthProvider,
     onAuthStateChanged,
+    OAuthProvider,
+    FacebookAuthProvider,
 } from 'firebase/auth'
 import { auth } from '../Firebase'
 
@@ -25,8 +26,8 @@ export const AuthContextProvider = ({ children }) => {
         return signInWithPopup(auth, provider)
     }
 
-    const signInWithGithub = () => {
-        const provider = new GithubAuthProvider()
+    const signInWithMicrosoft = () => {
+        const provider = new OAuthProvider('microsoft.com')
         return signInWithPopup(auth, provider)
     }
 
@@ -41,19 +42,24 @@ export const AuthContextProvider = ({ children }) => {
 
     const forgotPassword = (email) => {
         return sendPasswordResetEmail(auth, email, {
-            url: 'http://localhost:3000/',
+            url: 'http://paeonvision.tech/',
         })
+    }
+
+    const signInWithFacebook = () => {
+        const provider = new FacebookAuthProvider()
+        return signInWithPopup(auth, provider)
     }
 
     useEffect(() => {
         onAuthStateChanged(auth, (data) => {
             if (data) {
-                const dat = {
+                const isAuth = {
                     isAuthenticated: true,
                     data,
                 }
-                localStorage.setItem('paeon-user', JSON.stringify(dat))
-                setUser(dat)
+                localStorage.setItem('paeon-user', JSON.stringify(isAuth))
+                setUser(isAuth)
             } else {
                 setUser(data)
                 console.log(data)
@@ -71,7 +77,8 @@ export const AuthContextProvider = ({ children }) => {
                 userLogin,
                 signInWithGoogle,
                 forgotPassword,
-                signInWithGithub,
+                signInWithFacebook,
+                signInWithMicrosoft,
             }}
         >
             {children}

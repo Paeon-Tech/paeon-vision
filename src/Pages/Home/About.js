@@ -52,7 +52,10 @@ const About = () => {
                             Meet the Team.
                         </MDBTypography>
                         <MDBCol className="small">
-                            <MDBListGroup light className='d-flex justify-content-center'>
+                            <MDBListGroup
+                                light
+                                className="d-flex justify-content-center"
+                            >
                                 {team_member.map((data, index) => {
                                     return (
                                         <MDBListGroupItem
@@ -107,9 +110,9 @@ const About = () => {
                     &copy; {new Date().getFullYear()} Copyright:{' '}
                     <a
                         className="text-reset fw-bold"
-                        href="https://paeonvision.web.app/"
+                        href="https://paeonvision.tech/"
                     >
-                        paeonvision.web.app
+                        paeonvision.tech
                     </a>
                 </div>
             </MDBContainer>

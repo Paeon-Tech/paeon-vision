@@ -13,7 +13,7 @@ const useCreateUser = () => {
     const registerUser = async (userData) => {
         const { email, password, fullName } = userData
         setLoading('Loading')
-		setErrname('')
+        setErrname('')
         setSuccess('')
         setError('')
 
@@ -38,17 +38,17 @@ const useCreateUser = () => {
 
                 case 'auth/email-already-in-use':
                     setError('Email already in use')
-					setErrname('Email')
+                    setErrname('Email')
                     break
 
                 case 'auth/weak-password':
                     setError('Password should be at least 6 characters long')
-					setErrname('Password')
+                    setErrname('Password')
                     break
 
                 case 'auth/invalid-email':
                     setError('Invalid email please try again')
-					setErrname('Email')
+                    setErrname('Email')
                     break
 
                 default:

@@ -66,7 +66,10 @@ const Signup = () => {
                             {success && (
                                 <p className="text-success">
                                     {success} <br /> Click here to{' '}
-                                    <Link to="/" className="text-decoration-none">
+                                    <Link
+                                        to="/"
+                                        className="text-decoration-none"
+                                    >
                                         Login.
                                     </Link>
                                 </p>
@@ -151,9 +154,9 @@ const Signup = () => {
                         &copy; {new Date().getFullYear()} Copyright:{' '}
                         <a
                             className="text-reset"
-                            href="https://learning-arithmetic.web.app"
+                            href="https://paeonvision.tech/"
                         >
-                            paeonvision.web.app
+                            paeonvision.tech
                         </a>
                     </div>
                 </MDBFooter>
