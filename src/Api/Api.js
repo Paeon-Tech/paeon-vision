@@ -3,6 +3,7 @@ import Fababeir from '../Assets/img/team-member/fababeir.jpg'
 import Florita from '../Assets/img/team-member/florita.jpg'
 import Lotao from '../Assets/img/team-member/lotao.jpg'
 import Mariano from '../Assets/img/team-member/mariano.jpg'
+import Dulaca from '../Assets/img/team-member/dulaca.jpg'
 
 const API = {
     nav_menu: [
@@ -72,6 +73,17 @@ const API = {
             name: 'Fely L. Mariano',
             img_src: Mariano,
 			email: 'felymariano0211@gmail.com',
+            badge: [
+                {
+                    color: 'warning',
+                    badge_name: 'Researcher',
+                },
+            ],
+        },
+		{
+            name: 'Fredenn O. Dulaca',
+            img_src: Dulaca,
+			email: 'deandulaca1@gmail.com',
             badge: [
                 {
                     color: 'warning',
