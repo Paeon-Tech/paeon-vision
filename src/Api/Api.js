@@ -20,7 +20,7 @@ const API = {
         {
             name: 'Twitter',
             icon: 'twitter',
-            link: 'https://www.facebook.com/PaeonTech',
+            link: 'https://twitter.com/Paeontech',
         },
         {
             name: 'Github',
