@@ -1,4 +1,5 @@
 import NavigationBar from './NavigationBar'
+import { API } from '../../Api'
 import {
     MDBContainer,
     MDBRow,
@@ -8,6 +9,8 @@ import {
 } from 'mdb-react-ui-kit'
 
 const Contact = () => {
+    const { social_link } = API
+
     return (
         <>
             <div className="bg-theme-color-2">
@@ -52,70 +55,26 @@ const Contact = () => {
                                     Social Links
                                 </MDBTypography>
                                 <div className="small">
-                                    <p>
-                                        <a
-                                            className="text-reset"
-                                            href="https://www.facebook.com/PaeonTech"
-                                            rel="noreferrer"
-                                            target="_blank"
-                                        >
-                                            <MDBIcon
-                                                fab
-                                                icon="facebook"
-                                                className="me-2 rounded-circle"
-                                                border
-                                            />
-                                            Facebook
-                                        </a>
-                                    </p>
-                                    <p>
-                                        <a
-                                            className="text-reset"
-                                            href="https://www.instagram.com/PaeonTech"
-                                            rel="noreferrer"
-                                            target="_blank"
-                                        >
-                                            <MDBIcon
-                                                fab
-                                                icon="twitter"
-                                                className="me-2 rounded-circle"
-                                                border
-                                            />
-                                            Twitter
-                                        </a>
-                                    </p>
-                                    <p>
-                                        <a
-                                            className="text-reset"
-                                            href="https://www.instagram.com/PaeonTech"
-                                            rel="noreferrer"
-                                            target="_blank"
-                                        >
-                                            <MDBIcon
-                                                fab
-                                                icon="instagram"
-                                                className="me-2 rounded-circle"
-                                                border
-                                            />
-                                            Instagram
-                                        </a>
-                                    </p>
-                                    <p>
-                                        <a
-                                            className="text-reset"
-                                            href="https://github.com/Paeon-Tech"
-                                            rel="noreferrer"
-                                            target="_blank"
-                                        >
-                                            <MDBIcon
-                                                fab
-                                                icon="github"
-                                                className="me-2 rounded-circle"
-                                                border
-                                            />
-                                            Github
-                                        </a>
-                                    </p>
+                                    {social_link.map((data, index) => {
+                                        return (
+                                            <p key={index}>
+                                                <a
+                                                    className="text-reset"
+                                                    href={data.link}
+                                                    rel="noreferrer"
+                                                    target="_blank"
+                                                >
+                                                    <MDBIcon
+                                                        fab
+                                                        icon={data.icon}
+                                                        className="me-2 rounded-circle"
+                                                        border
+                                                    />
+                                                    {data.name}
+                                                </a>
+                                            </p>
+                                        )
+                                    })}
                                 </div>
                                 <hr className="d-block d-md-none" />
                             </MDBCol>

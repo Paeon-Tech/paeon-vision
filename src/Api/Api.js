@@ -6,6 +6,28 @@ import Mariano from '../Assets/img/team-member/mariano.jpg'
 import Dulaca from '../Assets/img/team-member/dulaca.jpg'
 
 const API = {
+	social_link: [
+		{
+			name: "Facebook",
+			icon: "facebook",
+			link: "https://www.facebook.com/PaeonTech"
+		},
+		{
+			name: "Instagram",
+			icon: "instagram",
+			link: "https://www.instagram.com/PaeonTech"
+		},
+		{
+			name: "Twitter",
+			icon: "twitter",
+			link: "https://www.facebook.com/PaeonTech"
+		},
+		{
+			name: "Github",
+			icon: "github",
+			link: "https://github.com/Paeon-Tech"
+		},
+	],
     nav_menu: [
         {
             menu: 'Home',
