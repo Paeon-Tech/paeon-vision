@@ -53,40 +53,68 @@ const Contact = () => {
                                 </MDBTypography>
                                 <div className="small">
                                     <p>
-                                        <MDBIcon
-                                            fab
-                                            icon="facebook"
-                                            className="me-2 rounded-circle"
-                                            border
-                                        />
-                                        Facebook
+                                        <a
+                                            className="text-reset"
+                                            href="https://www.facebook.com/PaeonTech"
+                                            rel="noreferrer"
+                                            target="_blank"
+                                        >
+                                            <MDBIcon
+                                                fab
+                                                icon="facebook"
+                                                className="me-2 rounded-circle"
+                                                border
+                                            />
+                                            Facebook
+                                        </a>
                                     </p>
                                     <p>
-                                        <MDBIcon
-                                            fab
-                                            icon="twitter"
-                                            className="me-2 rounded-circle"
-                                            border
-                                        />
-                                        Twitter
+                                        <a
+                                            className="text-reset"
+                                            href="https://www.instagram.com/PaeonTech"
+                                            rel="noreferrer"
+                                            target="_blank"
+                                        >
+                                            <MDBIcon
+                                                fab
+                                                icon="twitter"
+                                                className="me-2 rounded-circle"
+                                                border
+                                            />
+                                            Twitter
+                                        </a>
                                     </p>
                                     <p>
-                                        <MDBIcon
-                                            fab
-                                            icon="instagram"
-                                            className="me-2 rounded-circle"
-                                            border
-                                        />
-                                        Instagram
+                                        <a
+                                            className="text-reset"
+                                            href="https://www.instagram.com/PaeonTech"
+                                            rel="noreferrer"
+                                            target="_blank"
+                                        >
+                                            <MDBIcon
+                                                fab
+                                                icon="instagram"
+                                                className="me-2 rounded-circle"
+                                                border
+                                            />
+                                            Instagram
+                                        </a>
                                     </p>
                                     <p>
-                                        <MDBIcon
-                                            fab
-                                            icon="github"
-                                            className="me-2 rounded-circle"
-                                            border
-                                        />
-                                        Github
+                                        <a
+                                            className="text-reset"
+                                            href="https://github.com/Paeon-Tech"
+                                            rel="noreferrer"
+                                            target="_blank"
+                                        >
+                                            <MDBIcon
+                                                fab
+                                                icon="github"
+                                                className="me-2 rounded-circle"
+                                                border
+                                            />
+                                            Github
+                                        </a>
                                     </p>
                                 </div>
                                 <hr className="d-block d-md-none" />
