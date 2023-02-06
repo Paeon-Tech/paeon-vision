@@ -6,28 +6,28 @@ import Mariano from '../Assets/img/team-member/mariano.jpg'
 import Dulaca from '../Assets/img/team-member/dulaca.jpg'
 
 const API = {
-	social_link: [
-		{
-			name: "Facebook",
-			icon: "facebook",
-			link: "https://www.facebook.com/PaeonTech"
-		},
-		{
-			name: "Instagram",
-			icon: "instagram",
-			link: "https://www.instagram.com/PaeonTech"
-		},
-		{
-			name: "Twitter",
-			icon: "twitter",
-			link: "https://www.facebook.com/PaeonTech"
-		},
-		{
-			name: "Github",
-			icon: "github",
-			link: "https://github.com/Paeon-Tech"
-		},
-	],
+    social_link: [
+        {
+            name: 'Facebook',
+            icon: 'facebook',
+            link: 'https://www.facebook.com/PaeonTech',
+        },
+        {
+            name: 'Instagram',
+            icon: 'instagram',
+            link: 'https://www.instagram.com/PaeonTech',
+        },
+        {
+            name: 'Twitter',
+            icon: 'twitter',
+            link: 'https://www.facebook.com/PaeonTech',
+        },
+        {
+            name: 'Github',
+            icon: 'github',
+            link: 'https://github.com/Paeon-Tech',
+        },
+    ],
     nav_menu: [
         {
             menu: 'Home',
@@ -61,7 +61,7 @@ const API = {
         {
             name: 'Cedric Paul B. Dawal',
             img_src: Dawal,
-			email: 'bernabecedric1@gmail.com',
+            email: 'bernabecedric1@gmail.com',
             badge: [
                 {
                     color: 'warning',
@@ -72,7 +72,7 @@ const API = {
         {
             name: 'Romano D. Lotao',
             img_src: Lotao,
-			email: 'lutaolester10@gmail.com',
+            email: 'lutaolester10@gmail.com',
             badge: [
                 {
                     color: 'warning',
@@ -83,7 +83,7 @@ const API = {
         {
             name: 'Crischell Jay D. Florita',
             img_src: Florita,
-			email: 'cjflorita01@gmail.com',
+            email: 'cjflorita01@gmail.com',
             badge: [
                 {
                     color: 'warning',
@@ -94,7 +94,7 @@ const API = {
         {
             name: 'Fely L. Mariano',
             img_src: Mariano,
-			email: 'felymariano0211@gmail.com',
+            email: 'felymariano0211@gmail.com',
             badge: [
                 {
                     color: 'warning',
@@ -102,10 +102,10 @@ const API = {
                 },
             ],
         },
-		{
+        {
             name: 'Fredenn O. Dulaca',
             img_src: Dulaca,
-			email: 'deandulaca1@gmail.com',
+            email: 'deandulaca1@gmail.com',
             badge: [
                 {
                     color: 'warning',

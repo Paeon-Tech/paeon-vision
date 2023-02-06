@@ -21,7 +21,7 @@ const useCreateUser = () => {
         try {
             const response = await createUser(email, password)
             const user = response.user
-			await sendEmailVerification(response.user)
+            await sendEmailVerification(response.user)
 
             await setDoc(doc(firestore, 'users', user.uid), {
                 uid: user.uid,
@@ -29,7 +29,9 @@ const useCreateUser = () => {
                 fullName,
             })
 
-            setSuccess('Account Created. Please check your email for verification')
+            setSuccess(
+                'Account Created. Please check your email for verification'
+            )
             setLoading('')
         } catch (error) {
             setLoading('')

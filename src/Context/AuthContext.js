@@ -78,7 +78,7 @@ export const AuthContextProvider = ({ children }) => {
                 forgotPassword,
                 signInWithFacebook,
                 signInWithMicrosoft,
-				setUser
+                setUser,
             }}
         >
             {children}
