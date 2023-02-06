@@ -115,7 +115,7 @@ const LoginPage = () => {
                             </MDBBtn>
                         </div>
                         <Link
-                            to="dashboard"
+                            to="/Forgot-password"
                             className="text-decoration-none mb-3"
                         >
                             Forgot password?

@@ -6,6 +6,7 @@ import {
     Signup,
     LoginPage,
     Error,
+    ForgotPassword,
 } from './Pages/Home'
 import { PrivateRoute } from './Component'
 import { Dashboard } from './Pages/Dashboard'
@@ -17,6 +18,10 @@ const App = () => {
                 <Route path="/" element={<Homepage />}>
                     <Route index element={<LoginPage />} />
                     <Route path="Signup" element={<Signup />} />
+                    <Route
+                        path="Forgot-Password"
+                        element={<ForgotPassword />}
+                    />
                 </Route>
                 <Route
                     path="Home"

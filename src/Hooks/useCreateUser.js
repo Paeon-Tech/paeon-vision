@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { UserAuth } from '../Context/AuthContext'
+import { UserAuth } from '../Context'
 import { firestore } from '../Firebase'
 import { doc, setDoc } from 'firebase/firestore'
 import { sendEmailVerification } from 'firebase/auth'
