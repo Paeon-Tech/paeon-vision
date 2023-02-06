@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import Logo from '../../Assets/img/pv-logo.png'
 import { useCreateUser } from '../../Hooks'
 import {
     MDBCol,
@@ -41,7 +42,11 @@ const Signup = () => {
 
     return (
         <>
-            <MDBCol xl="4" className="px-md-5 pt-5 bg-theme-color-2">
+            <MDBCol xl="4" className="px-md-5 pt-5 bg-theme-color-2 col-height">
+                <div className="text-center pb-3 pv-logo">
+                    <img src={Logo} alt="Paeon Vision Logo" height="70px" />
+                    <h5 className="pt-4 pb-2">Create an Account</h5>
+                </div>
                 <form
                     method="POST"
                     className="form-width px-4 py-5 square border bg-theme-color-3 shadow-3"
@@ -49,7 +54,7 @@ const Signup = () => {
                     onSubmit={onHandleSubmit()}
                 >
                     <div className="small input-width">
-                        <MDBTypography tag="h5" className="mb-4">
+                        <MDBTypography tag="h5" className="mb-4 login-text">
                             Create account
                         </MDBTypography>
                         <div className="text-center my-2">
@@ -135,9 +140,9 @@ const Signup = () => {
                         <div className="text-center">
                             <MDBBtn
                                 className="mb-3 btn input-width"
-                                color="dark"
+                                color="success"
                             >
-                                Sign up
+                                Register
                             </MDBBtn>
                         </div>
                         <hr />
