@@ -1,4 +1,5 @@
 import NavigationBar from './NavigationBar'
+import { API } from '../../Api'
 import {
     MDBContainer,
     MDBRow,
@@ -8,6 +9,8 @@ import {
 } from 'mdb-react-ui-kit'
 
 const Contact = () => {
+    const { social_link } = API
+
     return (
         <>
             <div className="bg-theme-color-2">
@@ -52,42 +55,26 @@ const Contact = () => {
                                     Social Links
                                 </MDBTypography>
                                 <div className="small">
-                                    <p>
-                                        <MDBIcon
-                                            fab
-                                            icon="facebook"
-                                            className="me-2 rounded-circle"
-                                            border
-                                        />
-                                        Facebook
-                                    </p>
-                                    <p>
-                                        <MDBIcon
-                                            fab
-                                            icon="twitter"
-                                            className="me-2 rounded-circle"
-                                            border
-                                        />
-                                        Twitter
-                                    </p>
-                                    <p>
-                                        <MDBIcon
-                                            fab
-                                            icon="instagram"
-                                            className="me-2 rounded-circle"
-                                            border
-                                        />
-                                        Instagram
-                                    </p>
-                                    <p>
-                                        <MDBIcon
-                                            fab
-                                            icon="github"
-                                            className="me-2 rounded-circle"
-                                            border
-                                        />
-                                        Github
-                                    </p>
+                                    {social_link.map((data, index) => {
+                                        return (
+                                            <p key={index}>
+                                                <a
+                                                    className="text-reset"
+                                                    href={data.link}
+                                                    rel="noreferrer"
+                                                    target="_blank"
+                                                >
+                                                    <MDBIcon
+                                                        fab
+                                                        icon={data.icon}
+                                                        className="me-2 rounded-circle"
+                                                        border
+                                                    />
+                                                    {data.name}
+                                                </a>
+                                            </p>
+                                        )
+                                    })}
                                 </div>
                                 <hr className="d-block d-md-none" />
                             </MDBCol>
@@ -111,7 +98,7 @@ const Contact = () => {
                                         className="me-2 rounded-circle"
                                         border
                                     />
-                                    paeonvision@gmail.com
+                                    customer-service@paeonvision.tech
                                 </p>
                                 <hr className="d-block d-md-none" />
                             </MDBCol>

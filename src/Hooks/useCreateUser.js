@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { UserAuth } from '../Context/AuthContext'
 import { firestore } from '../Firebase'
 import { doc, setDoc } from 'firebase/firestore'
+import { sendEmailVerification } from 'firebase/auth'
 
 const useCreateUser = () => {
     const { createUser } = UserAuth()
@@ -20,6 +21,7 @@ const useCreateUser = () => {
         try {
             const response = await createUser(email, password)
             const user = response.user
+            await sendEmailVerification(response.user)
 
             await setDoc(doc(firestore, 'users', user.uid), {
                 uid: user.uid,
@@ -27,7 +29,9 @@ const useCreateUser = () => {
                 fullName,
             })
 
-            setSuccess('Account Created.')
+            setSuccess(
+                'Account Created. Please check your email for verification'
+            )
             setLoading('')
         } catch (error) {
             setLoading('')
