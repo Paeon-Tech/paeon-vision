@@ -32,7 +32,7 @@ const ForgotPassword = () => {
             forgotPassword(email)
                 .then((response) => {
                     setLoading(false)
-                    setSuccess('Email Sent Already Sent.')
+                    setSuccess('Email Already Sent.')
                 })
                 .catch((error) => {
                     setLoading(false)
