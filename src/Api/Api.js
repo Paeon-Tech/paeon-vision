@@ -38,8 +38,8 @@ const API = {
             path: '/contact',
         },
         {
-            menu: 'About',
-            path: '/about',
+            menu: 'Developer',
+            path: '/developer',
         },
     ],
     team_member: [
@@ -81,7 +81,7 @@ const API = {
             ],
         },
         {
-            name: 'Crischell Jay D. Florita',
+            name: 'Crischelle Jay D. Florita',
             img_src: Florita,
             email: 'cjflorita01@gmail.com',
             badge: [

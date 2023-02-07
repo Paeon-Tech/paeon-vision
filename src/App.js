@@ -32,7 +32,7 @@ const App = () => {
                     }
                 />
                 <Route path="contact" element={<Contact />} />
-                <Route path="about" element={<About />} />
+                <Route path="developer" element={<About />} />
                 <Route path="*" element={<Error />} />
             </Route>
         </Routes>
