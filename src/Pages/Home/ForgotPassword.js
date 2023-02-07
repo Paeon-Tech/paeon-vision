@@ -15,7 +15,6 @@ const ForgotPassword = () => {
     const { forgotPassword } = UserAuth()
     const [success, setSuccess] = useState(false)
     const [error, setError] = useState(false)
-    const [loading, setLoading] = useState(false)
     const [email, setEmail] = useState('')
 
     const onChangeValue = (callback) => {
@@ -27,16 +26,13 @@ const ForgotPassword = () => {
     const handleSubmit = () => {
         return (event) => {
             event.preventDefault()
-            setLoading(true)
             setError(false)
             setSuccess(false)
             forgotPassword(email)
                 .then((response) => {
-                    setLoading(false)
                     setSuccess('Email Already Sent.')
                 })
                 .catch((error) => {
-                    setLoading(false)
                     setError('Email not found')
                 })
         }
@@ -44,14 +40,47 @@ const ForgotPassword = () => {
 
     return (
         <>
-            <MDBCol xl="4" className="px-md-5 pt-5 bg-theme-color-2 col-height">
+            <MDBCol
+                xl="4"
+                className="px-md-5 pt-5 bg-theme-color-3 col-height slide-in-transition"
+            >
                 <div className="text-center pb-3 pv-logo">
                     <img src={Logo} alt="Paeon Vision Logo" height="70px" />
                     <h5 className="pt-4 pb-2">Reset Password</h5>
                 </div>
+                {error && (
+                    <div
+                        className="alert border form-width small alert-danger mb-3 alert-dismissible fade show"
+                        role="alert"
+                    >
+                        {error}
+                        <button
+                            type="button"
+                            className="btn-close"
+                            data-mdb-dismiss="alert"
+                            aria-label="Close"
+                            onClick={() => setError(null)}
+                        ></button>
+                    </div>
+                )}
+                {success && (
+                    <div
+                        className="alert border form-width small alert-success mb-3 alert-dismissible fade show"
+                        role="alert"
+                    >
+                        {success}
+                        <button
+                            type="button"
+                            className="btn-close"
+                            data-mdb-dismiss="alert"
+                            aria-label="Close"
+                            onClick={() => setSuccess(null)}
+                        ></button>
+                    </div>
+                )}
                 <form
                     method="POST"
-                    className="form-width px-4 py-5 square border bg-theme-color-3 shadow-3"
+                    className="form-width px-4 py-4 square border bg-theme-color-2 shadow-3"
                     id="login"
                     onSubmit={handleSubmit()}
                 >
@@ -59,53 +88,22 @@ const ForgotPassword = () => {
                         <MDBTypography tag="h5" className="mb-4 login-text">
                             Reset Password
                         </MDBTypography>
-                        <div className="text-center my-2">
-                            {error && (
-                                <p className="text-danger small">
-                                    <MDBIcon
-                                        fas
-                                        icon="exclamation-circle"
-                                        fixed
-                                    />{' '}
-                                    {error}
-                                </p>
-                            )}
-                            {success && (
-                                <p className="text-success">
-                                    {success} <br /> Click here to{' '}
-                                    <Link
-                                        to="/"
-                                        className="text-decoration-none"
-                                    >
-                                        Login.
-                                    </Link>
-                                </p>
-                            )}
-                            {loading && (
-                                <MDBSpinner
-                                    className="ms-2 text=center"
-                                    color="dark"
-                                >
-                                    <span className="visually-hidden text-center">
-                                        Loading...
-                                    </span>
-                                </MDBSpinner>
-                            )}
-                        </div>
+                        <label htmlFor="Email" className="mb-2">
+                            Email
+                        </label>
                         <input
                             label="Email"
                             id="Email"
-                            className="mb-3 shadow-3 square border border-1 border-squircle"
+                            className="mb-4 square border border-1 border-squircle"
                             onChange={onChangeValue(setEmail)}
                             autoComplete="off"
                             value={email}
                             type="email"
-                            placeholder="Email"
                             required
                         />
                         <div className="text-center">
                             <MDBBtn
-                                className="mb-3 btn input-width"
+                                className="mb-3 btn input-width shadow-0"
                                 color="success"
                             >
                                 Reset
@@ -123,12 +121,7 @@ const ForgotPassword = () => {
                 <MDBFooter>
                     <div className="text-center mt-4 pb-4 small text-dark">
                         &copy; {new Date().getFullYear()} Copyright:{' '}
-                        <a
-                            className="text-reset"
-                            href="https://paeonvision.tech/"
-                        >
-                            paeonvision.tech
-                        </a>
+                        <a href="https://paeonvision.tech/">paeonvision.tech</a>
                     </div>
                 </MDBFooter>
             </MDBCol>

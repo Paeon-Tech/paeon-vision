@@ -7,15 +7,11 @@ import { sendEmailVerification } from 'firebase/auth'
 const useCreateUser = () => {
     const { createUser } = UserAuth()
     const [error, setError] = useState('')
-    const [success, setSuccess] = useState('')
-    const [loading, setLoading] = useState('')
     const [errname, setErrname] = useState('')
 
     const registerUser = async (userData) => {
         const { email, password, fullName } = userData
-        setLoading('Loading')
         setErrname('')
-        setSuccess('')
         setError('')
 
         try {
@@ -28,13 +24,7 @@ const useCreateUser = () => {
                 email,
                 fullName,
             })
-
-            setSuccess(
-                'Account Created. Please check your email for verification'
-            )
-            setLoading('')
         } catch (error) {
-            setLoading('')
             switch (error.code) {
                 case 'auth/network-request-failed':
                     setError('Network error please try Again')
@@ -63,7 +53,7 @@ const useCreateUser = () => {
         }
     }
 
-    return [success, loading, error, registerUser, errname]
+    return [setError, error, registerUser, errname]
 }
 
 export default useCreateUser

@@ -6,11 +6,9 @@ const useLoginUser = () => {
     const { userLogin } = UserAuth()
     const [error, setError] = useState('')
     const [errname, setErrname] = useState('')
-    const [loading, setLoading] = useState('')
     const navigate = useNavigate()
 
     const loginUser = async (email, password) => {
-        setLoading('Loading')
         setError('')
         setErrname('')
 
@@ -18,7 +16,6 @@ const useLoginUser = () => {
             await userLogin(email, password)
             navigate('/home')
         } catch (error) {
-            setLoading('')
             switch (error.code) {
                 case 'auth/network-request-failed':
                     setError('Network error please try Again')
@@ -50,7 +47,7 @@ const useLoginUser = () => {
         }
     }
 
-    return [loading, error, loginUser, errname]
+    return [error, loginUser, errname, setError]
 }
 
 export default useLoginUser

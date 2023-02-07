@@ -9,7 +9,7 @@ const WelcomeContent = () => {
             </MDBTypography>
             <figure className="mt-3 mt-md-4">
                 <MDBTypography blockquote>
-                    <p className="slide-in-left  text-color-1">
+                    <p className="slide-in-left text-color-1">
                         Paeon Vision is an image recognition application that
                         uses{' '}
                         <span className="text-light">
@@ -25,7 +25,7 @@ const WelcomeContent = () => {
             <div className="text-center mt-4 py-5 py-md-0 mb-5">
                 <MDBBtn
                     tag="a"
-                    className="btn-get-started text-center"
+                    className="btn-get-started text-center shadow-0"
                     color="success"
                     href="#login"
                 >
