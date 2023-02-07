@@ -9,7 +9,7 @@ const Homepage = () => {
     const user_data = JSON.parse(localStorage.getItem('paeon-user')) || null
 
     if (user_data || user) {
-        return <Navigate to="/Home" />
+        return <Navigate to="/home" />
     }
 
     return (

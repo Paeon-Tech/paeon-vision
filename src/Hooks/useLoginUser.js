@@ -16,7 +16,7 @@ const useLoginUser = () => {
 
         try {
             await userLogin(email, password)
-            navigate('/Home')
+            navigate('/home')
         } catch (error) {
             setLoading('')
             switch (error.code) {

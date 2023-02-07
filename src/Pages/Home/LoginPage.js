@@ -120,7 +120,7 @@ const LoginPage = () => {
                             </MDBBtn>
                         </div>
                         <Link
-                            to="/Forgot-password"
+                            to="/forgot-password"
                             className="text-decoration-none mb-3"
                         >
                             Forgot password?
@@ -137,7 +137,7 @@ const LoginPage = () => {
                         className="m-1 border border-1 bg-theme-color-2 shadow-3"
                         onClick={() =>
                             signInWithGoogle().then(() => {
-                                navigate('/Home')
+                                navigate('/home')
                             })
                         }
                     >
@@ -148,7 +148,7 @@ const LoginPage = () => {
                         className="m-1 border border-1 bg-theme-color-2 shadow-3"
                         onClick={() =>
                             signInWithMicrosoft().then(() => {
-                                navigate('/Home')
+                                navigate('/home')
                             })
                         }
                     >
@@ -159,7 +159,7 @@ const LoginPage = () => {
                         className="m-1 border border-1 bg-theme-color-2 shadow-3"
                         onClick={() =>
                             signInWithFacebook().then(() => {
-                                navigate('/Home')
+                                navigate('/home')
                             })
                         }
                     >
@@ -168,7 +168,7 @@ const LoginPage = () => {
                 </div>
                 <MDBTypography className="text-center small">
                     Not yet registered?{' '}
-                    <Link to="/Signup" className="text-decoration-none">
+                    <Link to="/signup" className="text-decoration-none">
                         Sign&nbsp;up.
                     </Link>
                 </MDBTypography>

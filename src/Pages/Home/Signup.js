@@ -13,7 +13,7 @@ import {
 } from 'mdb-react-ui-kit'
 
 const Signup = () => {
-    const [success, loading, error, registerUser, errname] = useCreateUser()
+    const [loading, error, registerUser, errname] = useCreateUser()
     const [passwordShown, setPasswordShown] = useState(false)
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -66,17 +66,6 @@ const Signup = () => {
                                         fixed
                                     />{' '}
                                     {error}
-                                </p>
-                            )}
-                            {success && (
-                                <p className="text-success">
-                                    {success} <br /> Click here to{' '}
-                                    <Link
-                                        to="/"
-                                        className="text-decoration-none"
-                                    >
-                                        Login.
-                                    </Link>
                                 </p>
                             )}
                             {loading && (
