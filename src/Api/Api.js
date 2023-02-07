@@ -35,11 +35,11 @@ const API = {
         },
         {
             menu: 'Contact',
-            path: '/Contact',
+            path: '/contact',
         },
         {
             menu: 'About',
-            path: '/About',
+            path: '/about',
         },
     ],
     team_member: [

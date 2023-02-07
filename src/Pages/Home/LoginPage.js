@@ -8,8 +8,8 @@ import {
     MDBTypography,
     MDBBtn,
     MDBIcon,
-    MDBFooter,
 } from 'mdb-react-ui-kit'
+import Footer from './Footer'
 
 const LoginPage = () => {
     const navigate = useNavigate()
@@ -162,12 +162,7 @@ const LoginPage = () => {
                     </Link>
                 </MDBTypography>
             </div>
-            <MDBFooter>
-                <div className="text-center mt-4 pb-4 small text-dark">
-                    &copy; {new Date().getFullYear()} Copyright:{' '}
-                    <a href="https://paeonvision.tech/">paeonvision.tech</a>
-                </div>
-            </MDBFooter>
+            <Footer/>
         </MDBCol>
     )
 }

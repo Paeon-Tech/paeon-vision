@@ -2,7 +2,8 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Logo from '../../Assets/img/pv-logo.png'
 import { useCreateUser } from '../../Hooks'
-import { MDBCol, MDBTypography, MDBBtn, MDBFooter } from 'mdb-react-ui-kit'
+import { MDBCol, MDBTypography, MDBBtn } from 'mdb-react-ui-kit'
+import Footer from './Footer'
 
 const Signup = () => {
     const [setError, error, registerUser, errname] = useCreateUser()
@@ -124,12 +125,7 @@ const Signup = () => {
                         </MDBTypography>
                     </div>
                 </form>
-                <MDBFooter>
-                    <div className="text-center mt-4 pb-4 small text-dark">
-                        &copy; {new Date().getFullYear()} Copyright:{' '}
-                        <a href="https://paeonvision.tech/">paeonvision.tech</a>
-                    </div>
-                </MDBFooter>
+                <Footer />
             </MDBCol>
         </>
     )

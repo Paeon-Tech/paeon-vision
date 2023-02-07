@@ -6,10 +6,8 @@ import {
     MDBCol,
     MDBTypography,
     MDBBtn,
-    MDBIcon,
-    MDBFooter,
-    MDBSpinner,
 } from 'mdb-react-ui-kit'
+import Footer from './Footer'
 
 const ForgotPassword = () => {
     const { forgotPassword } = UserAuth()
@@ -118,12 +116,7 @@ const ForgotPassword = () => {
                         </MDBTypography>
                     </div>
                 </form>
-                <MDBFooter>
-                    <div className="text-center mt-4 pb-4 small text-dark">
-                        &copy; {new Date().getFullYear()} Copyright:{' '}
-                        <a href="https://paeonvision.tech/">paeonvision.tech</a>
-                    </div>
-                </MDBFooter>
+                <Footer/>
             </MDBCol>
         </>
     )
