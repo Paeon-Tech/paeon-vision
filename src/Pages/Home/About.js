@@ -4,7 +4,6 @@ import {
     MDBRow,
     MDBCol,
     MDBTypography,
-    MDBListGroup,
     MDBListGroupItem,
     MDBBadge,
 	MDBCard,
