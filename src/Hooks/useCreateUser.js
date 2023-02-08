@@ -8,9 +8,11 @@ const useCreateUser = () => {
     const { createUser } = UserAuth()
     const [error, setError] = useState('')
     const [errname, setErrname] = useState('')
+    const [isLoading, setIsLoading] = useState(false)
 
     const registerUser = async (userData) => {
         const { email, password, fullName } = userData
+        setIsLoading(true)
         setErrname('')
         setError('')
 
@@ -24,7 +26,9 @@ const useCreateUser = () => {
                 email,
                 fullName,
             })
+            setIsLoading(false)
         } catch (error) {
+            setIsLoading(false)
             switch (error.code) {
                 case 'auth/network-request-failed':
                     setError('Network error please try Again')
@@ -53,7 +57,7 @@ const useCreateUser = () => {
         }
     }
 
-    return [setError, error, registerUser, errname]
+    return [setError, error, registerUser, errname, isLoading]
 }
 
 export default useCreateUser

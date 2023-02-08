@@ -1,11 +1,10 @@
 import { MDBTypography, MDBBtn } from 'mdb-react-ui-kit'
 
 const WelcomeContent = () => {
-
-	const ScrollToElement = id => {
-		const element = document.getElementById(id);
-		element.scrollIntoView({ behavior: "smooth", block: "start" });
-	}
+    const ScrollToElement = (id) => {
+        const element = document.getElementById(id)
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
 
     return (
         <div className="px-5">
@@ -32,7 +31,7 @@ const WelcomeContent = () => {
                 <MDBBtn
                     className="btn-get-started text-center shadow-0"
                     color="success"
-                    onClick={() => ScrollToElement("login")}
+                    onClick={() => ScrollToElement('login')}
                 >
                     Get started
                 </MDBBtn>

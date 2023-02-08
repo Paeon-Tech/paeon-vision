@@ -6,7 +6,7 @@ import { MDBCol, MDBTypography, MDBBtn } from 'mdb-react-ui-kit'
 import Footer from './Footer'
 
 const Signup = () => {
-    const [setError, error, registerUser, errname] = useCreateUser()
+    const [setError, error, registerUser, errname, isLoading] = useCreateUser()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [fullName, setFullName] = useState('')
@@ -110,7 +110,9 @@ const Signup = () => {
                         />
                         <div className="text-center">
                             <MDBBtn
-                                className="mb-3 btn input-width shadow-0"
+                                className={`mb-3 btn input-width shadow-0 ${
+                                    isLoading ? 'disabled' : ''
+                                }`}
                                 color="success"
                             >
                                 Register

@@ -2,16 +2,13 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { UserAuth } from '../../Context/'
 import Logo from '../../Assets/img/pv-logo.png'
-import {
-    MDBCol,
-    MDBTypography,
-    MDBBtn,
-} from 'mdb-react-ui-kit'
+import { MDBCol, MDBTypography, MDBBtn } from 'mdb-react-ui-kit'
 import Footer from './Footer'
 
 const ForgotPassword = () => {
     const { forgotPassword } = UserAuth()
     const [success, setSuccess] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(false)
     const [email, setEmail] = useState('')
 
@@ -24,14 +21,17 @@ const ForgotPassword = () => {
     const handleSubmit = () => {
         return (event) => {
             event.preventDefault()
+            setIsLoading(true)
             setError(false)
             setSuccess(false)
             forgotPassword(email)
                 .then((response) => {
                     setSuccess('Email Already Sent.')
+                    setIsLoading(false)
                 })
                 .catch((error) => {
                     setError('Email not found')
+                    setIsLoading(false)
                 })
         }
     }
@@ -101,7 +101,9 @@ const ForgotPassword = () => {
                         />
                         <div className="text-center">
                             <MDBBtn
-                                className="mb-3 btn input-width shadow-0"
+                                className={`mb-3 btn input-width shadow-0 ${
+                                    isLoading ? 'disabled' : ''
+                                }`}
                                 color="success"
                             >
                                 Reset
@@ -116,7 +118,7 @@ const ForgotPassword = () => {
                         </MDBTypography>
                     </div>
                 </form>
-                <Footer/>
+                <Footer />
             </MDBCol>
         </>
     )

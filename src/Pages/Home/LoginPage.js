@@ -3,19 +3,14 @@ import { UserAuth } from '../../Context'
 import Logo from '../../Assets/img/pv-logo.png'
 import { Link, useNavigate } from 'react-router-dom'
 import { useLoginUser } from '../../Hooks'
-import {
-    MDBCol,
-    MDBTypography,
-    MDBBtn,
-    MDBIcon,
-} from 'mdb-react-ui-kit'
+import { MDBCol, MDBTypography, MDBBtn, MDBIcon } from 'mdb-react-ui-kit'
 import Footer from './Footer'
 
 const LoginPage = () => {
     const navigate = useNavigate()
     const { signInWithGoogle, signInWithFacebook, signInWithMicrosoft } =
         UserAuth()
-    const [error, loginUser, errname, setError] = useLoginUser()
+    const [error, loginUser, errname, setError, isLoading] = useLoginUser()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -53,7 +48,9 @@ const LoginPage = () => {
                         className="btn-close"
                         data-mdb-dismiss="alert"
                         aria-label="Close"
-                        onClick={() => setError(null)}
+                        onClick={() => {
+                            setError(null)
+                        }}
                     ></button>
                 </div>
             )}
@@ -108,7 +105,9 @@ const LoginPage = () => {
                         </div>
                         <div className="text-center">
                             <MDBBtn
-                                className="mb-3 btn input-width shadow-0"
+                                className={`mb-3 btn input-width shadow-0 ${
+                                    isLoading ? 'disabled' : ''
+                                }`}
                                 color="success"
                             >
                                 SIGN IN
@@ -162,7 +161,7 @@ const LoginPage = () => {
                     </Link>
                 </MDBTypography>
             </div>
-            <Footer/>
+            <Footer />
         </MDBCol>
     )
 }
