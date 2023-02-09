@@ -1,2 +1,3 @@
 import PrivateRoute from './PrivateRoute'
-export { PrivateRoute }
+import Fallback from './Fallback'
+export { PrivateRoute, Fallback }

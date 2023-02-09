@@ -8,7 +8,7 @@ import {
     Error,
     ForgotPassword,
 } from './Pages/Home'
-import { PrivateRoute } from './Component'
+import { PrivateRoute, Fallback } from './Component'
 import { Dashboard } from './Pages/Dashboard'
 
 const App = () => {
@@ -33,6 +33,7 @@ const App = () => {
                 />
                 <Route path="contact" element={<Contact />} />
                 <Route path="developer" element={<About />} />
+				<Route path="fallback" element={<Fallback />} />
                 <Route path="*" element={<Error />} />
             </Route>
         </Routes>
