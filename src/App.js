@@ -1,42 +1,39 @@
+import { Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import {
-    Homepage,
-    Contact,
-    About,
-    Signup,
-    LoginPage,
-    Error,
-    ForgotPassword,
-} from './Pages/Home'
-import { PrivateRoute, Fallback } from './Component'
-import { Dashboard } from './Pages/Dashboard'
+import { lazily } from 'react-lazily'
+
+const { Homepage, Contact, About, Signup, LoginPage, Error, ForgotPassword } = lazily( () => import('./Pages/Home'))
+const { PrivateRoute, Fallback } = lazily( () => import('./Component'))
+const { Dashboard } = lazily(() => import('./Pages/Dashboard'))
 
 const App = () => {
     return (
-        <Routes>
-            <Route path="/">
-                <Route path="/" element={<Homepage />}>
-                    <Route index element={<LoginPage />} />
-                    <Route path="signup" element={<Signup />} />
-                    <Route
-                        path="forgot-password"
-                        element={<ForgotPassword />}
-                    />
-                </Route>
-                <Route
-                    path="home"
-                    element={
-                        <PrivateRoute>
-                            <Dashboard />
-                        </PrivateRoute>
-                    }
-                />
-                <Route path="contact" element={<Contact />} />
-                <Route path="developer" element={<About />} />
-				<Route path="fallback" element={<Fallback />} />
-                <Route path="*" element={<Error />} />
-            </Route>
-        </Routes>
+		<Suspense fallback={<Fallback/>}>
+			<Routes>
+				<Route path="/">
+					<Route path="/" element={<Homepage />}>
+						<Route index element={<Suspense fallback={<Fallback/>}><LoginPage /></Suspense>} />
+						<Route path="signup" element={<Suspense fallback={<Fallback/>}><Signup /></Suspense>} />
+						<Route
+							path="forgot-password"
+							element={<Suspense fallback={<Fallback/>}><ForgotPassword /></Suspense>}
+						/>
+					</Route>
+					<Route
+						path="home"
+						element={
+							<PrivateRoute>
+								<Dashboard />
+							</PrivateRoute>
+						}
+					/>
+					<Route path="contact" element={<Contact />} />
+					<Route path="developer" element={<About />} />
+					<Route path="fallback" element={<Fallback />} />
+					<Route path="*" element={<Error />} />
+				</Route>
+			</Routes>
+		</Suspense>
     )
 }
 

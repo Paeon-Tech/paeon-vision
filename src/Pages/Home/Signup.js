@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import Logo from '../../Assets/img/pv-logo.png'
 import { useCreateUser } from '../../Hooks'
 import { MDBCol, MDBTypography, MDBBtn } from 'mdb-react-ui-kit'
+import { DisplayLogo } from '../../Component'
 import Footer from './Footer'
 
 const Signup = () => {
@@ -34,10 +34,7 @@ const Signup = () => {
                 xl="4"
                 className="px-md-5 pt-5 bg-theme-color-3 col-height slide-in-transition"
             >
-                <div className="text-center pb-3 pv-logo">
-                    <img src={Logo} alt="Paeon Vision Logo" height="70px" />
-                    <h5 className="pt-4 pb-2">Create an Account</h5>
-                </div>
+                <DisplayLogo text="Sign in to Paeon Vision"/>
                 {error && (
                     <div
                         className="alert border form-width small alert-danger mb-3 alert-dismissible fade show"
