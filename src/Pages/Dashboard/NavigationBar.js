@@ -53,7 +53,7 @@ const NavigationBar = () => {
                         <MDBNavbarNav
                             right
                             fullWidth={false}
-                            className="small text-start"
+                            className="text-start"
                         >
                             <MDBNavbarItem>
                                 <MDBNavbarLink
