@@ -31,7 +31,7 @@ const NavigationBar = () => {
     return (
         <>
             <MDBNavbar expand="lg" dark className="bg-theme-color-1">
-                <MDBContainer fluid className="mx-md-5">
+                <MDBContainer fluid className="mx-md-5 small">
                     <MDBNavbarBrand href="/home">
                         <img
                             src={Logo}

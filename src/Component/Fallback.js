@@ -6,7 +6,7 @@ const Fallback = () => {
             style={{
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'center'
+                justifyContent: 'center',
             }}
         >
             <MDBSpinner color="success" size="xl">
