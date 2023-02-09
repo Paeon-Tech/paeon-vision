@@ -1,17 +1,7 @@
 import NavigationBar from './NavigationBar'
-import { UserAuth } from '../../Context'
-import { useEffect } from 'react'
 
 const Dashboard = () => {
-    const { setUser } = UserAuth()
     const user_data = JSON.parse(localStorage.getItem('paeon-user')) || null
-
-    useEffect(() => {
-        if (user_data) {
-            setUser(user_data)
-        }
-        //eslint-disable-next-line
-    }, [])
 
     return (
         <main>

@@ -6,12 +6,4 @@ import LoginPage from './LoginPage'
 import Error from './Error'
 import ForgotPassword from './ForgotPassword'
 
-export {
-    Homepage,
-    Contact,
-    About,
-    Signup,
-    LoginPage,
-    Error,
-    ForgotPassword,
-}
+export { Homepage, Contact, About, Signup, LoginPage, Error, ForgotPassword }

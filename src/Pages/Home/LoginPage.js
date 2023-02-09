@@ -32,7 +32,7 @@ const LoginPage = () => {
             xl="4"
             className="px-md-5 pt-5 bg-theme-color-3 col-height slide-in-transition"
         >
-            <DisplayLogo text="Sign in to Paeon Vision"/>
+            <DisplayLogo text="Sign in to Paeon Vision" />
 
             {error && (
                 <div
