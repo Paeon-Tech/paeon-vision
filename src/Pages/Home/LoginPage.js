@@ -30,7 +30,7 @@ const LoginPage = () => {
     return (
         <MDBCol
             xl="4"
-            className="px-md-5 pt-5 bg-theme-color-3 col-height slide-in-transition"
+            className="px-md-5 pt-5 bg-theme-color-3 col-height slide-in-bck-center"
         >
             <DisplayLogo text="Sign in to Paeon Vision" />
 
@@ -52,7 +52,7 @@ const LoginPage = () => {
                 </div>
             )}
 
-            <div className="form-width px-4 py-4 square border bg-theme-color-2 shadow-3">
+            <div className="form-width px-4 py-4 square border bg-theme-color-2">
                 <form method="POST" id="login" onSubmit={handleSubmit()}>
                     <div className="small input-width">
                         <MDBTypography tag="h5" className="mb-4 login-text">
@@ -119,7 +119,7 @@ const LoginPage = () => {
                 <div className="text-center mb-3 small">
                     <MDBBtn
                         color="light"
-                        className="m-1 border border-1 bg-theme-color-2 shadow-3"
+                        className="m-1 border border-1 bg-theme-color-2"
                         onClick={() =>
                             signInWithGoogle().then(() => {
                                 navigate('/home')
@@ -130,7 +130,7 @@ const LoginPage = () => {
                     </MDBBtn>
                     <MDBBtn
                         color="light"
-                        className="m-1 border border-1 bg-theme-color-2 shadow-3"
+                        className="m-1 border border-1 bg-theme-color-2"
                         onClick={() =>
                             signInWithMicrosoft().then(() => {
                                 navigate('/home')
@@ -141,7 +141,7 @@ const LoginPage = () => {
                     </MDBBtn>
                     <MDBBtn
                         color="light"
-                        className="m-1 border border-1 bg-theme-color-2 shadow-3"
+                        className="m-1 border border-1 bg-theme-color-2"
                         onClick={() =>
                             signInWithFacebook().then(() => {
                                 navigate('/home')

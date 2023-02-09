@@ -32,7 +32,7 @@ const Signup = () => {
         <>
             <MDBCol
                 xl="4"
-                className="px-md-5 pt-5 bg-theme-color-3 col-height slide-in-transition"
+                className="px-md-5 pt-5 bg-theme-color-3 col-height slide-in-bck-center"
             >
                 <DisplayLogo text="Sign in to Paeon Vision" />
                 {error && (
@@ -52,7 +52,7 @@ const Signup = () => {
                 )}
                 <form
                     method="POST"
-                    className="form-width px-4 py-4 square border bg-theme-color-2 shadow-3"
+                    className="form-width px-4 py-4 square border bg-theme-color-2"
                     id="login"
                     onSubmit={onHandleSubmit()}
                 >
