@@ -2,7 +2,7 @@ import IntroPage from './IntroPage'
 import { MDBContainer, MDBRow } from 'mdb-react-ui-kit'
 import { Outlet } from 'react-router-dom'
 import { Navigate } from 'react-router-dom'
-import { UserAuth } from '../../Context/AuthContext'
+import { UserAuth } from '../../Context'
 
 const Homepage = () => {
     const { user } = UserAuth()

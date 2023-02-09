@@ -1,5 +1,5 @@
 import NavigationBar from './NavigationBar'
-import { UserAuth } from '../../Context/AuthContext'
+import { UserAuth } from '../../Context'
 import { useEffect } from 'react'
 
 const Dashboard = () => {
