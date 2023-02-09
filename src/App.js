@@ -18,22 +18,12 @@ const App = () => {
                 <Route path="/" element={<Homepage />}>
                     <Route index element={<LoginPage />} />
                     <Route path="signup" element={<Signup />} />
-                    <Route
-                        path="forgot-password"
-                        element={<ForgotPassword />}
-                    />
+                    <Route path="forgot-password" element={<ForgotPassword />} />
                 </Route>
-                <Route
-                    path="home"
-                    element={
-                        <PrivateRoute>
-                            <Dashboard />
-                        </PrivateRoute>
-                    }
-                />
-                <Route path="contact" element={<Contact />} />
-                <Route path="developer" element={<About />} />
-                <Route path="fallback" element={<Fallback />} />
+                <Route path="/home" element={ <PrivateRoute><Dashboard /></PrivateRoute>}/>
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/developer" element={<About />} />
+                <Route path="/fallback" element={<Fallback />} />
                 <Route path="*" element={<Error />} />
             </Route>
         </Routes>

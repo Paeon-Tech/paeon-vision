@@ -32,7 +32,7 @@ const NavigationBar = () => {
         <>
             <MDBNavbar expand="lg" dark className="bg-theme-color-1">
                 <MDBContainer fluid className="mx-md-5">
-                    <MDBNavbarBrand href="#">
+                    <MDBNavbarBrand href="/home">
                         <img
                             src={Logo}
                             alt="Logo"
