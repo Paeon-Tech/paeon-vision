@@ -56,16 +56,6 @@ const NavigationBar = () => {
                             className="text-start"
                         >
                             <MDBNavbarItem>
-                                <MDBNavbarLink
-                                    active
-                                    aria-current="page"
-                                    href="#"
-                                >
-                                    <MDBIcon fas icon="home" className="me-2" />{' '}
-                                    Home
-                                </MDBNavbarLink>
-                            </MDBNavbarItem>
-                            <MDBNavbarItem>
                                 <MDBNavbarLink href="#">
                                     <MDBIcon
                                         far

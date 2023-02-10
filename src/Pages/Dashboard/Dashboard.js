@@ -17,12 +17,12 @@ const Dashboard = () => {
     }
 
     return (
-        <main className="row-height">
+        <main>
             <NavigationBar />
             {/* {user_data.data.emailVerified ? '' : <h1>Email not verified</h1>} */}
             <MDBContainer>
-                <MDBRow>
-                    <div className="mt-5 mb-3 py-3 text-center text-md-start">
+                <MDBRow className='px-4'>
+                    <div className="mt-5 mb-3 px-0 py-3 text-center text-md-start">
                         <MDBBtn
                             color="success shadow-0 me-3"
                             style={
@@ -44,11 +44,13 @@ const Dashboard = () => {
                             Get started
                         </MDBBtn>
                     </div>
+                </MDBRow>
+				<MDBRow className='px-4'>
                     <Suspense fallback={<Fallback />}>
                         {currentComponent === 'A' ? <Overview /> : null}
                         {currentComponent === 'B' ? <Prediction /> : null}
                     </Suspense>
-                </MDBRow>
+				</MDBRow>
             </MDBContainer>
             <div className="text-center small py-5">
                 &copy; {new Date().getFullYear()} Copyright:{' '}
