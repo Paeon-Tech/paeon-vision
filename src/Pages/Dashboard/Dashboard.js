@@ -1,9 +1,7 @@
-import { useState, Suspense } from 'react'
-import { lazily } from 'react-lazily'
+import { useState } from 'react'
 import { MDBContainer, MDBRow, MDBBtn } from 'mdb-react-ui-kit'
 import NavigationBar from './NavigationBar'
-import { Fallback } from '../../Component'
-const { Overview, Prediction } = lazily(() => import('../Dashboard'))
+import { Overview, Prediction } from '../Dashboard'
 
 const Dashboard = () => {
     const [currentComponent, setCurrentComponent] = useState('A')
@@ -22,9 +20,9 @@ const Dashboard = () => {
             {/* {user_data.data.emailVerified ? '' : <h1>Email not verified</h1>} */}
             <MDBContainer>
                 <MDBRow className='px-4'>
-                    <div className="mt-5 mb-3 px-0 py-3 text-center text-md-start">
+                    <div className="my-3 px-0 py-3">
                         <MDBBtn
-                            color="success shadow-0 me-3"
+                            color="success shadow-0 me-3 small"
                             style={
                                 currentComponent === 'A' ? { opacity: 0.5 } : {}
                             }
@@ -34,7 +32,7 @@ const Dashboard = () => {
                             Overview
                         </MDBBtn>
                         <MDBBtn
-                            color="success shadow-0"
+                            color="success shadow-0 small"
                             style={
                                 currentComponent === 'B' ? { opacity: 0.5 } : {}
                             }
@@ -46,10 +44,8 @@ const Dashboard = () => {
                     </div>
                 </MDBRow>
 				<MDBRow className='px-4'>
-                    <Suspense fallback={<Fallback />}>
                         {currentComponent === 'A' ? <Overview /> : null}
                         {currentComponent === 'B' ? <Prediction /> : null}
-                    </Suspense>
 				</MDBRow>
             </MDBContainer>
             <div className="text-center small py-5">

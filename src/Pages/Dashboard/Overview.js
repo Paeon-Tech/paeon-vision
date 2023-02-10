@@ -3,7 +3,7 @@ import { MDBTypography } from 'mdb-react-ui-kit'
 const Overview = () => {
     return (
         <>
-            <div className="px-5 pt-3 px-md-0">
+            <div className="pt-3 px-0">
                 <h1 className="mb-4">Welcome</h1>
                 <MDBTypography className="text-justify mb-5">
                     Introducing a revolutionary application that utilizes the
