@@ -5,8 +5,8 @@ const DisplayImg = (props) => {
 
 	return (
 		<MDBCol
-                lg="4"
-                className="mb-3 mb-lg-0 p-3 small border bg-theme-color-2"
+                lg="6"
+                className="mb-3 mb-lg-0 p-3 small"
             >
                 <div>
                     <h3 className="mb-3">Image</h3>
@@ -30,6 +30,7 @@ const DisplayImg = (props) => {
                                 <MDBBtn
                                     color="danger"
                                     className="shadow-0"
+									size="sm"
                                     onClick={handleRemove}
                                 >
                                     REMOVE

@@ -20,6 +20,7 @@ const UploadImg = ({ state: { fileInput, handleFileInput, handleUpload, loading 
 					<MDBBtn
 						color="dark"
 						className={`shadow-0 ${ loading ? 'disabled' : ''}`}
+						size="sm"
 						onClick={handleUpload}
 					>
 						{loading ? (

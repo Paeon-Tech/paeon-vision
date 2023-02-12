@@ -3,6 +3,7 @@ import UploadImg from './UploadImg'
 import DisplayImg from './DisplayImg'
 import Modal from './Modal'
 import Results from './Results'
+import StartPrediction from './StartPrediction'
 
 const Prediction = () => {
     const [selectedFile, setSelectedFile] = useState('')
@@ -58,9 +59,10 @@ const Prediction = () => {
 
     return (
         <>
-            <UploadImg state={{ fileInput, handleFileInput, handleUpload, loading }}/>
-			<DisplayImg state={{selectedFile, fileName, handleRemove}}/>
+            <UploadImg state={{ fileInput, handleFileInput, handleUpload, loading }} />
+			<DisplayImg state={{selectedFile, fileName, handleRemove}} />
             <Results />
+			<StartPrediction />
 			<Modal state={{centredModal, setCentredModal, toggleShow}} />
         </>
     )
