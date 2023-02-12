@@ -18,17 +18,14 @@ const StartPrediction = ({state: {processedImage}}) => {
 		image.src = processedImage
 		await image.decode()
 
+		const canvas = document.createElement('canvas');
+		canvas.width = image.width;
+		canvas.height = image.height;
+		const context = canvas.getContext('2d');
+		context.drawImage(image, 0, 0);
+		const imageData = canvas.toDataURL();
 
-		const tensor = tf
-			.browser
-			.fromPixels(image, 3)
-			.resizeNearestNeighbor([224, 224])
-			.expandDims()
-			.toFloat()
-			.reverse(-1)
-
-		console.log('Preprocessed using TF')
-		instance.postMessage(tensor)
+		instance.postMessage({imageData})
 	}
 
 	return (
