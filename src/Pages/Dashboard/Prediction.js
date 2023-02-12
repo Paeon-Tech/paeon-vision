@@ -9,6 +9,7 @@ const Prediction = () => {
     const [selectedFile, setSelectedFile] = useState('')
     const [fileName, setFileName] = useState('')
 	const [loading, setLoading] = useState(false);
+	const [processedImage, setProcessedImage] = useState('')
     const fileInput = useRef(null)
 	const [centredModal, setCentredModal] = useState(false);
 	const acceptedImageTypes = ['image/jpeg', 'image/png', 'image/gif']
@@ -29,13 +30,13 @@ const Prediction = () => {
         setFileName(fileInput.current.files[0].name)
     }
 
-    const handleUpload = () => {
+    const handleUpload = async () => {
         if (!fileInput.current.files[0]) {
             toggleShow()
             return
         }
 
-        const file = fileInput.current.files[0]
+        const imageFile = fileInput.current.files[0]
 
         const reader = new FileReader()
         reader.addEventListener('load', () => {
@@ -43,17 +44,24 @@ const Prediction = () => {
         })
 
         setLoading(true);
-        reader.readAsDataURL(file)
+
+        reader.readAsDataURL(imageFile)
 		reader.onloadend = () => {
 			setSelectedFile(reader.result)
-			setLoading(false)
 		}
+
+		const objectURL = URL.createObjectURL(imageFile)
+		setProcessedImage(objectURL)
+
+		setLoading(false)
+		console.log('processed image done')
     }
 
 
     const handleRemove = () => {
         setSelectedFile('')
         setFileName('')
+		setProcessedImage('')
         fileInput.current.value = ''
     }
 
@@ -62,7 +70,7 @@ const Prediction = () => {
             <UploadImg state={{ fileInput, handleFileInput, handleUpload, loading }} />
 			<DisplayImg state={{selectedFile, fileName, handleRemove}} />
             <Results />
-			<StartPrediction />
+			<StartPrediction state={{processedImage}}/>
 			<Modal state={{centredModal, setCentredModal, toggleShow}} />
         </>
     )
