@@ -12,20 +12,25 @@ const worker = () => {
 	
 	const sendMessage = (code, message) => {
 		self.postMessage({code, message})
-		console.log(`Message Notification from Web Worker [${code}]: ${message}`)
 	}
 
 	const onMessage = async (event) => {
-		console.log("TensorFlow.js is running on the " + tf.getBackend() + " backend");
+		sendMessage('backend', tf.getBackend())
 
 		const imageData = event.data.imageData
+		sendMessage('received_imageData','ImageData Received by Web Worker')
+
 		const response = await fetch(imageData)
+		sendMessage('fetch_image',"ImageData Fetch Completed")
 
 		const arrayBuffer = await response.arrayBuffer()
+		sendMessage('arrayBuffer_creation', 'arrayBuffer creation for fetched image Completed')
 
 		const blob = new Blob([arrayBuffer])
+		sendMessage('blob_creation', 'blob creation for arrayBuffer Completed')
 
 		const imageBitmap = await createImageBitmap(blob)
+		sendMessage('imageBitmap_creation', 'imageBitmap creation for blob Completed')
 
 		const tensor = tf
 			.browser
@@ -34,10 +39,15 @@ const worker = () => {
 			.expandDims()
 			.toFloat()
 			.reverse(-1)
+		sendMessage('tensor_creation', 'tensor creation for imageBitmap Completed')
 
 		const model = await tf.loadGraphModel('http://localhost:3000/Model/model.json');
+		sendMessage('load_model', 'loading model.json completed')
 
+		const startTime = performance.now();
 		const prediction = await model.predict(tensor).data()
+		const endTime = performance.now();
+		const taskTime = endTime - startTime;
 
 		const result = Array.from(prediction).map((p, i) => { 
 			return {
@@ -48,9 +58,7 @@ const worker = () => {
 			return b.probability - a.probability;
 		}).slice(0, 2);
 
-		sendMessage('Completed','Completed')
-		self.postMessage(result)
-		console.table(result)
+		sendMessage('Prediction', {result, taskTime})
 	}
 
 	self.addEventListener("message", onMessage)
