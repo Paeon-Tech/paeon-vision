@@ -6,12 +6,6 @@ import Mariano from '../Assets/img/team-member/mariano.jpg'
 import Dulaca from '../Assets/img/team-member/dulaca.jpg'
 
 const API = {
-	
-	TARGET_CLASSES : {
-		0: "Monkeypox",
-		1: "Others"
-	},
-
     social_link: [
         {
             name: 'Facebook',

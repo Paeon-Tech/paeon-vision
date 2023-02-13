@@ -7,23 +7,24 @@ import StartPrediction from './StartPrediction'
 
 const Prediction = () => {
     const [selectedFile, setSelectedFile] = useState('')
+    const [prediction, setPrediction] = useState('')
     const [fileName, setFileName] = useState('')
-	const [loading, setLoading] = useState(false);
-	const [processedImage, setProcessedImage] = useState('')
+    const [loading, setLoading] = useState(false)
+    const [processedImage, setProcessedImage] = useState('')
     const fileInput = useRef(null)
-	const [centredModal, setCentredModal] = useState(false);
-	const acceptedImageTypes = ['image/jpeg', 'image/png', 'image/gif']
+    const [centredModal, setCentredModal] = useState(false)
+    const acceptedImageTypes = ['image/jpeg', 'image/png', 'image/gif']
 
-	const toggleShow = () => setCentredModal(!centredModal);
+    const toggleShow = () => setCentredModal(!centredModal)
 
     const handleFileInput = () => {
-		const file = fileInput.current.files[0]
+        const file = fileInput.current.files[0]
 
-		if (!acceptedImageTypes.includes(file.type)) {
-			toggleShow()
-			setSelectedFile('')
-			setFileName('')
-			fileInput.current.value = ''
+        if (!acceptedImageTypes.includes(file.type)) {
+            toggleShow()
+            setSelectedFile('')
+            setFileName('')
+            fileInput.current.value = ''
             return
         }
 
@@ -43,35 +44,37 @@ const Prediction = () => {
             setSelectedFile(reader.result)
         })
 
-        setLoading(true);
+        setLoading(true)
 
         reader.readAsDataURL(imageFile)
-		reader.onloadend = () => {
-			setSelectedFile(reader.result)
-		}
+        reader.onloadend = () => {
+            setSelectedFile(reader.result)
+        }
 
-		const objectURL = URL.createObjectURL(imageFile)
-		setProcessedImage(objectURL)
+        const objectURL = URL.createObjectURL(imageFile)
+        setProcessedImage(objectURL)
 
-		setLoading(false)
-		console.log('processed image done')
+        setLoading(false)
+        console.log('processed image done')
     }
-
 
     const handleRemove = () => {
         setSelectedFile('')
         setFileName('')
-		setProcessedImage('')
+        setProcessedImage('')
+        setPrediction('')
         fileInput.current.value = ''
     }
 
     return (
         <>
-            <UploadImg state={{ fileInput, handleFileInput, handleUpload, loading }} />
-			<DisplayImg state={{selectedFile, fileName, handleRemove}} />
-            <Results />
-			<StartPrediction state={{processedImage}}/>
-			<Modal state={{centredModal, setCentredModal, toggleShow}} />
+            <UploadImg
+                state={{ fileInput, handleFileInput, handleUpload, loading }}
+            />
+            <DisplayImg state={{ selectedFile, fileName, handleRemove }} />
+            <Results state={{ prediction }} />
+            <StartPrediction state={{ processedImage, setPrediction }} />
+            <Modal state={{ centredModal, setCentredModal, toggleShow }} />
         </>
     )
 }

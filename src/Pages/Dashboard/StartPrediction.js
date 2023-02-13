@@ -1,47 +1,45 @@
-import WorkerBuilder from '../../Worker/worker-builder'
-import Worker from '../../Worker/prediction-worker'
-import { MDBCol, MDBBtn } from "mdb-react-ui-kit";
-import * as tf from '@tensorflow/tfjs'
+import { MDBCol, MDBBtn } from 'mdb-react-ui-kit'
 
+const StartPrediction = ({ state: { processedImage, setPrediction } }) => {
+    // Initiating web worker
 
-const StartPrediction = ({state: {processedImage}}) => {
+    // eslint-disable-next-line no-undef
+    prediction_worker.addEventListener('message', (e) => {
+        console.log('Message from Web Worker')
+        console.log(e.data)
+        setPrediction(e.data)
+    })
 
-	// Initiating web worker
-	const instance = new WorkerBuilder(Worker)
-	instance.addEventListener('message', (e) => {
-			console.log(e.data)
-		})
+    const handlePrediction = async () => {
+        const image = new Image()
+        image.src = processedImage
+        await image.decode()
 
-	const handlePrediction = async () => {
+        const canvas = document.createElement('canvas')
+        canvas.width = image.width
+        canvas.height = image.height
+        const context = canvas.getContext('2d')
+        context.drawImage(image, 0, 0)
+        const imageData = canvas.toDataURL()
 
-		const image = new Image()
-		image.src = processedImage
-		await image.decode()
+        // eslint-disable-next-line no-undef
+        prediction_worker.postMessage({ imageData })
+    }
 
-		const canvas = document.createElement('canvas');
-		canvas.width = image.width;
-		canvas.height = image.height;
-		const context = canvas.getContext('2d');
-		context.drawImage(image, 0, 0);
-		const imageData = canvas.toDataURL();
+    return (
+        <MDBCol className="p-3 small">
+            <div>
+                <MDBBtn
+                    color="dark"
+                    className="shadow-0"
+                    size="sm"
+                    onClick={handlePrediction}
+                >
+                    Start Prediction
+                </MDBBtn>
+            </div>
+        </MDBCol>
+    )
+}
 
-		instance.postMessage({imageData})
-	}
-
-	return (
-		<MDBCol className="p-3 small">
-			<div>
-				<MDBBtn
-					color="dark"
-					className="shadow-0"
-					size="sm"
-					onClick={handlePrediction}
-				>
-					Start Prediction
-				</MDBBtn>
-			</div>
-		</MDBCol>
-	);
-};
-
-export default StartPrediction;
+export default StartPrediction

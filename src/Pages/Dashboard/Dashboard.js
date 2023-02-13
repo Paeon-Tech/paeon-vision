@@ -19,7 +19,7 @@ const Dashboard = () => {
             <NavigationBar />
             {/* {user_data.data.emailVerified ? '' : <h1>Email not verified</h1>} */}
             <MDBContainer>
-                <MDBRow className='px-4'>
+                <MDBRow className="px-4">
                     <div className="my-3 px-0 py-3">
                         <MDBBtn
                             color="success shadow-0 me-3 small"
@@ -43,10 +43,10 @@ const Dashboard = () => {
                         </MDBBtn>
                     </div>
                 </MDBRow>
-				<MDBRow className='px-4'>
-                        {currentComponent === 'A' ? <Overview /> : null}
-                        {currentComponent === 'B' ? <Prediction /> : null}
-				</MDBRow>
+                <MDBRow className="px-4">
+                    {currentComponent === 'A' ? <Overview /> : null}
+                    {currentComponent === 'B' ? <Prediction /> : null}
+                </MDBRow>
             </MDBContainer>
             <div className="text-center small py-5">
                 &copy; {new Date().getFullYear()} Copyright:{' '}
