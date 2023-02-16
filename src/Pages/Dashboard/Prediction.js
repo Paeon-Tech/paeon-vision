@@ -1,4 +1,5 @@
-import { useState, useRef } from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useState, useRef, useEffect, useCallback } from 'react'
 import UploadImg from './UploadImg'
 import DisplayImg from './DisplayImg'
 import Modal from './Modal'
@@ -15,7 +16,7 @@ const Prediction = () => {
     const [centredModal, setCentredModal] = useState(false)
     const acceptedImageTypes = ['image/jpeg', 'image/png', 'image/gif']
 
-    const toggleShow = () => setCentredModal(!centredModal)
+    const toggleShow = useCallback(() => setCentredModal(!centredModal),[centredModal])
 
     const handleFileInput = () => {
         const file = fileInput.current.files[0]

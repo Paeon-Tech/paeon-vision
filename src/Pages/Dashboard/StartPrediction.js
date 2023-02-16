@@ -1,47 +1,35 @@
-import { useEffect } from 'react'
+/* eslint-disable no-undef */
 import { MDBCol, MDBBtn } from 'mdb-react-ui-kit'
 import React from 'react'
 
 const StartPrediction = ({ state: { processedImage, setPrediction } }) => {
-	useEffect(() => {
-		// eslint-disable-next-line no-undef
-		prediction_worker.addEventListener('message', (e) => {
-			console.log(`Message from Web Worker [${e.data.message}]`)
+    const handleWorkerMessage = (e) => {
+        console.log(`Message from Web Worker [${e.data.message}]`)
 
-			// if(e.data.code === 'backend'){
-			// 	setPrediction(e.data.message)
-			// }
-			// if(e.data.code === 'received_imageData'){
-			// 	setPrediction(e.data.message)
-			// }
-			// if(e.data.code === 'fetch_image'){
-			// 	setPrediction(e.data.message)
-			// }
-			// if(e.data.code === 'arrayBuffer_creation'){
-			// 	setPrediction(e.data.message)
-			// }
-			// if(e.data.code === 'blob_creation'){
-			// 	setPrediction(e.data.message)
-			// }
-			// if(e.data.code === 'imageBitmap_creation'){
-			// 	setPrediction(e.data.message)
-			// }
-			// if(e.data.code === 'tensor_creation'){
-			// 	setPrediction(e.data.message)
-			// }
-			// if(e.data.code === 'load_model'){
-			// 	setPrediction(e.data.message)
-			// }
-			if(e.data.code === 'Prediction'){
-				console.log(e.data.message.taskTime)
-				setPrediction(e.data.message.result)
-			}
-		})
-	
-	// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [])
+        if (e.data.code === 'Prediction1') {
+            console.log(e.data.message.taskTimeModel1)
+            setPrediction(e.data.message.result1)
+        }
+
+        if (e.data.code === 'Prediction2') {
+            console.log(e.data.message.taskTimeModel2)
+            setPrediction(e.data.message.result2)
+        }
+
+        if (e.data.code === 'Prediction3') {
+            console.log(e.data.message.taskTimeModel3)
+            setPrediction(e.data.message.result3)
+
+            // Remove the event listener once Prediction3 is received
+            prediction_worker.removeEventListener(
+                'message',
+                handleWorkerMessage
+            )
+        }
+    }
 
     const handlePrediction = async () => {
+		prediction_worker.addEventListener('message', handleWorkerMessage)
         const image = new Image()
         image.src = processedImage
         await image.decode()
@@ -62,11 +50,19 @@ const StartPrediction = ({ state: { processedImage, setPrediction } }) => {
             <div>
                 <MDBBtn
                     color="dark"
-                    className="shadow-0"
+                    className="shadow-0 me-2"
                     size="sm"
                     onClick={handlePrediction}
                 >
                     Start Prediction
+                </MDBBtn>
+				<MDBBtn
+                    color="danger"
+                    className="shadow-0"
+                    size="sm"
+                    onClick={handlePrediction}
+                >
+                    Clear Result
                 </MDBBtn>
             </div>
         </MDBCol>
