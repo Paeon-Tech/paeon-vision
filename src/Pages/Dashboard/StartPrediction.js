@@ -26,6 +26,7 @@ const StartPrediction = ({
                 P1: '',
                 P2: '',
                 P3: '',
+                PS: '',
             },
         })
         fileInput.current.value = ''
@@ -42,7 +43,7 @@ const StartPrediction = ({
         console.log(`Message from Web Worker [${e.data.message}]`)
 
         if (e.data.code === 'BE') {
-            handleState({ BE: e.data.message, PS: true })
+            handleState({ BE: e.data.message })
         }
 
         if (e.data.code === 'RI') {
@@ -131,12 +132,16 @@ const StartPrediction = ({
                 P1: '',
                 P2: '',
                 P3: '',
+                PS: '',
             },
         })
         if (!processedImage) {
             toggleShow()
             return
         }
+
+        dispatch({ type: 'SET_STATE', payload: { PS: true } })
+
         prediction_worker.addEventListener('message', handleWorkerMessage)
         const image = new Image()
         image.src = processedImage
@@ -164,12 +169,14 @@ const StartPrediction = ({
                     onClick={handlePrediction}
                 >
                     {PS ? (
-					<>
-                        <MDBSpinner color="light" size='sm' className='me-2'>
-                            <span className="visually-hidden">Loading...</span>
-                        </MDBSpinner>
-						Please wait
-					</>
+                        <>
+                            <span className="me-2">Please wait</span>
+                            <MDBSpinner color="light" size="sm">
+                                <span className="visually-hidden">
+                                    Loading...
+                                </span>
+                            </MDBSpinner>
+                        </>
                     ) : (
                         'Start Prediction'
                     )}
@@ -178,6 +185,7 @@ const StartPrediction = ({
                     color="danger"
                     className="shadow-0"
                     size="sm"
+                    disabled={PS ? true : false}
                     onClick={handleClearResult}
                 >
                     Clear
