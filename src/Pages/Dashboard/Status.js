@@ -19,7 +19,7 @@ const Status = ({
                                 icon="check-circle"
                                 className="me-2 text-success"
                             />
-                            Backend Processing to {BE}
+                            Backend Processing set to {BE}
                         </li>
                     ) : (
                         ''

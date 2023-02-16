@@ -1,7 +1,7 @@
-import { MDBCol, MDBBtn } from 'mdb-react-ui-kit'
+import { MDBCol } from 'mdb-react-ui-kit'
 
 const DisplayImg = (props) => {
-    const { selectedFile, fileName, handleRemove } = props.state
+    const { selectedFile, fileName } = props.state
 
     return (
         <MDBCol lg="4" className="mb-3 mb-lg-0 p-3 small">
@@ -21,18 +21,6 @@ const DisplayImg = (props) => {
                         </div>
                     ) : (
                         <p>No image selected</p>
-                    )}
-                    {selectedFile && (
-                        <div>
-                            <MDBBtn
-                                color="danger"
-                                className="shadow-0"
-                                size="sm"
-                                onClick={handleRemove}
-                            >
-                                REMOVE
-                            </MDBBtn>
-                        </div>
                     )}
                 </div>
             </div>

@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useState, useRef, useCallback } from 'react'
+import { useState, useRef } from 'react'
 import { useStateStorage } from '../../Hooks'
 import UploadImg from './UploadImg'
 import DisplayImg from './DisplayImg'
@@ -10,15 +10,31 @@ import Status from './Status'
 
 const Prediction = () => {
     const [state, dispatch] = useStateStorage()
-    const {BE, RI, FI, AC, BC, IC, TC, M1, M2, M3, P1, P2, P3, processedImage} = state
+    const {
+        BE,
+        RI,
+        FI,
+        AC,
+        BC,
+        IC,
+        TC,
+        M1,
+        M2,
+        M3,
+        P1,
+        P2,
+        P3,
+        processedImage,
+		loading,
+		selectedFile,
+		fileName,
+
+    } = state
     const fileInput = useRef(null)
     const [centredModal, setCentredModal] = useState(false)
     const acceptedImageTypes = ['image/jpeg', 'image/png', 'image/gif']
 
-    const toggleShow = useCallback(
-        () => setCentredModal(!centredModal),
-        [centredModal]
-    )
+    const toggleShow = () => setCentredModal(!centredModal)
 
     const handleFileInput = () => {
         const file = fileInput.current.files[0]
@@ -97,19 +113,6 @@ const Prediction = () => {
         console.log('processed image done')
     }
 
-    const handleRemove = () => {
-        dispatch({
-            type: 'SET_STATE',
-            payload: {
-                selectedFile: '',
-                fileName: '',
-                processedImage: '',
-                prediction: '',
-            },
-        })
-        fileInput.current.value = ''
-    }
-
     return (
         <>
             <UploadImg
@@ -117,20 +120,41 @@ const Prediction = () => {
                     fileInput,
                     handleFileInput,
                     handleUpload,
-                    loading: state.loading,
+                    loading
                 }}
             />
             <DisplayImg
                 state={{
-                    selectedFile: state.selectedFile,
-                    fileName: state.fileName,
-                    handleRemove,
+                    selectedFile,
+                    fileName
                 }}
             />
-            <Status state={{BE, RI, FI, AC, BC, IC, TC, M1, M2, M3, P1, P2, P3, processedImage}}/>
-            <Results state={{ prediction: state.prediction }} />
+            <Status
+                state={{
+                    BE,
+                    RI,
+                    FI,
+                    AC,
+                    BC,
+                    IC,
+                    TC,
+                    M1,
+                    M2,
+                    M3,
+                    P1,
+                    P2,
+                    P3,
+                    processedImage,
+                }}
+            />
+            <Results state={{ P1, P2, P3 }} />
             <StartPrediction
-                state={{ processedImage: state.processedImage, dispatch }}
+                state={{
+                    processedImage,
+                    dispatch,
+                    fileInput,
+                    toggleShow,
+                }}
             />
             <Modal state={{ centredModal, setCentredModal, toggleShow }} />
         </>

@@ -2,7 +2,36 @@
 import { MDBCol, MDBBtn } from 'mdb-react-ui-kit'
 import React from 'react'
 
-const StartPrediction = ({ state: { processedImage, dispatch } }) => {
+const StartPrediction = ({ state: { processedImage, dispatch, fileInput, toggleShow } }) => {
+
+	const handleClearResult = () => {
+		dispatch(
+			{
+				type: 'SET_STATE',
+				payload: 
+				{
+					selectedFile: '',
+					fileName: '',
+					loading: '',
+					processedImage: '',
+					BE: '',
+					RI: '',
+					FI: '',
+					AC: '',
+					BC: '',
+					IC: '',
+					TC: '',
+					M1: '',
+					M2: '',
+					M3: '',
+					P1: '',
+					P2: '',
+					P3: '',
+				}
+			}
+		)
+		fileInput.current.value = ''
+	}
 
 	const handleState = (payload) => {
 		dispatch(
@@ -97,6 +126,7 @@ const StartPrediction = ({ state: { processedImage, dispatch } }) => {
                     color="dark"
                     className="shadow-0 me-2"
                     size="sm"
+					disabled={processedImage?false:true}
                     onClick={handlePrediction}
                 >
                     Start Prediction
@@ -105,9 +135,9 @@ const StartPrediction = ({ state: { processedImage, dispatch } }) => {
                     color="danger"
                     className="shadow-0"
                     size="sm"
-                    onClick={handlePrediction}
+                    onClick={handleClearResult}
                 >
-                    Clear Result
+                    Clear
                 </MDBBtn>
             </div>
         </MDBCol>
