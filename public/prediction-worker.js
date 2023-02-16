@@ -41,7 +41,7 @@ const worker = () => {
 			.expandDims()
 			.toFloat()
 			.reverse(-1)
-		sendMessage('tensor_creation')
+		sendMessage('TC')
 
 		const model1 = await tf.loadGraphModel(`${LOCAL}Model1/model.json`);
 		sendMessage('M1')
@@ -76,7 +76,7 @@ const worker = () => {
 			return b.probability - a.probability;
 		}).slice(0, 2);
 
-		sendMessage('Prediction1', {result1, taskTimeModel1})
+		sendMessage('P1', {result1, taskTimeModel1})
 
 		const result2 = Array.from(prediction2).map((p, i) => { 
 			return {
@@ -87,7 +87,7 @@ const worker = () => {
 			return b.probability - a.probability;
 		}).slice(0, 2);
 
-		sendMessage('Prediction2', {result2, taskTimeModel2})
+		sendMessage('P2', {result2, taskTimeModel2})
 
 		const result3 = Array.from(prediction3).map((p, i) => { 
 			return {
@@ -98,7 +98,7 @@ const worker = () => {
 			return b.probability - a.probability;
 		}).slice(0, 2);
 
-		sendMessage('Prediction3', {result3, taskTimeModel3})
+		sendMessage('P3', {result3, taskTimeModel3})
 	}
 
 	self.addEventListener("message", onMessage)

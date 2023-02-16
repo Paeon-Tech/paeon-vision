@@ -6,6 +6,19 @@ const initialState = {
     loading: '',
     processedImage: '',
     prediction: '',
+	BE: '',
+	RI: '',
+	FI: '',
+	AC: '',
+	BC: '',
+	IC: '',
+	TC: '',
+	M1: '',
+	M2: '',
+	M3: '',
+	P1: '',
+	P2: '',
+	P3: '',
 }
 
 const reducer = (state, action) => {
