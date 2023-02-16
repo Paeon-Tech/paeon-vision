@@ -37,6 +37,31 @@ const Prediction = () => {
     const toggleShow = () => setCentredModal(!centredModal)
 
     const handleFileInput = () => {
+		dispatch(
+			{
+				type: 'SET_STATE',
+				payload: 
+				{
+					selectedFile: '',
+					fileName: '',
+					loading: '',
+					processedImage: '',
+					BE: '',
+					RI: '',
+					FI: '',
+					AC: '',
+					BC: '',
+					IC: '',
+					TC: '',
+					M1: '',
+					M2: '',
+					M3: '',
+					P1: '',
+					P2: '',
+					P3: '',
+				}
+			}
+		)
         const file = fileInput.current.files[0]
 
         if (!acceptedImageTypes.includes(file.type)) {

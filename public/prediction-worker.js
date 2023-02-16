@@ -2,8 +2,8 @@
 /* eslint-disable no-restricted-globals */
 /* eslint-disable import/no-anonymous-default-export */
 const worker = () => {
-	const LOCAL = 'http://localhost:3000/'
-	// const LOCAL = 'https://paeonvision.tech/'
+	//const LOCAL = 'http://localhost:3000/'
+	const LOCAL = 'https://paeonvision.tech/'
 	importScripts(`${LOCAL}tf.min.js`)
 	tf.setBackend('cpu')
 

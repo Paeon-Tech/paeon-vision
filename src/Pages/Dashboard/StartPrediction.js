@@ -103,6 +103,27 @@ const StartPrediction = ({ state: { processedImage, dispatch, fileInput, toggleS
     }
 
     const handlePrediction = async () => {
+		dispatch(
+			{
+				type: 'SET_STATE',
+				payload: 
+				{
+					BE: '',
+					RI: '',
+					FI: '',
+					AC: '',
+					BC: '',
+					IC: '',
+					TC: '',
+					M1: '',
+					M2: '',
+					M3: '',
+					P1: '',
+					P2: '',
+					P3: '',
+				}
+			}
+		)
         prediction_worker.addEventListener('message', handleWorkerMessage)
         const image = new Image()
         image.src = processedImage
