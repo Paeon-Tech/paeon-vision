@@ -2,7 +2,7 @@
 /* eslint-disable no-restricted-globals */
 /* eslint-disable import/no-anonymous-default-export */
 const worker = () => {
-	importScripts('http://localhost:3000/Model/tf.min.js')
+	importScripts('http://localhost:3000/tf.min.js')
 	tf.setBackend('cpu')
 
 	const TARGET_CLASSIFICATION = {
@@ -99,7 +99,7 @@ const worker = () => {
 			return b.probability - a.probability;
 		}).slice(0, 2);
 
-		sendMessage('Prediction1', {result3, taskTimeModel3})
+		sendMessage('Prediction3', {result3, taskTimeModel3})
 	}
 
 	self.addEventListener("message", onMessage)
