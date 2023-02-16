@@ -29,7 +29,7 @@ const StartPrediction = ({ state: { processedImage, setPrediction } }) => {
     }
 
     const handlePrediction = async () => {
-		prediction_worker.addEventListener('message', handleWorkerMessage)
+        prediction_worker.addEventListener('message', handleWorkerMessage)
         const image = new Image()
         image.src = processedImage
         await image.decode()
@@ -56,7 +56,7 @@ const StartPrediction = ({ state: { processedImage, setPrediction } }) => {
                 >
                     Start Prediction
                 </MDBBtn>
-				<MDBBtn
+                <MDBBtn
                     color="danger"
                     className="shadow-0"
                     size="sm"

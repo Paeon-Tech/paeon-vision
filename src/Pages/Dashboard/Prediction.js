@@ -1,35 +1,48 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useState, useRef, useEffect, useCallback } from 'react'
+import { useState, useRef, useCallback } from 'react'
+import { useStateStorage } from '../../Hooks'
 import UploadImg from './UploadImg'
 import DisplayImg from './DisplayImg'
 import Modal from './Modal'
 import Results from './Results'
 import StartPrediction from './StartPrediction'
+import Status from './Status'
 
 const Prediction = () => {
-    const [selectedFile, setSelectedFile] = useState('')
-    const [prediction, setPrediction] = useState('')
-    const [fileName, setFileName] = useState('')
-    const [loading, setLoading] = useState(false)
-    const [processedImage, setProcessedImage] = useState('')
+    const [state, dispatch] = useStateStorage()
+
     const fileInput = useRef(null)
     const [centredModal, setCentredModal] = useState(false)
     const acceptedImageTypes = ['image/jpeg', 'image/png', 'image/gif']
 
-    const toggleShow = useCallback(() => setCentredModal(!centredModal),[centredModal])
+    const toggleShow = useCallback(
+        () => setCentredModal(!centredModal),
+        [centredModal]
+    )
 
     const handleFileInput = () => {
         const file = fileInput.current.files[0]
 
         if (!acceptedImageTypes.includes(file.type)) {
             toggleShow()
-            setSelectedFile('')
-            setFileName('')
+            dispatch({
+                type: 'SET_STATE',
+                payload: {
+                    selectedFile: '',
+                    fileName: '',
+                },
+            })
+
             fileInput.current.value = ''
             return
         }
 
-        setFileName(fileInput.current.files[0].name)
+        dispatch({
+            type: 'SET_STATE',
+            payload: {
+                fileName: fileInput.current.files[0].name,
+            },
+        })
     }
 
     const handleUpload = async () => {
@@ -42,39 +55,92 @@ const Prediction = () => {
 
         const reader = new FileReader()
         reader.addEventListener('load', () => {
-            setSelectedFile(reader.result)
+            dispatch({
+                type: 'SET_STATE',
+                payload: {
+                    selectedFile: reader.result,
+                },
+            })
         })
 
-        setLoading(true)
+        dispatch({
+            type: 'SET_STATE',
+            payload: {
+                loading: true,
+            },
+        })
 
         reader.readAsDataURL(imageFile)
         reader.onloadend = () => {
-            setSelectedFile(reader.result)
+            dispatch({
+                type: 'SET_STATE',
+                payload: {
+                    selectedFile: reader.result,
+                },
+            })
         }
 
         const objectURL = URL.createObjectURL(imageFile)
-        setProcessedImage(objectURL)
+        dispatch({
+            type: 'SET_STATE',
+            payload: {
+                processedImage: objectURL,
+            },
+        })
 
-        setLoading(false)
+        dispatch({
+            type: 'SET_STATE',
+            payload: {
+                loading: false,
+            },
+        })
         console.log('processed image done')
     }
 
     const handleRemove = () => {
-        setSelectedFile('')
-        setFileName('')
-        setProcessedImage('')
-        setPrediction('')
+        dispatch({
+            type: 'SET_STATE',
+            payload: {
+                selectedFile: '',
+                fileName: '',
+                processedImage: '',
+                prediction: '',
+            },
+        })
         fileInput.current.value = ''
+    }
+
+    const setPrediction = (data) => {
+        dispatch({
+            type: 'SET_STATE',
+            payload: {
+                prediction: data,
+            },
+        })
     }
 
     return (
         <>
             <UploadImg
-                state={{ fileInput, handleFileInput, handleUpload, loading }}
+                state={{
+                    fileInput,
+                    handleFileInput,
+                    handleUpload,
+                    loading: state.loading,
+                }}
             />
-            <DisplayImg state={{ selectedFile, fileName, handleRemove }} />
-            <Results state={{ prediction }} />
-            <StartPrediction state={{ processedImage, setPrediction }} />
+            <DisplayImg
+                state={{
+                    selectedFile: state.selectedFile,
+                    fileName: state.fileName,
+                    handleRemove,
+                }}
+            />
+            <Status />
+            <Results state={{ prediction: state.prediction }} />
+            <StartPrediction
+                state={{ processedImage: state.processedImage, setPrediction }}
+            />
             <Modal state={{ centredModal, setCentredModal, toggleShow }} />
         </>
     )
