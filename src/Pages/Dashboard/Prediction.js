@@ -10,7 +10,7 @@ import Status from './Status'
 
 const Prediction = () => {
     const [state, dispatch] = useStateStorage()
-
+    const {BE, RI, FI, AC, BC, IC, TC, M1, M2, M3, P1, P2, P3, processedImage} = state
     const fileInput = useRef(null)
     const [centredModal, setCentredModal] = useState(false)
     const acceptedImageTypes = ['image/jpeg', 'image/png', 'image/gif']
@@ -110,15 +110,6 @@ const Prediction = () => {
         fileInput.current.value = ''
     }
 
-    const setPrediction = (data) => {
-        dispatch({
-            type: 'SET_STATE',
-            payload: {
-                prediction: data,
-            },
-        })
-    }
-
     return (
         <>
             <UploadImg
@@ -136,10 +127,10 @@ const Prediction = () => {
                     handleRemove,
                 }}
             />
-            <Status />
+            <Status state={{BE, RI, FI, AC, BC, IC, TC, M1, M2, M3, P1, P2, P3, processedImage}}/>
             <Results state={{ prediction: state.prediction }} />
             <StartPrediction
-                state={{ processedImage: state.processedImage, setPrediction }}
+                state={{ processedImage: state.processedImage, dispatch }}
             />
             <Modal state={{ centredModal, setCentredModal, toggleShow }} />
         </>

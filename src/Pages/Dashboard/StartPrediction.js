@@ -2,30 +2,75 @@
 import { MDBCol, MDBBtn } from 'mdb-react-ui-kit'
 import React from 'react'
 
-const StartPrediction = ({ state: { processedImage, setPrediction } }) => {
+const StartPrediction = ({ state: { processedImage, dispatch } }) => {
+
+	const handleState = (payload) => {
+		dispatch(
+			{
+				type: 'SET_STATE',
+				payload
+			}
+		)
+	} 
+
     const handleWorkerMessage = (e) => {
         console.log(`Message from Web Worker [${e.data.message}]`)
 
-        if (e.data.code === 'Prediction1') {
-            console.log(e.data.message.taskTimeModel1)
-            setPrediction(e.data.message.result1)
+		if (e.data.code === 'BE') {
+            handleState({BE: e.data.message})
         }
 
-        if (e.data.code === 'Prediction2') {
-            console.log(e.data.message.taskTimeModel2)
-            setPrediction(e.data.message.result2)
+		if (e.data.code === 'RI') {
+            handleState({RI: true})
         }
 
-        if (e.data.code === 'Prediction3') {
-            console.log(e.data.message.taskTimeModel3)
-            setPrediction(e.data.message.result3)
+		if (e.data.code === 'FI') {
+            handleState({FI: true})
+        }
 
-            // Remove the event listener once Prediction3 is received
-            prediction_worker.removeEventListener(
+		if (e.data.code === 'AC') {
+            handleState({AC: true})
+        }
+
+		if (e.data.code === 'BC') {
+            handleState({BC: true})
+        }
+
+		if (e.data.code === 'IC') {
+            handleState({IC: true})
+        }
+
+		if (e.data.code === 'TC') {
+            handleState({TC: true})
+        }
+
+		if (e.data.code === 'M1') {
+            handleState({M1: true})
+        }
+
+		if (e.data.code === 'M2') {
+            handleState({M2: true})
+        }
+
+		if (e.data.code === 'M3') {
+            handleState({M3: true})
+        }
+
+		if (e.data.code === 'P1') {
+            handleState({P1: {result: e.data.message.result1, time: e.data.message.taskTimeModel1}})
+        }
+
+		if (e.data.code === 'P2') {
+            handleState({P2: {result: e.data.message.result2, time: e.data.message.taskTimeModel2}})
+        }
+
+		if (e.data.code === 'P3') {
+            handleState({P3: {result: e.data.message.result3, time: e.data.message.taskTimeModel3}})
+			prediction_worker.removeEventListener(
                 'message',
                 handleWorkerMessage
             )
-        }
+		}
     }
 
     const handlePrediction = async () => {
