@@ -18,6 +18,7 @@ const initialState = {
 	P1: '',
 	P2: '',
 	P3: '',
+	PS: ''
 }
 
 const reducer = (state, action) => {

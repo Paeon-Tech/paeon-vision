@@ -24,6 +24,7 @@ const Prediction = () => {
         P1,
         P2,
         P3,
+		PS,
         processedImage,
 		loading,
 		selectedFile,
@@ -179,6 +180,7 @@ const Prediction = () => {
                     dispatch,
                     fileInput,
                     toggleShow,
+					PS
                 }}
             />
             <Modal state={{ centredModal, setCentredModal, toggleShow }} />
