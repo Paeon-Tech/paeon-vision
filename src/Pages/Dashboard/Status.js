@@ -52,7 +52,7 @@ const Status = ({
                                 icon="check-circle"
                                 className="me-2 text-success"
                             />
-                            Array Buffer Convertion
+                            Array Buffer Conversion
                         </li>
                     ) : (
                         ''
@@ -63,7 +63,7 @@ const Status = ({
                                 icon="check-circle"
                                 className="me-2 text-success"
                             />
-                            Blob Convertion
+                            Blob Conversion
                         </li>
                     ) : (
                         ''
@@ -74,7 +74,7 @@ const Status = ({
                                 icon="check-circle"
                                 className="me-2 text-success"
                             />
-                            Image Bitmap Convertion
+                            Image Bitmap Conversion
                         </li>
                     ) : (
                         ''
