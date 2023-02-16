@@ -9,28 +9,28 @@ const worker = () => {
 		0: "Monkeypox",
 		1: "Others"
 	}
-	
-	const sendMessage = (code, message) => {
+
+	const sendMessage = (code, message = 'No message') => {
 		self.postMessage({code, message})
 	}
 
 	const onMessage = async (event) => {
-		sendMessage('backend', tf.getBackend())
+		sendMessage('BE', tf.getBackend())
 
 		const imageData = event.data.imageData
-		sendMessage('received_imageData','ImageData Received by Web Worker')
+		sendMessage('RI')
 
 		const response = await fetch(imageData)
-		sendMessage('fetch_image',"ImageData Fetch Completed")
+		sendMessage('FI')
 
 		const arrayBuffer = await response.arrayBuffer()
-		sendMessage('arrayBuffer_creation', 'arrayBuffer creation for fetched image Completed')
+		sendMessage('AC')
 
 		const blob = new Blob([arrayBuffer])
-		sendMessage('blob_creation', 'blob creation for arrayBuffer Completed')
+		sendMessage('BC')
 
 		const imageBitmap = await createImageBitmap(blob)
-		sendMessage('imageBitmap_creation', 'imageBitmap creation for blob Completed')
+		sendMessage('IC')
 
 		const tensor = tf
 			.browser
@@ -39,17 +39,36 @@ const worker = () => {
 			.expandDims()
 			.toFloat()
 			.reverse(-1)
-		sendMessage('tensor_creation', 'tensor creation for imageBitmap Completed')
+		sendMessage('tensor_creation')
 
-		const model = await tf.loadGraphModel('http://localhost:3000/Model/model.json');
-		sendMessage('load_model', 'loading model.json completed')
+		const LOCAL = 'http://localhost:3000/'
+		// const LOCAL = 'https://paeonvision.tech/'
 
-		const startTime = performance.now();
-		const prediction = await model.predict(tensor).data()
-		const endTime = performance.now();
-		const taskTime = endTime - startTime;
+		const model1 = await tf.loadGraphModel(`${LOCAL}Model1/model.json`);
+		sendMessage('M1')
 
-		const result = Array.from(prediction).map((p, i) => { 
+		const model2 = await tf.loadGraphModel(`${LOCAL}Model2/model.json`);
+		sendMessage('M2')
+
+		const model3 = await tf.loadGraphModel(`${LOCAL}Model3/model.json`);
+		sendMessage('M3')
+
+		const startTimeModel1 = performance.now();
+		const prediction1 = await model1.predict(tensor).data()
+		const endTimeModel1 = performance.now();
+		const taskTimeModel1 = endTimeModel1 - startTimeModel1;
+
+		const startTimeModel2 = performance.now();
+		const prediction2 = await model2.predict(tensor).data()
+		const endTimeModel2 = performance.now();
+		const taskTimeModel2 = endTimeModel2 - startTimeModel2;
+
+		const startTimeModel3 = performance.now();
+		const prediction3 = await model3.predict(tensor).data()
+		const endTimeModel3 = performance.now();
+		const taskTimeModel3 = endTimeModel3 - startTimeModel3;
+
+		const result1 = Array.from(prediction1).map((p, i) => { 
 			return {
 				probability: p,
 				className: TARGET_CLASSIFICATION[i]
@@ -58,7 +77,29 @@ const worker = () => {
 			return b.probability - a.probability;
 		}).slice(0, 2);
 
-		sendMessage('Prediction', {result, taskTime})
+		sendMessage('Prediction1', {result1, taskTimeModel1})
+
+		const result2 = Array.from(prediction2).map((p, i) => { 
+			return {
+				probability: p,
+				className: TARGET_CLASSIFICATION[i]
+			};
+		}).sort((a, b) => {
+			return b.probability - a.probability;
+		}).slice(0, 2);
+
+		sendMessage('Prediction2', {result2, taskTimeModel2})
+
+		const result3 = Array.from(prediction3).map((p, i) => { 
+			return {
+				probability: p,
+				className: TARGET_CLASSIFICATION[i]
+			};
+		}).sort((a, b) => {
+			return b.probability - a.probability;
+		}).slice(0, 2);
+
+		sendMessage('Prediction1', {result3, taskTimeModel3})
 	}
 
 	self.addEventListener("message", onMessage)
