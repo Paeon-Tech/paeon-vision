@@ -22,7 +22,7 @@ const reducer = (state, action) => {
 }
 
 const useStateStorage = () => {
-    const [state, dispatch] = useReducer(initialState, reducer)
+    const [state, dispatch] = useReducer(reducer, initialState)
     return [state, dispatch]
 }
 
