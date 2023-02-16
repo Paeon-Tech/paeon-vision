@@ -2,7 +2,9 @@
 /* eslint-disable no-restricted-globals */
 /* eslint-disable import/no-anonymous-default-export */
 const worker = () => {
-	importScripts('http://localhost:3000/tf.min.js')
+	const LOCAL = 'http://localhost:3000/'
+	// const LOCAL = 'https://paeonvision.tech/'
+	importScripts(`${LOCAL}tf.min.js`)
 	tf.setBackend('cpu')
 
 	const TARGET_CLASSIFICATION = {
@@ -40,9 +42,6 @@ const worker = () => {
 			.toFloat()
 			.reverse(-1)
 		sendMessage('tensor_creation')
-
-		const LOCAL = 'http://localhost:3000/'
-		// const LOCAL = 'https://paeonvision.tech/'
 
 		const model1 = await tf.loadGraphModel(`${LOCAL}Model1/model.json`);
 		sendMessage('M1')
