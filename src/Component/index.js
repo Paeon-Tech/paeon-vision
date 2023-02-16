@@ -1,2 +1,4 @@
 import PrivateRoute from './PrivateRoute'
-export { PrivateRoute }
+import Fallback from './Fallback'
+import DisplayLogo from './DisplayLogo'
+export { PrivateRoute, Fallback, DisplayLogo }

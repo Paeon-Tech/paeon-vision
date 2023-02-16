@@ -22,7 +22,7 @@ const NavigationBar = () => {
         <MDBNavbar tag="nav" expand="lg" className="shadow-0">
             <MDBContainer fluid className="mb-3 mb-lg-3 px-3 px-md-5">
                 <MDBNavbarBrand tag={Link} to="/" className="text-light">
-                    <img src={Logo} alt="Logo" height="40" />
+                    <img src={Logo} alt="Logo" height="40px" width="40px" />
                 </MDBNavbarBrand>
                 <MDBNavbarToggler
                     type="button"

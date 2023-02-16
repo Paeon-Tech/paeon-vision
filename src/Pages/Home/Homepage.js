@@ -2,14 +2,14 @@ import IntroPage from './IntroPage'
 import { MDBContainer, MDBRow } from 'mdb-react-ui-kit'
 import { Outlet } from 'react-router-dom'
 import { Navigate } from 'react-router-dom'
-import { UserAuth } from '../../Context/AuthContext'
+import { UserAuth } from '../../Context'
 
 const Homepage = () => {
     const { user } = UserAuth()
     const user_data = JSON.parse(localStorage.getItem('paeon-user')) || null
 
     if (user_data || user) {
-        return <Navigate to="/Home" />
+        return <Navigate to="/home" />
     }
 
     return (

@@ -6,8 +6,9 @@ import {
     Signup,
     LoginPage,
     Error,
+    ForgotPassword,
 } from './Pages/Home'
-import { PrivateRoute } from './Component'
+import { PrivateRoute, Fallback } from './Component'
 import { Dashboard } from './Pages/Dashboard'
 
 const App = () => {
@@ -16,18 +17,23 @@ const App = () => {
             <Route path="/">
                 <Route path="/" element={<Homepage />}>
                     <Route index element={<LoginPage />} />
-                    <Route path="Signup" element={<Signup />} />
+                    <Route path="signup" element={<Signup />} />
+                    <Route
+                        path="forgot-password"
+                        element={<ForgotPassword />}
+                    />
                 </Route>
                 <Route
-                    path="Home"
+                    path="/home"
                     element={
                         <PrivateRoute>
                             <Dashboard />
                         </PrivateRoute>
                     }
                 />
-                <Route path="Contact" element={<Contact />} />
-                <Route path="About" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/developer" element={<About />} />
+                <Route path="/fallback" element={<Fallback />} />
                 <Route path="*" element={<Error />} />
             </Route>
         </Routes>

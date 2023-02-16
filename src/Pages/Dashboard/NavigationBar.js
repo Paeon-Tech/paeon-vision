@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { UserAuth } from '../../Context/AuthContext'
+import { UserAuth } from '../../Context'
 import {
     MDBContainer,
     MDBNavbar,
@@ -31,8 +31,8 @@ const NavigationBar = () => {
     return (
         <>
             <MDBNavbar expand="lg" dark className="bg-theme-color-1">
-                <MDBContainer fluid className="mx-md-5">
-                    <MDBNavbarBrand href="#">
+                <MDBContainer fluid className="mx-md-5 small">
+                    <MDBNavbarBrand href="/home">
                         <img
                             src={Logo}
                             alt="Logo"
@@ -53,18 +53,8 @@ const NavigationBar = () => {
                         <MDBNavbarNav
                             right
                             fullWidth={false}
-                            className="small text-start"
+                            className="text-start"
                         >
-                            <MDBNavbarItem>
-                                <MDBNavbarLink
-                                    active
-                                    aria-current="page"
-                                    href="#"
-                                >
-                                    <MDBIcon fas icon="home" className="me-2" />{' '}
-                                    Home
-                                </MDBNavbarLink>
-                            </MDBNavbarItem>
                             <MDBNavbarItem>
                                 <MDBNavbarLink href="#">
                                     <MDBIcon

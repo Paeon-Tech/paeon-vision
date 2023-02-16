@@ -2,22 +2,15 @@ import { useState } from 'react'
 import { UserAuth } from '../../Context'
 import { Link, useNavigate } from 'react-router-dom'
 import { useLoginUser } from '../../Hooks'
-import {
-    MDBCol,
-    MDBTypography,
-    MDBBtn,
-    MDBIcon,
-    MDBFooter,
-    MDBCheckbox,
-    MDBSpinner,
-} from 'mdb-react-ui-kit'
+import { MDBCol, MDBTypography, MDBBtn, MDBIcon } from 'mdb-react-ui-kit'
+import { DisplayLogo } from '../../Component'
+import Footer from './Footer'
 
 const LoginPage = () => {
     const navigate = useNavigate()
     const { signInWithGoogle, signInWithFacebook, signInWithMicrosoft } =
         UserAuth()
-    const [loading, error, loginUser, errname] = useLoginUser()
-    const [passwordShown, setPasswordShown] = useState(false)
+    const [error, loginUser, errname, setError, isLoading] = useLoginUser()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -34,45 +27,45 @@ const LoginPage = () => {
         }
     }
 
-    const togglePassword = () => {
-        setPasswordShown((isShown) => !isShown)
-    }
-
     return (
-        <MDBCol xl="4" className="px-md-5 pt-5 bg-theme-color-2">
-            <div className="form-width px-4 py-5 square border bg-theme-color-3 shadow-3">
+        <MDBCol
+            xl="4"
+            className="px-md-5 pt-5 bg-theme-color-3 col-height slide-in-bck-center"
+        >
+            <DisplayLogo text="Sign in to Paeon Vision" />
+
+            {error && (
+                <div
+                    className="alert border form-width small alert-danger mb-3 alert-dismissible fade show"
+                    role="alert"
+                >
+                    {error}
+                    <button
+                        type="button"
+                        className="btn-close"
+                        data-mdb-dismiss="alert"
+                        aria-label="Close"
+                        onClick={() => {
+                            setError(null)
+                        }}
+                    ></button>
+                </div>
+            )}
+
+            <div className="form-width px-4 py-4 square border bg-theme-color-2">
                 <form method="POST" id="login" onSubmit={handleSubmit()}>
                     <div className="small input-width">
-                        <MDBTypography tag="h5" className="mb-4">
-                            Login
+                        <MDBTypography tag="h5" className="mb-4 login-text">
+                            Sign in
                         </MDBTypography>
-                        <div className="text-center my-2">
-                            {error && (
-                                <p className="text-danger small">
-                                    <MDBIcon
-                                        fas
-                                        icon="exclamation-circle"
-                                        fixed
-                                    />{' '}
-                                    {error}
-                                </p>
-                            )}
-                            {loading && (
-                                <MDBSpinner
-                                    className="ms-2 text=center"
-                                    color="dark"
-                                >
-                                    <span className="visually-hidden text-center">
-                                        Loading...
-                                    </span>
-                                </MDBSpinner>
-                            )}
-                        </div>
+                        <label htmlFor="Email" className="pb-2">
+                            Email
+                        </label>
                         <input
                             label="Email"
                             id="Email"
                             type="text"
-                            className={`mb-3 shadow-3 square border border-1 border-squircle ${
+                            className={`mb-2 square border border-1 border-squircle ${
                                 errname === 'Email' ||
                                 errname === 'NoCredential'
                                     ? 'border-danger'
@@ -80,14 +73,16 @@ const LoginPage = () => {
                             }`}
                             onChange={onChangeValue(setEmail)}
                             autoComplete="off"
-                            placeholder="Email"
                             required
                         />
+                        <label htmlFor="Password" className="pb-2">
+                            Password
+                        </label>
                         <input
                             label="Password"
                             id="Password"
-                            type={passwordShown ? 'text' : 'password'}
-                            className={`mb-3 shadow-3 square border border-1 border-squircle ${
+                            type="password"
+                            className={`mb-3 square border border-1 border-squircle ${
                                 errname === 'Password' ||
                                 errname === 'NoCredential'
                                     ? 'border-danger'
@@ -95,31 +90,26 @@ const LoginPage = () => {
                             }`}
                             onChange={onChangeValue(setPassword)}
                             autoComplete="off"
-                            placeholder="Password"
                             required
                         />
-                        <MDBCheckbox
-                            name="flexCheck"
-                            value=""
-                            id="flexCheckDefault"
-                            label="Show Password"
-                            className="mb-3"
-                            onChange={togglePassword}
-                        />
+                        <div className="mb-3 small">
+                            <Link
+                                to="/forgot-password"
+                                className="text-decoration-none"
+                            >
+                                Forgot password?
+                            </Link>
+                        </div>
                         <div className="text-center">
                             <MDBBtn
-                                className="mb-3 btn input-width"
-                                color="dark"
+                                className={`mb-3 btn input-width shadow-0 ${
+                                    isLoading ? 'disabled' : ''
+                                }`}
+                                color="success"
                             >
-                                LOGIN
+                                SIGN IN
                             </MDBBtn>
                         </div>
-                        <Link
-                            to="dashboard"
-                            className="text-decoration-none mb-3"
-                        >
-                            Forgot password?
-                        </Link>
                         <hr />
                     </div>
                 </form>
@@ -129,10 +119,10 @@ const LoginPage = () => {
                 <div className="text-center mb-3 small">
                     <MDBBtn
                         color="light"
-                        className="m-1 border border-1 bg-theme-color-2 shadow-3"
+                        className="m-1 border border-1 bg-theme-color-2"
                         onClick={() =>
                             signInWithGoogle().then(() => {
-                                navigate('/Home')
+                                navigate('/home')
                             })
                         }
                     >
@@ -140,10 +130,10 @@ const LoginPage = () => {
                     </MDBBtn>
                     <MDBBtn
                         color="light"
-                        className="m-1 border border-1 bg-theme-color-2 shadow-3"
+                        className="m-1 border border-1 bg-theme-color-2"
                         onClick={() =>
                             signInWithMicrosoft().then(() => {
-                                navigate('/Home')
+                                navigate('/home')
                             })
                         }
                     >
@@ -151,10 +141,10 @@ const LoginPage = () => {
                     </MDBBtn>
                     <MDBBtn
                         color="light"
-                        className="m-1 border border-1 bg-theme-color-2 shadow-3"
+                        className="m-1 border border-1 bg-theme-color-2"
                         onClick={() =>
                             signInWithFacebook().then(() => {
-                                navigate('/Home')
+                                navigate('/home')
                             })
                         }
                     >
@@ -163,19 +153,12 @@ const LoginPage = () => {
                 </div>
                 <MDBTypography className="text-center small">
                     Not yet registered?{' '}
-                    <Link to="/Signup" className="text-decoration-none">
+                    <Link to="/signup" className="text-decoration-none">
                         Sign&nbsp;up.
                     </Link>
                 </MDBTypography>
             </div>
-            <MDBFooter>
-                <div className="text-center mt-4 pb-4 small text-dark">
-                    &copy; {new Date().getFullYear()} Copyright:{' '}
-                    <a className="text-reset" href="https://paeonvision.tech/">
-                        paeonvision.tech
-                    </a>
-                </div>
-            </MDBFooter>
+            <Footer />
         </MDBCol>
     )
 }

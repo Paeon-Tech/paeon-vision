@@ -20,7 +20,7 @@ const API = {
         {
             name: 'Twitter',
             icon: 'twitter',
-            link: 'https://www.facebook.com/PaeonTech',
+            link: 'https://twitter.com/Paeontech',
         },
         {
             name: 'Github',
@@ -35,11 +35,11 @@ const API = {
         },
         {
             menu: 'Contact',
-            path: '/Contact',
+            path: '/contact',
         },
         {
-            menu: 'About',
-            path: '/About',
+            menu: 'Developer',
+            path: '/developer',
         },
     ],
     team_member: [
@@ -81,7 +81,7 @@ const API = {
             ],
         },
         {
-            name: 'Crischell Jay D. Florita',
+            name: 'Crischelle Jay D. Florita',
             img_src: Florita,
             email: 'cjflorita01@gmail.com',
             badge: [

@@ -1,4 +1,10 @@
-import { createContext, useContext, useEffect, useState } from 'react'
+import {
+    createContext,
+    useContext,
+    useEffect,
+    useState,
+    useCallback,
+} from 'react'
 import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
@@ -6,7 +12,7 @@ import {
     GoogleAuthProvider,
     signInWithPopup,
     sendPasswordResetEmail,
-    onAuthStateChanged,
+    onIdTokenChanged,
     OAuthProvider,
     FacebookAuthProvider,
 } from 'firebase/auth'
@@ -17,54 +23,59 @@ const UserContext = createContext()
 export const AuthContextProvider = ({ children }) => {
     const [user, setUser] = useState(false)
 
-    const createUser = (email, password) => {
+    const createUser = useCallback((email, password) => {
         return createUserWithEmailAndPassword(auth, email, password)
-    }
+    }, [])
 
-    const signInWithGoogle = () => {
+    const signInWithGoogle = useCallback(() => {
         const provider = new GoogleAuthProvider()
         return signInWithPopup(auth, provider)
-    }
+    }, [])
 
-    const signInWithMicrosoft = () => {
+    const signInWithMicrosoft = useCallback(() => {
         const provider = new OAuthProvider('microsoft.com')
         return signInWithPopup(auth, provider)
-    }
+    }, [])
 
-    const userLogout = () => {
+    const userLogout = useCallback(() => {
         return signOut(auth)
-    }
+    }, [])
 
-    const userLogin = (email, password) => {
+    const userLogin = useCallback((email, password) => {
         return signInWithEmailAndPassword(auth, email, password)
-    }
+    }, [])
 
-    const forgotPassword = (email) => {
+    const forgotPassword = useCallback((email) => {
         return sendPasswordResetEmail(auth, email, {
             url: 'http://paeonvision.tech/',
         })
-    }
+    }, [])
 
-    const signInWithFacebook = () => {
+    const signInWithFacebook = useCallback(() => {
         const provider = new FacebookAuthProvider()
         return signInWithPopup(auth, provider)
-    }
+    }, [])
 
     useEffect(() => {
-        onAuthStateChanged(auth, (data) => {
-            if (data) {
+        const unsubscribe = onIdTokenChanged(auth, (user) => {
+            if (user) {
                 const isAuth = {
                     isAuthenticated: true,
-                    data,
+                    data: user,
                 }
                 localStorage.setItem('paeon-user', JSON.stringify(isAuth))
                 setUser(isAuth)
+                console.log(user)
             } else {
-                setUser(data)
-                console.log(data)
+                setUser(user)
+                console.log(user)
                 localStorage.clear()
             }
         })
+
+        return () => {
+            unsubscribe()
+        }
     }, [])
 
     return (

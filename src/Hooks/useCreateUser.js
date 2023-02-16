@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { UserAuth } from '../Context/AuthContext'
+import { UserAuth } from '../Context'
 import { firestore } from '../Firebase'
 import { doc, setDoc } from 'firebase/firestore'
 import { sendEmailVerification } from 'firebase/auth'
@@ -7,15 +7,13 @@ import { sendEmailVerification } from 'firebase/auth'
 const useCreateUser = () => {
     const { createUser } = UserAuth()
     const [error, setError] = useState('')
-    const [success, setSuccess] = useState('')
-    const [loading, setLoading] = useState('')
     const [errname, setErrname] = useState('')
+    const [isLoading, setIsLoading] = useState(false)
 
     const registerUser = async (userData) => {
         const { email, password, fullName } = userData
-        setLoading('Loading')
+        setIsLoading(true)
         setErrname('')
-        setSuccess('')
         setError('')
 
         try {
@@ -28,13 +26,9 @@ const useCreateUser = () => {
                 email,
                 fullName,
             })
-
-            setSuccess(
-                'Account Created. Please check your email for verification'
-            )
-            setLoading('')
+            setIsLoading(false)
         } catch (error) {
-            setLoading('')
+            setIsLoading(false)
             switch (error.code) {
                 case 'auth/network-request-failed':
                     setError('Network error please try Again')
@@ -63,7 +57,7 @@ const useCreateUser = () => {
         }
     }
 
-    return [success, loading, error, registerUser, errname]
+    return [setError, error, registerUser, errname, isLoading]
 }
 
 export default useCreateUser

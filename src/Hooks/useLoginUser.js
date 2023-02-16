@@ -1,24 +1,25 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { UserAuth } from '../Context/AuthContext'
+import { UserAuth } from '../Context'
 
 const useLoginUser = () => {
     const { userLogin } = UserAuth()
     const [error, setError] = useState('')
+    const [isLoading, setIsLoading] = useState(false)
     const [errname, setErrname] = useState('')
-    const [loading, setLoading] = useState('')
     const navigate = useNavigate()
 
     const loginUser = async (email, password) => {
-        setLoading('Loading')
+        setIsLoading(true)
         setError('')
         setErrname('')
 
         try {
             await userLogin(email, password)
-            navigate('/Home')
+            setIsLoading(false)
+            navigate('/home')
         } catch (error) {
-            setLoading('')
+            setIsLoading(false)
             switch (error.code) {
                 case 'auth/network-request-failed':
                     setError('Network error please try Again')
@@ -50,7 +51,7 @@ const useLoginUser = () => {
         }
     }
 
-    return [loading, error, loginUser, errname]
+    return [error, loginUser, errname, setError, isLoading, setErrname]
 }
 
 export default useLoginUser

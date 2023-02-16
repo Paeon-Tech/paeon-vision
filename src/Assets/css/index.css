@@ -3,12 +3,17 @@
 	--brand-color-2: #F6F8FA;
 	--brand-color-3: #FFFFFF;
 	--brand-color-4: #7DE686;
+	--brand-color-5: #768390;
 }
 
 body {
     margin: 0;
     padding: auto;
     font-family: 'Inter', sans-serif;
+}
+
+.slide-in-transition {
+    visibility: visible;
 }
 
 .slide-in-left {
@@ -41,10 +46,17 @@ body {
 	color: var(--brand-color-2);
 }
 
+.text-color-3 {
+	color: var(--brand-color-5)
+}
 .title-text {
 	font-size: 90px;
 	font-weight: 800;
 	line-height: 100px;
+}
+
+.text-justify {
+	text-align: justify;
 }
 
 .title-component {
@@ -80,18 +92,22 @@ body {
     visibility: hidden;
 }
 
+.pv-logo {
+	display: none;
+}
+
 .row-height {
     height: 100vh;
 }
 
-.border-squircle {
-	background-color: var(--brand-color-2);
-    width: 250px;
-    padding: 5px 10px 5px 10px;
+.col-height {
+	height: auto
 }
 
-.active {
-	color: var(--brand-color-4) !important;
+.border-squircle {
+	background-color: var(--brand-color-3);
+    width: 250px;
+    padding: 5px 10px 5px 10px;
 }
 
 .home-heading-style {
@@ -107,6 +123,10 @@ body {
     animation-fill-mode: forwards;
     white-space: nowrap;
     overflow-wrap: break-word;
+}
+
+.login-text {
+	display: block;
 }
 
 @keyframes entrance {
@@ -167,5 +187,48 @@ body {
 	.title-text {
 		font-size: 60px;
 		line-height: 70px;
+	}
+
+	.pv-logo {
+		display: block;
+	}
+
+	.login-text {
+		display: none;
+	}
+
+	.col-height {
+		height: 100vh;
+	}
+
+	.slide-in-bck-center {
+		-webkit-animation: slide-in-bck-center 1.0s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+		animation: slide-in-bck-center 1.0s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	}
+
+	@-webkit-keyframes slide-in-bck-center {
+		0% {
+			-webkit-transform: translateZ(600px);
+					transform: translateZ(600px);
+			opacity: 0;
+		}
+		100% {
+			-webkit-transform: translateZ(0);
+					transform: translateZ(0);
+			opacity: 1;
+		}
+	}
+
+	@keyframes slide-in-bck-center {
+		0% {
+			-webkit-transform: translateZ(600px);
+					transform: translateZ(600px);
+			opacity: 0;
+		}
+		100% {
+			-webkit-transform: translateZ(0);
+					transform: translateZ(0);
+			opacity: 1;
+		}
 	}
 }
