@@ -23,9 +23,11 @@ const StartPrediction = ({
                 M1: '',
                 M2: '',
                 M3: '',
+				M4: '',
                 P1: '',
                 P2: '',
                 P3: '',
+				P4: '',
                 PS: '',
             },
         })
@@ -82,6 +84,11 @@ const StartPrediction = ({
             handleState({ M3: true })
         }
 
+		
+        if (e.data.code === 'M4') {
+            handleState({ M4: true })
+        }
+
         if (e.data.code === 'P1') {
             handleState({
                 P1: {
@@ -105,6 +112,15 @@ const StartPrediction = ({
                 P3: {
                     result: e.data.message.result3,
                     time: e.data.message.taskTimeModel3,
+                }
+            })
+        }
+
+		if (e.data.code === 'P4') {
+            handleState({
+                P4: {
+                    result: e.data.message.result4,
+                    time: e.data.message.taskTimeModel4,
                 },
                 PS: '',
             })
@@ -129,9 +145,11 @@ const StartPrediction = ({
                 M1: '',
                 M2: '',
                 M3: '',
+				M4: '',
                 P1: '',
                 P2: '',
                 P3: '',
+				P4: '',
                 PS: '',
             },
         })

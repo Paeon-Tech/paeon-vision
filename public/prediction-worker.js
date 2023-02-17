@@ -2,8 +2,9 @@
 /* eslint-disable no-restricted-globals */
 /* eslint-disable import/no-anonymous-default-export */
 const worker = () => {
-	//const LOCAL = 'http://localhost:3000/'
-	const LOCAL = 'https://paeonvision.tech/'
+	console.log(navigator.onLine)
+	const LOCAL = 'http://localhost:3000/'
+	//const LOCAL = 'https://paeonvision.tech/'
 	importScripts(`${LOCAL}tf.min.js`)
 	tf.setBackend('cpu')
 
@@ -52,6 +53,9 @@ const worker = () => {
 		const model3 = await tf.loadGraphModel(`${LOCAL}Model3/model.json`);
 		sendMessage('M3')
 
+		const model4 = await tf.loadGraphModel(`${LOCAL}Model4/model.json`);
+		sendMessage('M4')
+
 		const startTimeModel1 = performance.now();
 		const prediction1 = await model1.predict(tensor).data()
 		const endTimeModel1 = performance.now();
@@ -66,6 +70,11 @@ const worker = () => {
 		const prediction3 = await model3.predict(tensor).data()
 		const endTimeModel3 = performance.now();
 		const taskTimeModel3 = endTimeModel3 - startTimeModel3;
+
+		const startTimeModel4 = performance.now();
+		const prediction4 = await model4.predict(tensor).data()
+		const endTimeModel4 = performance.now();
+		const taskTimeModel4 = endTimeModel4 - startTimeModel4;
 
 		const result1 = Array.from(prediction1).map((p, i) => { 
 			return {
@@ -99,6 +108,17 @@ const worker = () => {
 		}).slice(0, 2);
 
 		sendMessage('P3', {result3, taskTimeModel3})
+
+		const result4 = Array.from(prediction4).map((p, i) => { 
+			return {
+				probability: p,
+				className: TARGET_CLASSIFICATION[i]
+			};
+		}).sort((a, b) => {
+			return b.probability - a.probability;
+		}).slice(0, 2);
+
+		sendMessage('P4', {result4, taskTimeModel4})
 	}
 
 	self.addEventListener("message", onMessage)

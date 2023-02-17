@@ -1,7 +1,7 @@
 import { MDBCol, MDBTypography, MDBIcon } from 'mdb-react-ui-kit'
 
 const Status = ({
-    state: { BE, RI, FI, AC, BC, IC, TC, M1, M2, M3, processedImage },
+    state: { BE, RI, FI, AC, BC, IC, TC, M1, M2, M3, M4, processedImage },
 }) => {
     return (
         <MDBCol lg="4" className="p-3 small">
@@ -79,6 +79,17 @@ const Status = ({
                     ) : (
                         ''
                     )}
+					{TC ? (
+                        <li className="mb-1">
+                            <MDBIcon
+                                icon="check-circle"
+                                className="me-2 text-success"
+                            />
+                            Tensor Conversion
+                        </li>
+                    ) : (
+                        ''
+                    )}
 					{M1 ? (
                         <li className="mb-1">
                             <MDBIcon
@@ -108,6 +119,17 @@ const Status = ({
                                 className="me-2 text-success"
                             />
                             Model 3 Loaded
+                        </li>
+                    ) : (
+                        ''
+                    )}
+					{M4 ? (
+                        <li className="mb-1">
+                            <MDBIcon
+                                icon="check-circle"
+                                className="me-2 text-success"
+                            />
+                            Model 4 Loaded
                         </li>
                     ) : (
                         ''

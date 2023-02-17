@@ -10,6 +10,7 @@ import Status from './Status'
 
 const Prediction = () => {
     const [state, dispatch] = useStateStorage()
+	console.table(state)
     const {
         BE,
         RI,
@@ -21,9 +22,11 @@ const Prediction = () => {
         M1,
         M2,
         M3,
+		M4,
         P1,
         P2,
         P3,
+		P4,
 		PS,
         processedImage,
 		loading,
@@ -60,6 +63,7 @@ const Prediction = () => {
 					P1: '',
 					P2: '',
 					P3: '',
+					P4: '',
 				}
 			}
 		)
@@ -167,13 +171,15 @@ const Prediction = () => {
                     M1,
                     M2,
                     M3,
+					M4,
                     P1,
                     P2,
                     P3,
+					P4,
                     processedImage,
                 }}
             />
-            <Results state={{ P1, P2, P3 }} />
+            <Results state={{ P1, P2, P3, P4 }} />
             <StartPrediction
                 state={{
                     processedImage,
