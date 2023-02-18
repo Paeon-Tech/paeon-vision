@@ -5,6 +5,7 @@ const initialState = {
     fileName: '',
     loading: '',
     processedImage: '',
+	FD: '',
 	BE: '',
 	RI: '',
 	FI: '',

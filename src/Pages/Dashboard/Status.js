@@ -6,7 +6,7 @@ const Status = ({
     return (
         <MDBCol lg="4" className="p-3 small">
             <div>
-                <h3 className="mb-3 ">Status</h3>
+                <h5 className="mb-3 ">Status</h5>
                 <MDBTypography>
                     {processedImage
                         ? 'Image uploaded and ready for prediction.'

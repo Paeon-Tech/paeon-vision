@@ -1,10 +1,16 @@
 /* eslint-disable no-undef */
-import { MDBCol, MDBBtn, MDBSpinner } from 'mdb-react-ui-kit'
+import { useState } from 'react'
+import { useFetch } from '../../Hooks'
+import { MDBCol, MDBBtn, MDBSpinner, MDBCheckbox } from 'mdb-react-ui-kit'
 import React from 'react'
 
 const StartPrediction = ({
-    state: { processedImage, dispatch, fileInput, PS, toggleShow },
+    state: { processedImage, dispatch, fileInput, PS, toggleShow, FD},
 }) => {
+	const predictionApi = useFetch()
+	const [useApi, setUseApi] = useState(false)
+	const toggleApi = () => setUseApi((isShown) => !isShown)
+	console.log(useApi)
     const handleClearResult = () => {
         dispatch({
             type: 'SET_STATE',
@@ -23,11 +29,11 @@ const StartPrediction = ({
                 M1: '',
                 M2: '',
                 M3: '',
-				M4: '',
+                M4: '',
                 P1: '',
                 P2: '',
                 P3: '',
-				P4: '',
+                P4: '',
                 PS: '',
             },
         })
@@ -84,7 +90,6 @@ const StartPrediction = ({
             handleState({ M3: true })
         }
 
-		
         if (e.data.code === 'M4') {
             handleState({ M4: true })
         }
@@ -112,11 +117,11 @@ const StartPrediction = ({
                 P3: {
                     result: e.data.message.result3,
                     time: e.data.message.taskTimeModel3,
-                }
+                },
             })
         }
 
-		if (e.data.code === 'P4') {
+        if (e.data.code === 'P4') {
             handleState({
                 P4: {
                     result: e.data.message.result4,
@@ -132,6 +137,7 @@ const StartPrediction = ({
     }
 
     const handlePrediction = async () => {
+		console.log(useApi)
         dispatch({
             type: 'SET_STATE',
             payload: {
@@ -145,11 +151,11 @@ const StartPrediction = ({
                 M1: '',
                 M2: '',
                 M3: '',
-				M4: '',
+                M4: '',
                 P1: '',
                 P2: '',
                 P3: '',
-				P4: '',
+                P4: '',
                 PS: '',
             },
         })
@@ -159,6 +165,28 @@ const StartPrediction = ({
         }
 
         dispatch({ type: 'SET_STATE', payload: { PS: true } })
+
+		if(useApi) {
+			console.log('use api activated')
+			const startAPI1 = performance.now()
+			const API1 = predictionApi(FD,'Iteration1')
+			const endAPI1 = performance.now()
+			const timeAPI1 = endAPI1 - startAPI1
+			console.log(timeAPI1.toFixed(2))
+			const startAPI2 = performance.now()
+			const API2 = predictionApi(FD,'Iteration2')
+			const endAPI2 = performance.now()
+			const timeAPI2 = endAPI2 - startAPI2
+			console.log(timeAPI2.toFixed(2))
+			const startAPI3 = performance.now()
+			const API3 = predictionApi(FD,'Iteration3')
+			const endAPI3 = performance.now()
+			const timeAPI3 = endAPI3 - startAPI3
+			console.log(timeAPI3.toFixed(2))
+			console.table(API1)
+			dispatch({ type: 'SET_STATE', payload: { PS: false } })
+			return
+		}
 
         prediction_worker.addEventListener('message', handleWorkerMessage)
         const image = new Image()
@@ -178,18 +206,20 @@ const StartPrediction = ({
 
     return (
         <MDBCol className="p-3 small">
+            <input className="form-check-input mb-3" id="flexCheckDefault" type="checkbox" name="flexCheck" value="" onChange={toggleApi}/>
+			<label className="form-check-label" htmlFor="flexCheckDefault">Use Custom Vision API?</label>
             <div>
                 <MDBBtn
+                    outline
                     color="dark"
                     className="shadow-0 me-2"
-                    size="sm"
                     disabled={PS ? true : false}
                     onClick={handlePrediction}
                 >
                     {PS ? (
                         <>
                             <span className="me-2">Please wait</span>
-                            <MDBSpinner color="light" size="sm">
+                            <MDBSpinner color="dark" size="sm">
                                 <span className="visually-hidden">
                                     Loading...
                                 </span>
@@ -200,9 +230,9 @@ const StartPrediction = ({
                     )}
                 </MDBBtn>
                 <MDBBtn
+                    outline
                     color="danger"
                     className="shadow-0"
-                    size="sm"
                     disabled={PS ? true : false}
                     onClick={handleClearResult}
                 >

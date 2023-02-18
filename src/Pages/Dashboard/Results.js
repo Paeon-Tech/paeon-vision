@@ -4,7 +4,7 @@ const Results = ({ state: { P1, P2, P3, P4 } }) => {
     return (
         <MDBCol lg="4" className="p-3 small">
             <div>
-                <h3 className="mb-3 ">Result</h3>
+                <h5 className="mb-3 ">Result</h5>
                 {P1 && (
                     <MDBTypography>
                         <strong>Model 1 - Iteration 1</strong>
@@ -19,7 +19,7 @@ const Results = ({ state: { P1, P2, P3, P4 } }) => {
                                 <li className="mb-1" key={index}>
                                     <MDBIcon
                                         fas icon="poll"
-                                        className="me-2 text-success"
+                                        className="me-2 text-dark"
                                     />
                                     {data.className}:{' '}
                                     <strong className="text-success">
@@ -33,7 +33,7 @@ const Results = ({ state: { P1, P2, P3, P4 } }) => {
                             <MDBIcon
 								fas
                                 icon="clock"
-                                className="me-2 text-success"
+                                className="me-2 text-dark"
                             />
                             Total time taken:{' '}
                             <strong className="text-success">
@@ -56,7 +56,7 @@ const Results = ({ state: { P1, P2, P3, P4 } }) => {
                                 <li className="mb-1" key={index}>
                                     <MDBIcon
                                         fas icon="poll"
-                                        className="me-2 text-success"
+                                        className="me-2 text-dark"
                                     />
                                     {data.className}:{' '}
                                     <strong className="text-success">
@@ -70,7 +70,7 @@ const Results = ({ state: { P1, P2, P3, P4 } }) => {
                             <MDBIcon
 								fas
                                 icon="clock"
-                                className="me-2 text-success"
+                                className="me-2 text-dark"
                             />
                             Total time taken:{' '}
                             <strong className="text-success">
@@ -93,7 +93,7 @@ const Results = ({ state: { P1, P2, P3, P4 } }) => {
                                 <li className="mb-1" key={index}>
                                     <MDBIcon
                                         fas icon="poll"
-                                        className="me-2 text-success"
+                                        className="me-2 text-dark"
                                     />
                                     {data.className}:{' '}
                                     <strong className="text-success">
@@ -107,7 +107,7 @@ const Results = ({ state: { P1, P2, P3, P4 } }) => {
                             <MDBIcon
 								fas
                                 icon="clock"
-                                className="me-2 text-success"
+                                className="me-2 text-dark"
                             />
                             Total time taken:{' '}
                             <strong className="text-success">

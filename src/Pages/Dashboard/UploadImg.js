@@ -3,16 +3,17 @@ import {
     MDBInputGroup,
     MDBBtn,
     MDBSpinner,
+	MDBIcon
 } from 'mdb-react-ui-kit'
 
 const UploadImg = ({
     state: { fileInput, handleFileInput, handleUpload, loading },
 }) => {
     return (
-        <div className="p-3 mb-3 small border bg-theme-color-2">
-            <h3>Select an image</h3>
+        <div className="p-3 mb-3 small border border-1 bg-theme-color-2 shadow-4">
+            <h5>Select an image</h5>
             <MDBTypography tag="small">
-                Please make sure to upload a file with a supported image format
+                <MDBIcon fas icon="info-circle" className='me-1' />Please make sure to upload a file with a supported image format
                 such as <span className="fst-italic">JPEG, PNG, or GIF.</span>
             </MDBTypography>
             <div className="mt-4">
@@ -26,7 +27,6 @@ const UploadImg = ({
                     <MDBBtn
                         color="dark"
                         className={`shadow-0 ${loading ? 'disabled' : ''}`}
-                        size="sm"
                         onClick={handleUpload}
                     >
                         {loading ? (

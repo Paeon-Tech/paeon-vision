@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { useStateStorage } from '../../Hooks'
 import UploadImg from './UploadImg'
 import DisplayImg from './DisplayImg'
@@ -9,9 +9,15 @@ import StartPrediction from './StartPrediction'
 import Status from './Status'
 
 const Prediction = () => {
+	const [count, setCount] =useState(0)
+	useEffect(()=>{
+		setCount(count + 1)
+		console.log(count)
+	},[])
     const [state, dispatch] = useStateStorage()
 	console.table(state)
     const {
+		FD,
         BE,
         RI,
         FI,
@@ -40,7 +46,7 @@ const Prediction = () => {
 
     const toggleShow = () => setCentredModal(!centredModal)
 
-    const handleFileInput = () => {
+    const handleFileInput = (event) => {
 		dispatch(
 			{
 				type: 'SET_STATE',
@@ -64,6 +70,7 @@ const Prediction = () => {
 					P2: '',
 					P3: '',
 					P4: '',
+					FD: '',
 				}
 			}
 		)
@@ -87,6 +94,7 @@ const Prediction = () => {
             type: 'SET_STATE',
             payload: {
                 fileName: fileInput.current.files[0].name,
+				FD: event.target.files[0]
             },
         })
     }
@@ -186,7 +194,8 @@ const Prediction = () => {
                     dispatch,
                     fileInput,
                     toggleShow,
-					PS
+					PS,
+					FD
                 }}
             />
             <Modal state={{ centredModal, setCentredModal, toggleShow }} />

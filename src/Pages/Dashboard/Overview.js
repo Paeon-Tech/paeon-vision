@@ -1,22 +1,52 @@
-import { MDBTypography } from 'mdb-react-ui-kit'
+import React, { useState } from 'react'
 
-const Overview = () => {
+export default function Pverview() {
+    const [file, setFile] = useState(null)
+
+    const handleFileChange = (event) => {
+        const file = event.target.files[0]
+        const formData = new FormData()
+        formData.append('image', file)
+
+        fetch(
+            'https://southeastasia.api.cognitive.microsoft.com/customvision/v3.0/Prediction/7db98f08-4938-4a3c-bfec-6c82b52d7fe9/classify/iterations/Iteration2/image',
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/octet-stream',
+                    'Prediction-Key': '1c3e003089e54d4f83ea0af548cf85b7',
+                },
+                body: file,
+            }
+        )
+            .then((response) => {
+                // handle the responsecon
+                const reader = response.body.getReader()
+                let responseBody = ''
+
+                function readChunk() {
+                    return reader.read().then(({ value, done }) => {
+                        if (done) {
+                            const responseObj = JSON.parse(responseBody)
+                            console.log(responseObj)
+                            return
+                        }
+
+                        responseBody += new TextDecoder().decode(value)
+                        return readChunk()
+                    })
+                }
+
+                return readChunk()
+            })
+            .catch((error) => {
+                // handle errors
+            })
+    }
+
     return (
-        <>
-            <div className="pt-3 px-0">
-                <h1 className="mb-4">Welcome</h1>
-                <MDBTypography className="text-justify mb-5">
-                    Introducing a revolutionary application that utilizes the
-                    power of Image Recognition and Machine Learning to predict
-                    Monkeypox virus through skin lesion analysis. This
-                    application is built using Microsoft Azure Custom Vision and
-                    is aimed to provide an efficient and accurate solution for
-                    medical professionals and healthcare providers in detecting
-                    the early signs of the virus.
-                </MDBTypography>
-            </div>
-        </>
+        <div>
+            <input type="file" onChange={handleFileChange} />
+        </div>
     )
 }
-
-export default Overview
