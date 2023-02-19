@@ -10,7 +10,7 @@ const UploadImg = ({
     state: { fileInput, handleFileInput, handleUpload, loading },
 }) => {
     return (
-        <div className="p-3 pt-4 mb-3 small border border-1 bg-theme-color-3 shadow-4">
+        <div className="p-3 pt-4 mb-3 small border border-1 bg-theme-color-3 shadow-4 rounded">
             <h5>Select an image</h5>
             <MDBTypography tag="small">
                 <MDBIcon fas icon="info-circle" className='me-1' />Please make sure to upload a file with a supported image format

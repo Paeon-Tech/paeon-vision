@@ -1,9 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from 'react'
 
 const useFetch = () => {
-	const [data, setData] = useState('')
-    const predictionApi = (image, iteration) => {
+    const [response, setResponse] = useState('')
+	const [image, setImage] = useState('')
+	const [iteration, setIteration] = useState('')
 
+	const predictionApi = (image, iteration) => {
+		setImage(image)
+		setIteration(iteration)
+	}
+
+        setResponse('')
         fetch(
             `https://southeastasia.api.cognitive.microsoft.com/customvision/v3.0/Prediction/7db98f08-4938-4a3c-bfec-6c82b52d7fe9/classify/iterations/${iteration}/image`,
             {
@@ -12,19 +19,17 @@ const useFetch = () => {
                     'Content-Type': 'application/octet-stream',
                     'Prediction-Key': '1c3e003089e54d4f83ea0af548cf85b7',
                 },
-                body:image,
+                body: image,
             }
         )
-            .then(response=> response.json())
-  .then(data => {
-    setData(data)
-    // The response body contains the predictions
-  })
-  .catch(error => console.error(error));
-  return data
-    }
+		.then((response) => response.json())
+        .then((response) => {
+                setResponse(response)})
+        .catch((error) => console.error(error))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    
 
-    return predictionApi
+    return [predictionApi, response]
 }
 
 export default useFetch

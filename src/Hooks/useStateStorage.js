@@ -21,6 +21,9 @@ const initialState = {
 	P2: '',
 	P3: '',
 	P4: '',
+	I1: '',
+	I2: '',
+	I3: '',
 	PS: ''
 }
 

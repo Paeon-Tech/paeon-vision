@@ -1,7 +1,23 @@
 import { MDBCol, MDBTypography, MDBIcon } from 'mdb-react-ui-kit'
 
 const Status = ({
-    state: { BE, RI, FI, AC, BC, IC, TC, M1, M2, M3, M4, processedImage },
+    state: {
+        BE,
+        RI,
+        FI,
+        AC,
+        BC,
+        IC,
+        TC,
+        M1,
+        M2,
+        M3,
+        M4,
+        processedImage,
+        I1,
+        I2,
+        I3,
+    },
 }) => {
     return (
         <MDBCol lg="4" className="p-3 small">
@@ -24,7 +40,7 @@ const Status = ({
                     ) : (
                         ''
                     )}
-					{RI ? (
+                    {RI ? (
                         <li className="mb-1">
                             <MDBIcon
                                 icon="check-circle"
@@ -35,7 +51,7 @@ const Status = ({
                     ) : (
                         ''
                     )}
-					{FI ? (
+                    {FI ? (
                         <li className="mb-1">
                             <MDBIcon
                                 icon="check-circle"
@@ -46,7 +62,7 @@ const Status = ({
                     ) : (
                         ''
                     )}
-					{AC ? (
+                    {AC ? (
                         <li className="mb-1">
                             <MDBIcon
                                 icon="check-circle"
@@ -57,7 +73,7 @@ const Status = ({
                     ) : (
                         ''
                     )}
-					{BC ? (
+                    {BC ? (
                         <li className="mb-1">
                             <MDBIcon
                                 icon="check-circle"
@@ -68,7 +84,7 @@ const Status = ({
                     ) : (
                         ''
                     )}
-					{IC ? (
+                    {IC ? (
                         <li className="mb-1">
                             <MDBIcon
                                 icon="check-circle"
@@ -79,7 +95,7 @@ const Status = ({
                     ) : (
                         ''
                     )}
-					{TC ? (
+                    {TC ? (
                         <li className="mb-1">
                             <MDBIcon
                                 icon="check-circle"
@@ -90,7 +106,7 @@ const Status = ({
                     ) : (
                         ''
                     )}
-					{M1 ? (
+                    {M1 ? (
                         <li className="mb-1">
                             <MDBIcon
                                 icon="check-circle"
@@ -101,7 +117,7 @@ const Status = ({
                     ) : (
                         ''
                     )}
-					{M2 ? (
+                    {M2 ? (
                         <li className="mb-1">
                             <MDBIcon
                                 icon="check-circle"
@@ -112,7 +128,7 @@ const Status = ({
                     ) : (
                         ''
                     )}
-					{M3 ? (
+                    {M3 ? (
                         <li className="mb-1">
                             <MDBIcon
                                 icon="check-circle"
@@ -123,7 +139,7 @@ const Status = ({
                     ) : (
                         ''
                     )}
-					{M4 ? (
+                    {M4 ? (
                         <li className="mb-1">
                             <MDBIcon
                                 icon="check-circle"

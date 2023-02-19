@@ -30,7 +30,7 @@ const LoginPage = () => {
     return (
         <MDBCol
             xl="4"
-            className="px-md-5 pt-5 bg-theme-color-3 col-height slide-in-bck-center"
+            className="px-md-5 pt-5 bg-theme-color-2 col-height slide-in-bck-center"
         >
             <DisplayLogo text="Sign in to Paeon Vision" />
 
@@ -52,7 +52,7 @@ const LoginPage = () => {
                 </div>
             )}
 
-            <div className="form-width px-4 py-4 square border bg-theme-color-2">
+            <div className="form-width px-4 py-4 square border bg-theme-color-3 shadow-4 rounded">
                 <form method="POST" id="login" onSubmit={handleSubmit()}>
                     <div className="small input-width">
                         <MDBTypography tag="h5" className="mb-4 login-text">

@@ -1,6 +1,6 @@
 import { MDBCol, MDBTypography, MDBIcon } from 'mdb-react-ui-kit'
 
-const Results = ({ state: { P1, P2, P3, P4 } }) => {
+const Results = ({ state: { P1, P2, P3, P4, I1, I2, I3 } }) => {
     return (
         <MDBCol lg="4" className="p-3 small">
             <div>
@@ -18,7 +18,8 @@ const Results = ({ state: { P1, P2, P3, P4 } }) => {
                             return (
                                 <li className="mb-1" key={index}>
                                     <MDBIcon
-                                        fas icon="poll"
+                                        fas
+                                        icon="poll"
                                         className="me-2 text-dark"
                                     />
                                     {data.className}:{' '}
@@ -31,7 +32,7 @@ const Results = ({ state: { P1, P2, P3, P4 } }) => {
                     {P1 && (
                         <li className="mb-1">
                             <MDBIcon
-								fas
+                                fas
                                 icon="clock"
                                 className="me-2 text-dark"
                             />
@@ -42,7 +43,7 @@ const Results = ({ state: { P1, P2, P3, P4 } }) => {
                         </li>
                     )}
                 </MDBTypography>
-				{P2 && (
+                {P2 && (
                     <MDBTypography>
                         <strong>Model 2 - Iteration 2</strong>
                     </MDBTypography>
@@ -55,7 +56,8 @@ const Results = ({ state: { P1, P2, P3, P4 } }) => {
                             return (
                                 <li className="mb-1" key={index}>
                                     <MDBIcon
-                                        fas icon="poll"
+                                        fas
+                                        icon="poll"
                                         className="me-2 text-dark"
                                     />
                                     {data.className}:{' '}
@@ -68,7 +70,7 @@ const Results = ({ state: { P1, P2, P3, P4 } }) => {
                     {P2 && (
                         <li className="mb-1">
                             <MDBIcon
-								fas
+                                fas
                                 icon="clock"
                                 className="me-2 text-dark"
                             />
@@ -79,7 +81,7 @@ const Results = ({ state: { P1, P2, P3, P4 } }) => {
                         </li>
                     )}
                 </MDBTypography>
-				{P3 && (
+                {P3 && (
                     <MDBTypography>
                         <strong>Model 3 - Iteration 3</strong>
                     </MDBTypography>
@@ -92,7 +94,8 @@ const Results = ({ state: { P1, P2, P3, P4 } }) => {
                             return (
                                 <li className="mb-1" key={index}>
                                     <MDBIcon
-                                        fas icon="poll"
+                                        fas
+                                        icon="poll"
                                         className="me-2 text-dark"
                                     />
                                     {data.className}:{' '}
@@ -105,7 +108,7 @@ const Results = ({ state: { P1, P2, P3, P4 } }) => {
                     {P3 && (
                         <li className="mb-1">
                             <MDBIcon
-								fas
+                                fas
                                 icon="clock"
                                 className="me-2 text-dark"
                             />
@@ -116,7 +119,7 @@ const Results = ({ state: { P1, P2, P3, P4 } }) => {
                         </li>
                     )}
                 </MDBTypography>
-				{P4 && (
+                {P4 && (
                     <MDBTypography>
                         <strong>Model 4 - Iteration 4</strong>
                     </MDBTypography>
@@ -129,7 +132,8 @@ const Results = ({ state: { P1, P2, P3, P4 } }) => {
                             return (
                                 <li className="mb-1" key={index}>
                                     <MDBIcon
-                                        fas icon="poll"
+                                        fas
+                                        icon="poll"
                                         className="me-2 text-success"
                                     />
                                     {data.className}:{' '}
@@ -142,7 +146,7 @@ const Results = ({ state: { P1, P2, P3, P4 } }) => {
                     {P4 && (
                         <li className="mb-1">
                             <MDBIcon
-								fas
+                                fas
                                 icon="clock"
                                 className="me-2 text-success"
                             />

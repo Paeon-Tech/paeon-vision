@@ -1,16 +1,37 @@
 /* eslint-disable no-undef */
 import { useState } from 'react'
-import { useFetch } from '../../Hooks'
 import { MDBCol, MDBBtn, MDBSpinner, MDBCheckbox } from 'mdb-react-ui-kit'
 import React from 'react'
 
 const StartPrediction = ({
-    state: { processedImage, dispatch, fileInput, PS, toggleShow, FD},
+    state: { processedImage, dispatch, fileInput, PS, toggleShow, FD },
 }) => {
-	const predictionApi = useFetch()
-	const [useApi, setUseApi] = useState(false)
-	const toggleApi = () => setUseApi((isShown) => !isShown)
-	console.log(useApi)
+    const [response, setResponse] = useState('')
+    console.table(response)
+    const fetchApi = (image, iteration, callback) => {
+        const startTime = performance.now()
+        fetch(
+            `https://southeastasia.api.cognitive.microsoft.com/customvision/v3.0/Prediction/7db98f08-4938-4a3c-bfec-6c82b52d7fe9/classify/iterations/${iteration}/image`,
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/octet-stream',
+                    'Prediction-Key': '1c3e003089e54d4f83ea0af548cf85b7',
+                },
+                body: image,
+            }
+        )
+            .then((response) => response.json())
+            .then((response) => {
+                const endTime = performance.now()
+                const taskTime = endTime - startTime
+				callback({response, taskTime})
+            })
+            .catch((error) => console.error(error))
+    }
+
+    const [useApi, setUseApi] = useState(false)
+    const toggleApi = () => setUseApi((isShown) => !isShown)
     const handleClearResult = () => {
         dispatch({
             type: 'SET_STATE',
@@ -34,6 +55,9 @@ const StartPrediction = ({
                 P2: '',
                 P3: '',
                 P4: '',
+                I1: '',
+                I2: '',
+                I3: '',
                 PS: '',
             },
         })
@@ -137,7 +161,6 @@ const StartPrediction = ({
     }
 
     const handlePrediction = async () => {
-		console.log(useApi)
         dispatch({
             type: 'SET_STATE',
             payload: {
@@ -166,27 +189,15 @@ const StartPrediction = ({
 
         dispatch({ type: 'SET_STATE', payload: { PS: true } })
 
-		if(useApi) {
-			console.log('use api activated')
-			const startAPI1 = performance.now()
-			const API1 = predictionApi(FD,'Iteration1')
-			const endAPI1 = performance.now()
-			const timeAPI1 = endAPI1 - startAPI1
-			console.log(timeAPI1.toFixed(2))
-			const startAPI2 = performance.now()
-			const API2 = predictionApi(FD,'Iteration2')
-			const endAPI2 = performance.now()
-			const timeAPI2 = endAPI2 - startAPI2
-			console.log(timeAPI2.toFixed(2))
-			const startAPI3 = performance.now()
-			const API3 = predictionApi(FD,'Iteration3')
-			const endAPI3 = performance.now()
-			const timeAPI3 = endAPI3 - startAPI3
-			console.log(timeAPI3.toFixed(2))
-			console.table(API1)
-			dispatch({ type: 'SET_STATE', payload: { PS: false } })
-			return
-		}
+        if (useApi) {
+			const start = performance.now()
+            fetchApi(FD, 'Iteration1', setResponse)
+			const endTime = performance.now()
+			console.log(endTime - start)
+            dispatch({ type: 'SET_STATE', payload: { PS: false } })
+            console.log(response)
+            return
+        }
 
         prediction_worker.addEventListener('message', handleWorkerMessage)
         const image = new Image()
@@ -206,10 +217,19 @@ const StartPrediction = ({
 
     return (
         <MDBCol className="p-3 small">
-			<div className='pb-2'>
-				<input className="form-check-input mb-3" id="flexCheckDefault" type="checkbox" name="flexCheck" value="" onChange={toggleApi}/>
-				<label className="form-check-label" htmlFor="flexCheckDefault">Use Custom Vision API?</label>
-			</div>
+            <div className="pb-2">
+                <input
+                    className="form-check-input mb-3"
+                    id="flexCheckDefault"
+                    type="checkbox"
+                    name="flexCheck"
+                    value=""
+                    onChange={toggleApi}
+                />
+                <label className="form-check-label" htmlFor="flexCheckDefault">
+                    Use Custom Vision API?
+                </label>
+            </div>
             <div>
                 <MDBBtn
                     outline

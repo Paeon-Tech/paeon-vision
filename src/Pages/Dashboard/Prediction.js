@@ -9,15 +9,14 @@ import StartPrediction from './StartPrediction'
 import Status from './Status'
 
 const Prediction = () => {
-	const [count, setCount] =useState(0)
-	useEffect(()=>{
-		setCount(count + 1)
-		console.log(count)
-	},[])
+    const [count, setCount] = useState(0)
+    useEffect(() => {
+        setCount(count + 1)
+        console.log(count)
+    }, [])
     const [state, dispatch] = useStateStorage()
-	console.table(state)
     const {
-		FD,
+        FD,
         BE,
         RI,
         FI,
@@ -28,17 +27,19 @@ const Prediction = () => {
         M1,
         M2,
         M3,
-		M4,
+        M4,
         P1,
         P2,
         P3,
-		P4,
-		PS,
+        P4,
+        I1,
+        I2,
+        I3,
+        PS,
         processedImage,
-		loading,
-		selectedFile,
-		fileName,
-
+        loading,
+        selectedFile,
+        fileName,
     } = state
     const fileInput = useRef(null)
     const [centredModal, setCentredModal] = useState(false)
@@ -47,33 +48,33 @@ const Prediction = () => {
     const toggleShow = () => setCentredModal(!centredModal)
 
     const handleFileInput = (event) => {
-		dispatch(
-			{
-				type: 'SET_STATE',
-				payload: 
-				{
-					selectedFile: '',
-					fileName: '',
-					loading: '',
-					processedImage: '',
-					BE: '',
-					RI: '',
-					FI: '',
-					AC: '',
-					BC: '',
-					IC: '',
-					TC: '',
-					M1: '',
-					M2: '',
-					M3: '',
-					P1: '',
-					P2: '',
-					P3: '',
-					P4: '',
-					FD: '',
-				}
-			}
-		)
+        dispatch({
+            type: 'SET_STATE',
+            payload: {
+                selectedFile: '',
+                fileName: '',
+                loading: '',
+                processedImage: '',
+                BE: '',
+                RI: '',
+                FI: '',
+                AC: '',
+                BC: '',
+                IC: '',
+                TC: '',
+                M1: '',
+                M2: '',
+                M3: '',
+                P1: '',
+                P2: '',
+                P3: '',
+                P4: '',
+                I1: '',
+                I2: '',
+                I3: '',
+                FD: '',
+            },
+        })
         const file = fileInput.current.files[0]
 
         if (!acceptedImageTypes.includes(file.type)) {
@@ -94,7 +95,7 @@ const Prediction = () => {
             type: 'SET_STATE',
             payload: {
                 fileName: fileInput.current.files[0].name,
-				FD: event.target.files[0]
+                FD: event.target.files[0],
             },
         })
     }
@@ -158,13 +159,13 @@ const Prediction = () => {
                     fileInput,
                     handleFileInput,
                     handleUpload,
-                    loading
+                    loading,
                 }}
             />
             <DisplayImg
                 state={{
                     selectedFile,
-                    fileName
+                    fileName,
                 }}
             />
             <Status
@@ -179,23 +180,26 @@ const Prediction = () => {
                     M1,
                     M2,
                     M3,
-					M4,
+                    M4,
                     P1,
                     P2,
                     P3,
-					P4,
+                    P4,
+                    I1,
+                    I2,
+                    I3,
                     processedImage,
                 }}
             />
-            <Results state={{ P1, P2, P3, P4 }} />
+            <Results state={{ P1, P2, P3, P4, I1, I2, I3 }} />
             <StartPrediction
                 state={{
                     processedImage,
                     dispatch,
                     fileInput,
                     toggleShow,
-					PS,
-					FD
+                    PS,
+                    FD,
                 }}
             />
             <Modal state={{ centredModal, setCentredModal, toggleShow }} />
