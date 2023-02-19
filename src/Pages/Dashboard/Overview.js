@@ -1,52 +1,34 @@
-import React, { useState } from 'react'
+import { MDBTypography, MDBIcon } from 'mdb-react-ui-kit'
 
-export default function Pverview() {
-    const [file, setFile] = useState(null)
-
-    const handleFileChange = (event) => {
-        const file = event.target.files[0]
-        const formData = new FormData()
-        formData.append('image', file)
-
-        fetch(
-            'https://southeastasia.api.cognitive.microsoft.com/customvision/v3.0/Prediction/7db98f08-4938-4a3c-bfec-6c82b52d7fe9/classify/iterations/Iteration2/image',
-            {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/octet-stream',
-                    'Prediction-Key': '1c3e003089e54d4f83ea0af548cf85b7',
-                },
-                body: file,
-            }
-        )
-            .then((response) => {
-                // handle the responsecon
-                const reader = response.body.getReader()
-                let responseBody = ''
-
-                function readChunk() {
-                    return reader.read().then(({ value, done }) => {
-                        if (done) {
-                            const responseObj = JSON.parse(responseBody)
-                            console.log(responseObj)
-                            return
-                        }
-
-                        responseBody += new TextDecoder().decode(value)
-                        return readChunk()
-                    })
-                }
-
-                return readChunk()
-            })
-            .catch((error) => {
-                // handle errors
-            })
-    }
-
+export default function Overview() {
     return (
-        <div>
-            <input type="file" onChange={handleFileChange} />
+        <div className='text-justify'>
+            <h5 className='mb-3'><MDBIcon fas icon="info-circle" /> Disclaimer</h5>
+            <MDBTypography>
+                Paeon Vision, our Monkeypox skin lesion image classification
+                application, is for demonstration and educational purposes only.
+                The information and results provided by this application are not
+                intended to be used as a substitute for professional medical
+                advice, diagnosis, or treatment.
+            </MDBTypography>
+            <MDBTypography>
+                The application is not intended to provide a medical diagnosis
+                or to suggest a course of treatment for any particular
+                individual or condition. The results provided by this
+                application are based on a machine learning algorithm, and as
+                such, may not be 100% accurate. The developers of Paeon Vision
+                are not liable for any decisions made based on the information
+                provided by the application, and the user assumes all risk and
+                responsibility for any actions taken as a result of using this
+                application.
+            </MDBTypography>
+            <MDBTypography>
+                If you have any concerns about your health or the health of
+                someone else, please seek advice from a qualified healthcare
+                professional. Do not disregard professional medical advice or
+                delay seeking medical treatment because of something you have
+                read or received through this application.
+            </MDBTypography>
         </div>
     )
 }

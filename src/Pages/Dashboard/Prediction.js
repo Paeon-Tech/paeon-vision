@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef } from 'react'
 import { useStateStorage } from '../../Hooks'
 import UploadImg from './UploadImg'
 import DisplayImg from './DisplayImg'
@@ -9,12 +9,20 @@ import StartPrediction from './StartPrediction'
 import Status from './Status'
 
 const Prediction = () => {
-    const [count, setCount] = useState(0)
-    useEffect(() => {
-        setCount(count + 1)
-        console.log(count)
-    }, [])
     const [state, dispatch] = useStateStorage()
+	const fileInput = useRef(null)
+
+	// State
+    const [centredModal, setCentredModal] = useState(false)
+    const [I1, setI1] = useState('')
+    const [I2, setI2] = useState('')
+    const [I3, setI3] = useState('')
+	const [I4, setI4] = useState('')
+	const [I5, setI5] = useState('')
+
+	// Arrays for Accepted Images
+	const acceptedImageTypes = ['image/jpeg', 'image/png', 'image/gif']
+
     const {
         FD,
         BE,
@@ -28,22 +36,17 @@ const Prediction = () => {
         M2,
         M3,
         M4,
+		M5,
         P1,
         P2,
         P3,
         P4,
-        I1,
-        I2,
-        I3,
+		P5,
         PS,
         processedImage,
-        loading,
         selectedFile,
         fileName,
     } = state
-    const fileInput = useRef(null)
-    const [centredModal, setCentredModal] = useState(false)
-    const acceptedImageTypes = ['image/jpeg', 'image/png', 'image/gif']
 
     const toggleShow = () => setCentredModal(!centredModal)
 
@@ -53,7 +56,6 @@ const Prediction = () => {
             payload: {
                 selectedFile: '',
                 fileName: '',
-                loading: '',
                 processedImage: '',
                 BE: '',
                 RI: '',
@@ -65,16 +67,22 @@ const Prediction = () => {
                 M1: '',
                 M2: '',
                 M3: '',
+				M4: '',
+				M5: '',
                 P1: '',
                 P2: '',
                 P3: '',
                 P4: '',
-                I1: '',
-                I2: '',
-                I3: '',
+				P5: '',
                 FD: '',
             },
         })
+
+		setI1('')
+		setI2('')
+		setI3('')
+		setI4('')
+		setI5('')
         const file = fileInput.current.files[0]
 
         if (!acceptedImageTypes.includes(file.type)) {
@@ -107,7 +115,6 @@ const Prediction = () => {
         }
 
         const imageFile = fileInput.current.files[0]
-
         const reader = new FileReader()
         reader.addEventListener('load', () => {
             dispatch({
@@ -117,14 +124,7 @@ const Prediction = () => {
                 },
             })
         })
-
-        dispatch({
-            type: 'SET_STATE',
-            payload: {
-                loading: true,
-            },
-        })
-
+		
         reader.readAsDataURL(imageFile)
         reader.onloadend = () => {
             dispatch({
@@ -136,20 +136,13 @@ const Prediction = () => {
         }
 
         const objectURL = URL.createObjectURL(imageFile)
-        dispatch({
-            type: 'SET_STATE',
-            payload: {
-                processedImage: objectURL,
-            },
-        })
 
         dispatch({
             type: 'SET_STATE',
             payload: {
-                loading: false,
+				processedImage: objectURL
             },
         })
-        console.log('processed image done')
     }
 
     return (
@@ -158,8 +151,7 @@ const Prediction = () => {
                 state={{
                     fileInput,
                     handleFileInput,
-                    handleUpload,
-                    loading,
+                    handleUpload
                 }}
             />
             <DisplayImg
@@ -181,17 +173,21 @@ const Prediction = () => {
                     M2,
                     M3,
                     M4,
+					M5,
                     P1,
                     P2,
                     P3,
                     P4,
+					P5,
                     I1,
                     I2,
                     I3,
+					I4,
+					I5,
                     processedImage,
                 }}
             />
-            <Results state={{ P1, P2, P3, P4, I1, I2, I3 }} />
+            <Results state={{ P1, P2, P3, P4, P5, I1, I2, I3, I4, I5 }} />
             <StartPrediction
                 state={{
                     processedImage,
@@ -200,6 +196,11 @@ const Prediction = () => {
                     toggleShow,
                     PS,
                     FD,
+					setI1,
+					setI2,
+					setI3,
+					setI4,
+					setI5
                 }}
             />
             <Modal state={{ centredModal, setCentredModal, toggleShow }} />

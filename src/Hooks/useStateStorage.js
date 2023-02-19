@@ -3,7 +3,6 @@ import { useReducer } from 'react'
 const initialState = {
     selectedFile: '',
     fileName: '',
-    loading: '',
     processedImage: '',
 	FD: '',
 	BE: '',
@@ -17,13 +16,12 @@ const initialState = {
 	M2: '',
 	M3: '',
 	M4: '',
+	M5: '',
 	P1: '',
 	P2: '',
 	P3: '',
 	P4: '',
-	I1: '',
-	I2: '',
-	I3: '',
+	P5: '',
 	PS: ''
 }
 

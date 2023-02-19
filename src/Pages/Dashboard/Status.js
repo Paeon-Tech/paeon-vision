@@ -13,10 +13,13 @@ const Status = ({
         M2,
         M3,
         M4,
+        M5,
         processedImage,
         I1,
         I2,
         I3,
+        I4,
+        I5,
     },
 }) => {
     return (
@@ -146,6 +149,72 @@ const Status = ({
                                 className="me-2 text-success"
                             />
                             Model 4 Loaded
+                        </li>
+                    ) : (
+                        ''
+                    )}
+                    {M5 ? (
+                        <li className="mb-1">
+                            <MDBIcon
+                                icon="check-circle"
+                                className="me-2 text-success"
+                            />
+                            Model 5 Loaded
+                        </li>
+                    ) : (
+                        ''
+                    )}
+                    {I1 ? (
+                        <li className="mb-1">
+                            <MDBIcon
+                                icon="check-circle"
+                                className="me-2 text-success"
+                            />
+                            Image send to Iteration 1 endpoint
+                        </li>
+                    ) : (
+                        ''
+                    )}
+                    {I2 ? (
+                        <li className="mb-1">
+                            <MDBIcon
+                                icon="check-circle"
+                                className="me-2 text-success"
+                            />
+                            Image send to Iteration 2 endpoint
+                        </li>
+                    ) : (
+                        ''
+                    )}
+                    {I3 ? (
+                        <li className="mb-1">
+                            <MDBIcon
+                                icon="check-circle"
+                                className="me-2 text-success"
+                            />
+                            Image send to Iteration 3 endpoint
+                        </li>
+                    ) : (
+                        ''
+                    )}
+					{I4 ? (
+                        <li className="mb-1">
+                            <MDBIcon
+                                icon="check-circle"
+                                className="me-2 text-success"
+                            />
+                            Image send to Iteration 4 endpoint
+                        </li>
+                    ) : (
+                        ''
+                    )}
+					{I5 ? (
+                        <li className="mb-1">
+                            <MDBIcon
+                                icon="check-circle"
+                                className="me-2 text-success"
+                            />
+                            Image send to Iteration 5 endpoint
                         </li>
                     ) : (
                         ''
