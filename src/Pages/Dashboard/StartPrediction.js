@@ -206,8 +206,10 @@ const StartPrediction = ({
 
     return (
         <MDBCol className="p-3 small">
-            <input className="form-check-input mb-3" id="flexCheckDefault" type="checkbox" name="flexCheck" value="" onChange={toggleApi}/>
-			<label className="form-check-label" htmlFor="flexCheckDefault">Use Custom Vision API?</label>
+			<div className='pb-2'>
+				<input className="form-check-input mb-3" id="flexCheckDefault" type="checkbox" name="flexCheck" value="" onChange={toggleApi}/>
+				<label className="form-check-label" htmlFor="flexCheckDefault">Use Custom Vision API?</label>
+			</div>
             <div>
                 <MDBBtn
                     outline

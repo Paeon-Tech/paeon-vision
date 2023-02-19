@@ -15,7 +15,7 @@ const Dashboard = () => {
     }
 
     return (
-        <main>
+        <main className='bg-theme-color-2'>
             <NavigationBar />
             {/* {user_data.data.emailVerified ? '' : <h1>Email not verified</h1>} */}
             <MDBContainer>
