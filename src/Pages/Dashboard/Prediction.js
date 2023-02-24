@@ -10,18 +10,18 @@ import Status from './Status'
 
 const Prediction = () => {
     const [state, dispatch] = useStateStorage()
-	const fileInput = useRef(null)
+    const fileInput = useRef(null)
 
-	// State
+    // State
     const [centredModal, setCentredModal] = useState(false)
     const [I1, setI1] = useState('')
     const [I2, setI2] = useState('')
     const [I3, setI3] = useState('')
-	const [I4, setI4] = useState('')
-	const [I5, setI5] = useState('')
+    const [I4, setI4] = useState('')
+    const [I5, setI5] = useState('')
 
-	// Arrays for Accepted Images
-	const acceptedImageTypes = ['image/jpeg', 'image/png', 'image/gif']
+    // Arrays for Accepted Images
+    const acceptedImageTypes = ['image/jpeg', 'image/png', 'image/gif']
 
     const {
         FD,
@@ -36,12 +36,12 @@ const Prediction = () => {
         M2,
         M3,
         M4,
-		M5,
+        M5,
         P1,
         P2,
         P3,
         P4,
-		P5,
+        P5,
         PS,
         processedImage,
         selectedFile,
@@ -67,22 +67,22 @@ const Prediction = () => {
                 M1: '',
                 M2: '',
                 M3: '',
-				M4: '',
-				M5: '',
+                M4: '',
+                M5: '',
                 P1: '',
                 P2: '',
                 P3: '',
                 P4: '',
-				P5: '',
+                P5: '',
                 FD: '',
             },
         })
 
-		setI1('')
-		setI2('')
-		setI3('')
-		setI4('')
-		setI5('')
+        setI1('')
+        setI2('')
+        setI3('')
+        setI4('')
+        setI5('')
         const file = fileInput.current.files[0]
 
         if (!acceptedImageTypes.includes(file.type)) {
@@ -124,7 +124,7 @@ const Prediction = () => {
                 },
             })
         })
-		
+
         reader.readAsDataURL(imageFile)
         reader.onloadend = () => {
             dispatch({
@@ -140,7 +140,7 @@ const Prediction = () => {
         dispatch({
             type: 'SET_STATE',
             payload: {
-				processedImage: objectURL
+                processedImage: objectURL,
             },
         })
     }
@@ -151,7 +151,7 @@ const Prediction = () => {
                 state={{
                     fileInput,
                     handleFileInput,
-                    handleUpload
+                    handleUpload,
                 }}
             />
             <DisplayImg
@@ -173,17 +173,17 @@ const Prediction = () => {
                     M2,
                     M3,
                     M4,
-					M5,
+                    M5,
                     P1,
                     P2,
                     P3,
                     P4,
-					P5,
+                    P5,
                     I1,
                     I2,
                     I3,
-					I4,
-					I5,
+                    I4,
+                    I5,
                     processedImage,
                 }}
             />
@@ -196,11 +196,11 @@ const Prediction = () => {
                     toggleShow,
                     PS,
                     FD,
-					setI1,
-					setI2,
-					setI3,
-					setI4,
-					setI5
+                    setI1,
+                    setI2,
+                    setI3,
+                    setI4,
+                    setI5,
                 }}
             />
             <Modal state={{ centredModal, setCentredModal, toggleShow }} />

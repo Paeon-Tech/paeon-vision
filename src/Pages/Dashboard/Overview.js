@@ -2,8 +2,10 @@ import { MDBTypography, MDBIcon } from 'mdb-react-ui-kit'
 
 export default function Overview() {
     return (
-        <div className='text-justify'>
-            <h5 className='mb-3'><MDBIcon fas icon="info-circle" /> Disclaimer</h5>
+        <div className="text-justify">
+            <h5 className="mb-3">
+                <MDBIcon fas icon="info-circle" /> Disclaimer
+            </h5>
             <MDBTypography>
                 Paeon Vision, our Monkeypox skin lesion image classification
                 application, is for demonstration and educational purposes only.

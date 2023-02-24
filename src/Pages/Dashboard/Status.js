@@ -197,7 +197,7 @@ const Status = ({
                     ) : (
                         ''
                     )}
-					{I4 ? (
+                    {I4 ? (
                         <li className="mb-1">
                             <MDBIcon
                                 icon="check-circle"
@@ -208,7 +208,7 @@ const Status = ({
                     ) : (
                         ''
                     )}
-					{I5 ? (
+                    {I5 ? (
                         <li className="mb-1">
                             <MDBIcon
                                 icon="check-circle"

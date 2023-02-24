@@ -13,7 +13,11 @@ const Homepage = () => {
     }
 
     return (
-        <MDBContainer breakpoint="xxl" className="p-0 bg-theme-color-2" tag="main">
+        <MDBContainer
+            breakpoint="xxl"
+            className="p-0 bg-theme-color-2"
+            tag="main"
+        >
             <MDBRow className="gx-0 row-height  bg-theme-color-2">
                 <IntroPage />
                 <Outlet />

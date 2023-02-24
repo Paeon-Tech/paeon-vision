@@ -14,8 +14,8 @@ const StartPrediction = ({
         setI1,
         setI2,
         setI3,
-		setI4,
-		setI5,
+        setI4,
+        setI5,
     },
 }) => {
     const [useApi, setUseApi] = useState(false)
@@ -29,7 +29,14 @@ const StartPrediction = ({
         })
     }
 
-    const fetchApi = (image, iteration, projectId, predictionKey, resources, callback) => {
+    const fetchApi = (
+        image,
+        iteration,
+        projectId,
+        predictionKey,
+        resources,
+        callback
+    ) => {
         const startTime = performance.now()
         fetch(
             `https://${resources}/customvision/v3.0/Prediction/${projectId}/classify/iterations/${iteration}/image`,
@@ -70,18 +77,20 @@ const StartPrediction = ({
                 M2: '',
                 M3: '',
                 M4: '',
+                M5: '',
                 P1: '',
                 P2: '',
                 P3: '',
                 P4: '',
+                P5: '',
                 PS: '',
             },
         })
-		setI1('')
-		setI2('')
-		setI3('')
-		setI4('')
-		setI5('')
+        setI1('')
+        setI2('')
+        setI3('')
+        setI4('')
+        setI5('')
         fileInput.current.value = ''
     }
 
@@ -130,7 +139,7 @@ const StartPrediction = ({
             handleState({ M4: true })
         }
 
-		if (e.data.code === 'M5') {
+        if (e.data.code === 'M5') {
             handleState({ M5: true })
         }
 
@@ -170,7 +179,7 @@ const StartPrediction = ({
             })
         }
 
-		if (e.data.code === 'P5') {
+        if (e.data.code === 'P5') {
             handleState({
                 P5: {
                     result: e.data.message.result5,
@@ -200,21 +209,21 @@ const StartPrediction = ({
                 M2: '',
                 M3: '',
                 M4: '',
-				M5: '',
+                M5: '',
                 P1: '',
                 P2: '',
                 P3: '',
                 P4: '',
-				P5: '',
+                P5: '',
                 PS: '',
             },
         })
 
-		setI1('')
-		setI2('')
-		setI3('')
-		setI4('')
-		setI5('')
+        setI1('')
+        setI2('')
+        setI3('')
+        setI4('')
+        setI5('')
 
         if (!processedImage) {
             toggleShow()
@@ -224,11 +233,46 @@ const StartPrediction = ({
         dispatch({ type: 'SET_STATE', payload: { PS: true } })
 
         if (useApi) {
-            fetchApi(FD, 'Iteration1', '7db98f08-4938-4a3c-bfec-6c82b52d7fe9', '1c3e003089e54d4f83ea0af548cf85b7', 'southeastasia.api.cognitive.microsoft.com', setI1)
-            fetchApi(FD, 'Iteration2', '7db98f08-4938-4a3c-bfec-6c82b52d7fe9', '1c3e003089e54d4f83ea0af548cf85b7', 'southeastasia.api.cognitive.microsoft.com', setI2)
-            fetchApi(FD, 'Iteration3', '7db98f08-4938-4a3c-bfec-6c82b52d7fe9', '1c3e003089e54d4f83ea0af548cf85b7', 'southeastasia.api.cognitive.microsoft.com', setI3)
-			fetchApi(FD, 'Iteration1', 'abdc4481-38db-4bb0-b3d2-772cac927696', '8890ab6c61d649688cf22b12a81515da', 'southcentralus.api.cognitive.microsoft.com', setI4)
-			fetchApi(FD, 'Iteration2', 'abdc4481-38db-4bb0-b3d2-772cac927696', '8890ab6c61d649688cf22b12a81515da', 'southcentralus.api.cognitive.microsoft.com', setI5)
+            fetchApi(
+                FD,
+                'Iteration1',
+                '7db98f08-4938-4a3c-bfec-6c82b52d7fe9',
+                '1c3e003089e54d4f83ea0af548cf85b7',
+                'southeastasia.api.cognitive.microsoft.com',
+                setI1
+            )
+            fetchApi(
+                FD,
+                'Iteration2',
+                '7db98f08-4938-4a3c-bfec-6c82b52d7fe9',
+                '1c3e003089e54d4f83ea0af548cf85b7',
+                'southeastasia.api.cognitive.microsoft.com',
+                setI2
+            )
+            fetchApi(
+                FD,
+                'Iteration3',
+                '7db98f08-4938-4a3c-bfec-6c82b52d7fe9',
+                '1c3e003089e54d4f83ea0af548cf85b7',
+                'southeastasia.api.cognitive.microsoft.com',
+                setI3
+            )
+            fetchApi(
+                FD,
+                'Iteration1',
+                'abdc4481-38db-4bb0-b3d2-772cac927696',
+                '8890ab6c61d649688cf22b12a81515da',
+                'southcentralus.api.cognitive.microsoft.com',
+                setI4
+            )
+            fetchApi(
+                FD,
+                'Iteration2',
+                'abdc4481-38db-4bb0-b3d2-772cac927696',
+                '8890ab6c61d649688cf22b12a81515da',
+                'southcentralus.api.cognitive.microsoft.com',
+                setI5
+            )
 
             dispatch({ type: 'SET_STATE', payload: { PS: false } })
             return
