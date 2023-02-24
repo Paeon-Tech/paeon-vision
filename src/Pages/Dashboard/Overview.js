@@ -1,6 +1,11 @@
+import { useEffect } from 'react'
 import { MDBTypography, MDBIcon } from 'mdb-react-ui-kit'
 
 export default function Overview() {
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     return (
         <div className="text-justify">
             <h5 className="mb-3">
