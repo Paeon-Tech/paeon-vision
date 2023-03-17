@@ -66,6 +66,7 @@ const StartPrediction = ({
                 fileName: '',
                 loading: '',
                 processedImage: '',
+				FD: "",
                 BE: '',
                 RI: '',
                 FI: '',
@@ -73,11 +74,6 @@ const StartPrediction = ({
                 BC: '',
                 IC: '',
                 TC: '',
-                M1: '',
-                M2: '',
-                M3: '',
-                M4: '',
-                M5: '',
                 P1: '',
                 P2: '',
                 P3: '',
@@ -121,26 +117,6 @@ const StartPrediction = ({
 
         if (e.data.code === 'TC') {
             handleState({ TC: true })
-        }
-
-        if (e.data.code === 'M1') {
-            handleState({ M1: true })
-        }
-
-        if (e.data.code === 'M2') {
-            handleState({ M2: true })
-        }
-
-        if (e.data.code === 'M3') {
-            handleState({ M3: true })
-        }
-
-        if (e.data.code === 'M4') {
-            handleState({ M4: true })
-        }
-
-        if (e.data.code === 'M5') {
-            handleState({ M5: true })
         }
 
         if (e.data.code === 'P1') {
@@ -205,11 +181,6 @@ const StartPrediction = ({
                 BC: '',
                 IC: '',
                 TC: '',
-                M1: '',
-                M2: '',
-                M3: '',
-                M4: '',
-                M5: '',
                 P1: '',
                 P2: '',
                 P3: '',

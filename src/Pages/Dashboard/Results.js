@@ -309,7 +309,7 @@ const Results = ({ state: { P1, P2, P3, P4, P5, I1, I2, I3, I4, I5 } }) => {
                         </li>
                     )}
                 </MDBTypography>
-                {I4 && (
+				{I4 && (
                     <MDBTypography>
                         <strong>Azure Custom Vision Iteration 4</strong>
                     </MDBTypography>
@@ -347,7 +347,7 @@ const Results = ({ state: { P1, P2, P3, P4, P5, I1, I2, I3, I4, I5 } }) => {
                         </li>
                     )}
                 </MDBTypography>
-                {I5 && (
+				{I5 && (
                     <MDBTypography>
                         <strong>Azure Custom Vision Iteration 5</strong>
                     </MDBTypography>

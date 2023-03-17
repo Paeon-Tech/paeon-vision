@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-restricted-globals */
 /* eslint-disable import/no-anonymous-default-export */
-const worker = () => {
+const worker = async () => {
 	//console.log(navigator.onLine)
 	const LOCAL = 'http://localhost:3000/'
 	//const LOCAL = 'https://paeonvision.tech/'
@@ -13,26 +13,21 @@ const worker = () => {
 		1: "Others"
 	}
 
+	const model1 = await tf.loadGraphModel(`${LOCAL}Model1/model.json`);
+
+	const model2 = await tf.loadGraphModel(`${LOCAL}Model2/model.json`);
+
+	const model3 = await tf.loadGraphModel(`${LOCAL}Model3/model.json`);
+
+	const model4 = await tf.loadGraphModel(`${LOCAL}Model4/model.json`);
+
+	const model5 = await tf.loadGraphModel(`${LOCAL}Model5/model.json`);
+
 	const sendMessage = (code, message = 'No message') => {
 		self.postMessage({code, message})
 	}
 
 	const onMessage = async (event) => {
-
-		const model1 = await tf.loadGraphModel(`${LOCAL}Model1/model.json`);
-		sendMessage('M1')
-
-		const model2 = await tf.loadGraphModel(`${LOCAL}Model2/model.json`);
-		sendMessage('M2')
-
-		const model3 = await tf.loadGraphModel(`${LOCAL}Model3/model.json`);
-		sendMessage('M3')
-
-		const model4 = await tf.loadGraphModel(`${LOCAL}Model4/model.json`);
-		sendMessage('M4')
-
-		const model5 = await tf.loadGraphModel(`${LOCAL}Model5/model.json`);
-		sendMessage('M5')
 
 		sendMessage('BE', tf.getBackend())
 
@@ -60,13 +55,10 @@ const worker = () => {
 			.reverse(-1)
 		sendMessage('TC')
 
-		
-
 		const startTimeModel1 = performance.now();
 		const prediction1 = await model1.predict(tensor).data()
 		const endTimeModel1 = performance.now();
 		const taskTimeModel1 = endTimeModel1 - startTimeModel1;
-
 		const result1 = Array.from(prediction1).map((p, i) => { 
 			return {
 				probability: p,

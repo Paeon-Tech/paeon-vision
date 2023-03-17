@@ -7,7 +7,7 @@ export default function Overview() {
     }, [])
 
     return (
-        <div className="text-justify">
+        <div className="text-justify small">
             <h5 className="mb-3">
                 <MDBIcon fas icon="info-circle" /> Disclaimer
             </h5>

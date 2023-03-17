@@ -9,11 +9,6 @@ const Status = ({
         BC,
         IC,
         TC,
-        M1,
-        M2,
-        M3,
-        M4,
-        M5,
         processedImage,
         I1,
         I2,
@@ -105,61 +100,6 @@ const Status = ({
                                 className="me-2 text-success"
                             />
                             Tensor Conversion
-                        </li>
-                    ) : (
-                        ''
-                    )}
-                    {M1 ? (
-                        <li className="mb-1">
-                            <MDBIcon
-                                icon="check-circle"
-                                className="me-2 text-success"
-                            />
-                            Model 1 Loaded
-                        </li>
-                    ) : (
-                        ''
-                    )}
-                    {M2 ? (
-                        <li className="mb-1">
-                            <MDBIcon
-                                icon="check-circle"
-                                className="me-2 text-success"
-                            />
-                            Model 2 Loaded
-                        </li>
-                    ) : (
-                        ''
-                    )}
-                    {M3 ? (
-                        <li className="mb-1">
-                            <MDBIcon
-                                icon="check-circle"
-                                className="me-2 text-success"
-                            />
-                            Model 3 Loaded
-                        </li>
-                    ) : (
-                        ''
-                    )}
-                    {M4 ? (
-                        <li className="mb-1">
-                            <MDBIcon
-                                icon="check-circle"
-                                className="me-2 text-success"
-                            />
-                            Model 4 Loaded
-                        </li>
-                    ) : (
-                        ''
-                    )}
-                    {M5 ? (
-                        <li className="mb-1">
-                            <MDBIcon
-                                icon="check-circle"
-                                className="me-2 text-success"
-                            />
-                            Model 5 Loaded
                         </li>
                     ) : (
                         ''
