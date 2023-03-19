@@ -38,7 +38,7 @@ const LogoutModal = () => {
 						<MDBBtn color="danger" onClick={logout} className="shadow-0">
                             Logout
                         </MDBBtn>
-                        <MDBBtn color="primary" onClick={toggleShow1}>
+                        <MDBBtn color="secondary" onClick={toggleShow1}>
                             Close
                         </MDBBtn>
                     </MDBModalFooter>
