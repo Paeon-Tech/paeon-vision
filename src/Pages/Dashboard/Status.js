@@ -1,12 +1,12 @@
 import { MDBCol, MDBTypography, MDBIcon } from 'mdb-react-ui-kit'
 
 const Status = ({
-    state: { BE, RI, FI, AC, BC, IC, TC, M1, M2, M3, processedImage },
+    state: { BE, RI, FI, AC, BC, IC, TC, processedImage, I1, I2, I3, I4, I5 },
 }) => {
     return (
         <MDBCol lg="4" className="p-3 small">
             <div>
-                <h3 className="mb-3 ">Status</h3>
+                <h5 className="mb-3 ">Status</h5>
                 <MDBTypography>
                     {processedImage
                         ? 'Image uploaded and ready for prediction.'
@@ -24,7 +24,7 @@ const Status = ({
                     ) : (
                         ''
                     )}
-					{RI ? (
+                    {RI ? (
                         <li className="mb-1">
                             <MDBIcon
                                 icon="check-circle"
@@ -35,7 +35,7 @@ const Status = ({
                     ) : (
                         ''
                     )}
-					{FI ? (
+                    {FI ? (
                         <li className="mb-1">
                             <MDBIcon
                                 icon="check-circle"
@@ -46,7 +46,7 @@ const Status = ({
                     ) : (
                         ''
                     )}
-					{AC ? (
+                    {AC ? (
                         <li className="mb-1">
                             <MDBIcon
                                 icon="check-circle"
@@ -57,7 +57,7 @@ const Status = ({
                     ) : (
                         ''
                     )}
-					{BC ? (
+                    {BC ? (
                         <li className="mb-1">
                             <MDBIcon
                                 icon="check-circle"
@@ -68,7 +68,7 @@ const Status = ({
                     ) : (
                         ''
                     )}
-					{IC ? (
+                    {IC ? (
                         <li className="mb-1">
                             <MDBIcon
                                 icon="check-circle"
@@ -79,35 +79,68 @@ const Status = ({
                     ) : (
                         ''
                     )}
-					{M1 ? (
+                    {TC ? (
                         <li className="mb-1">
                             <MDBIcon
                                 icon="check-circle"
                                 className="me-2 text-success"
                             />
-                            Model 1 Loaded
+                            Tensor Conversion
                         </li>
                     ) : (
                         ''
                     )}
-					{M2 ? (
+                    {I1 ? (
                         <li className="mb-1">
                             <MDBIcon
                                 icon="check-circle"
                                 className="me-2 text-success"
                             />
-                            Model 2 Loaded
+                            Image send to Iteration 1 endpoint
                         </li>
                     ) : (
                         ''
                     )}
-					{M3 ? (
+                    {I2 ? (
                         <li className="mb-1">
                             <MDBIcon
                                 icon="check-circle"
                                 className="me-2 text-success"
                             />
-                            Model 3 Loaded
+                            Image send to Iteration 2 endpoint
+                        </li>
+                    ) : (
+                        ''
+                    )}
+                    {I3 ? (
+                        <li className="mb-1">
+                            <MDBIcon
+                                icon="check-circle"
+                                className="me-2 text-success"
+                            />
+                            Image send to Iteration 3 endpoint
+                        </li>
+                    ) : (
+                        ''
+                    )}
+                    {I4 ? (
+                        <li className="mb-1">
+                            <MDBIcon
+                                icon="check-circle"
+                                className="me-2 text-success"
+                            />
+                            Image send to Iteration 4 endpoint
+                        </li>
+                    ) : (
+                        ''
+                    )}
+                    {I5 ? (
+                        <li className="mb-1">
+                            <MDBIcon
+                                icon="check-circle"
+                                className="me-2 text-success"
+                            />
+                            Image send to Iteration 5 endpoint
                         </li>
                     ) : (
                         ''

@@ -4,9 +4,9 @@ const DisplayImg = (props) => {
     const { selectedFile, fileName } = props.state
 
     return (
-        <MDBCol lg="4" className="mb-3 mb-lg-0 p-3 small">
+        <MDBCol lg="4" className="mb-3 mb-lg-0 p-3 small overflow-hidden">
             <div>
-                <h3 className="mb-3">Image</h3>
+                <h5 className="mb-3">Image</h5>
                 <div>
                     {selectedFile ? (
                         <div>

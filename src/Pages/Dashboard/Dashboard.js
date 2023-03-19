@@ -15,16 +15,19 @@ const Dashboard = () => {
     }
 
     return (
-        <main>
+        <main className="bg-theme-color-2">
             <NavigationBar />
             {/* {user_data.data.emailVerified ? '' : <h1>Email not verified</h1>} */}
             <MDBContainer>
                 <MDBRow className="px-4">
-                    <div className="my-3 px-0 py-3">
+                    <div className="my-3 px-0 py-4">
                         <MDBBtn
-                            color="success shadow-0 me-3 small"
+                            outline={currentComponent === 'A' ? true : false}
+                            color={`${
+                                currentComponent === 'A' ? 'dark' : 'secondary'
+                            } shadow-0 me-3 small`}
                             style={
-                                currentComponent === 'A' ? { opacity: 0.5 } : {}
+                                currentComponent === 'A' ? {} : { opacity: 0.5 }
                             }
                             onClick={handleClickOverview}
                             size="md"
@@ -32,9 +35,12 @@ const Dashboard = () => {
                             Overview
                         </MDBBtn>
                         <MDBBtn
-                            color="success shadow-0 small"
+                            outline={currentComponent === 'B' ? true : false}
+                            color={`${
+                                currentComponent === 'B' ? 'dark' : 'secondary'
+                            } shadow-0 me-3 small`}
                             style={
-                                currentComponent === 'B' ? { opacity: 0.5 } : {}
+                                currentComponent === 'B' ? {} : { opacity: 0.5 }
                             }
                             onClick={handleClickPrediction}
                             size="md"

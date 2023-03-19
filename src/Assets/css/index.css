@@ -101,7 +101,8 @@ body {
 }
 
 .col-height {
-	height: auto
+	height: auto;
+	background-color: var(--brand-color-2);
 }
 
 .border-squircle {

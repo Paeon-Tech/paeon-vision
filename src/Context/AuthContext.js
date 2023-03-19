@@ -65,7 +65,6 @@ export const AuthContextProvider = ({ children }) => {
                 }
                 localStorage.setItem('paeon-user', JSON.stringify(isAuth))
                 setUser(isAuth)
-                console.log(user)
             } else {
                 setUser(user)
                 console.log(user)

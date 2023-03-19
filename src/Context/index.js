@@ -1,2 +1,3 @@
 import { AuthContextProvider, UserAuth } from './AuthContext'
-export { AuthContextProvider, UserAuth }
+import { ModalContextProvider, ModalState } from './ModalContext'
+export { AuthContextProvider, UserAuth, ModalContextProvider, ModalState }
