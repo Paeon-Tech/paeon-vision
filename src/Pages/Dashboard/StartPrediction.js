@@ -66,7 +66,7 @@ const StartPrediction = ({
                 fileName: '',
                 loading: '',
                 processedImage: '',
-				FD: "",
+                FD: '',
                 BE: '',
                 RI: '',
                 FI: '',

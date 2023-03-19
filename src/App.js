@@ -28,9 +28,9 @@ const App = () => {
                     path="/home"
                     element={
                         <PrivateRoute>
-							<ModalContextProvider>
-								<Dashboard />
-							</ModalContextProvider>
+                            <ModalContextProvider>
+                                <Dashboard />
+                            </ModalContextProvider>
                         </PrivateRoute>
                     }
                 />

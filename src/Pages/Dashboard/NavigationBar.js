@@ -17,10 +17,10 @@ import { ModalState } from '../../Context'
 
 const NavigationBar = () => {
     const [showNav, setShowNav] = useState(false)
-	const {toggleShow1} = ModalState()
+    const { toggleShow1 } = ModalState()
 
     const handleLogout = async () => {
-		toggleShow1()
+        toggleShow1()
     }
 
     return (
@@ -87,7 +87,7 @@ const NavigationBar = () => {
                     </MDBCollapse>
                 </MDBContainer>
             </MDBNavbar>
-			<LogoutModal />
+            <LogoutModal />
         </>
     )
 }

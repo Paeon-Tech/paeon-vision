@@ -7,7 +7,7 @@ import {
     MDBModalBody,
     MDBModalFooter,
     MDBBtn,
-	MDBIcon
+    MDBIcon,
 } from 'mdb-react-ui-kit'
 
 const Modal = (props) => {
@@ -17,7 +17,10 @@ const Modal = (props) => {
             <MDBModalDialog centered>
                 <MDBModalContent>
                     <MDBModalHeader>
-                        <MDBModalTitle><MDBIcon fas icon="info-circle me-2" />Notice</MDBModalTitle>
+                        <MDBModalTitle>
+                            <MDBIcon fas icon="info-circle me-2" />
+                            Notice
+                        </MDBModalTitle>
                         <MDBBtn
                             className="btn-close"
                             color="none"

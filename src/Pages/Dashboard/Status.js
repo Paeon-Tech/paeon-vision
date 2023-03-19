@@ -1,21 +1,7 @@
 import { MDBCol, MDBTypography, MDBIcon } from 'mdb-react-ui-kit'
 
 const Status = ({
-    state: {
-        BE,
-        RI,
-        FI,
-        AC,
-        BC,
-        IC,
-        TC,
-        processedImage,
-        I1,
-        I2,
-        I3,
-        I4,
-        I5,
-    },
+    state: { BE, RI, FI, AC, BC, IC, TC, processedImage, I1, I2, I3, I4, I5 },
 }) => {
     return (
         <MDBCol lg="4" className="p-3 small">
