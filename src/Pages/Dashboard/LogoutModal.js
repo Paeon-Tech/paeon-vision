@@ -9,29 +9,36 @@ import {
     MDBBtn,
 	MDBIcon
 } from 'mdb-react-ui-kit'
+import { ModalState } from '../../Context'
 
-const Modal = (props) => {
-    const { centredModal, setCentredModal, toggleShow } = props.state
+const LogoutModal = () => {
+	const {centredModal1, toggleShow1, setCentredModal1, logout} = ModalState()
+
     return (
-        <MDBModal tabIndex="-1" show={centredModal} setShow={setCentredModal}>
+        <MDBModal tabIndex="-1" show={centredModal1} setShow={setCentredModal1}>
             <MDBModalDialog centered>
                 <MDBModalContent>
                     <MDBModalHeader>
-                        <MDBModalTitle><MDBIcon fas icon="info-circle me-2" />Notice</MDBModalTitle>
+                        <MDBModalTitle>
+						<MDBIcon fas icon="info-circle me-2" />
+						Attention
+						</MDBModalTitle>
                         <MDBBtn
                             className="btn-close"
                             color="none"
-                            onClick={toggleShow}
+                            onClick={toggleShow1}
                         ></MDBBtn>
                     </MDBModalHeader>
                     <MDBModalBody>
                         <p>
-                            Please make sure to upload a file with a supported
-                            image format such as JPEG, PNG, or GIF.
+                            Are you sure you want to logout?
                         </p>
                     </MDBModalBody>
                     <MDBModalFooter>
-                        <MDBBtn color="secondary" onClick={toggleShow}>
+						<MDBBtn color="danger" onClick={logout} className="shadow-0">
+                            Logout
+                        </MDBBtn>
+                        <MDBBtn color="primary" onClick={toggleShow1}>
                             Close
                         </MDBBtn>
                     </MDBModalFooter>
@@ -41,4 +48,4 @@ const Modal = (props) => {
     )
 }
 
-export default Modal
+export default LogoutModal

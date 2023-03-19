@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { UserAuth } from '../../Context'
+import { Link } from 'react-router-dom'
 import {
     MDBContainer,
     MDBNavbar,
@@ -13,19 +12,15 @@ import {
     MDBIcon,
 } from 'mdb-react-ui-kit'
 import Logo from '../../Assets/img/paeon-vision-logo-transparent.png'
+import LogoutModal from './LogoutModal'
+import { ModalState } from '../../Context'
 
 const NavigationBar = () => {
     const [showNav, setShowNav] = useState(false)
-    const { userLogout } = UserAuth()
-    const navigate = useNavigate()
+	const {toggleShow1} = ModalState()
 
     const handleLogout = async () => {
-        try {
-            await userLogout()
-            navigate('/')
-        } catch (error) {
-            console.log(error.message)
-        }
+		toggleShow1()
     }
 
     return (
@@ -92,6 +87,7 @@ const NavigationBar = () => {
                     </MDBCollapse>
                 </MDBContainer>
             </MDBNavbar>
+			<LogoutModal />
         </>
     )
 }

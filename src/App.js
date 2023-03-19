@@ -10,6 +10,7 @@ import {
 } from './Pages/Home'
 import { PrivateRoute, Fallback } from './Component'
 import { Dashboard } from './Pages/Dashboard'
+import { ModalContextProvider } from './Context'
 
 const App = () => {
     return (
@@ -27,7 +28,9 @@ const App = () => {
                     path="/home"
                     element={
                         <PrivateRoute>
-                            <Dashboard />
+							<ModalContextProvider>
+								<Dashboard />
+							</ModalContextProvider>
                         </PrivateRoute>
                     }
                 />
