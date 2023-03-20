@@ -12,7 +12,6 @@ import {
     MDBIcon,
 } from 'mdb-react-ui-kit'
 import Logo from '../../Assets/img/paeon-vision-logo-transparent.png'
-import LogoutModal from './LogoutModal'
 import { ModalState } from '../../Context'
 
 const NavigationBar = () => {
@@ -87,7 +86,6 @@ const NavigationBar = () => {
                     </MDBCollapse>
                 </MDBContainer>
             </MDBNavbar>
-            <LogoutModal />
         </>
     )
 }

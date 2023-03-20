@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { MDBContainer, MDBRow, MDBBtn } from 'mdb-react-ui-kit'
 import NavigationBar from './NavigationBar'
 import { Overview, Prediction } from '../Dashboard'
+import LogoutModal from './LogoutModal'
 
 const Dashboard = () => {
     const [currentComponent, setCurrentComponent] = useState('A')
@@ -52,6 +53,7 @@ const Dashboard = () => {
                 <MDBRow className="px-4">
                     {currentComponent === 'A' ? <Overview /> : null}
                     {currentComponent === 'B' ? <Prediction /> : null}
+					<LogoutModal/>
                 </MDBRow>
             </MDBContainer>
             <div className="text-center small py-5">
