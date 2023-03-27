@@ -4,7 +4,16 @@ import { MDBCol, MDBBtn, MDBSpinner } from 'mdb-react-ui-kit'
 import React from 'react'
 
 const StartPrediction = ({
-    state: { processedImage, dispatch, fileInput, toggleShow, PS, FD, setI3 },
+    state: {
+        processedImage,
+        dispatch,
+        fileInput,
+        toggleShow,
+        toggleIsOffline,
+        PS,
+        FD,
+        setI3,
+    },
 }) => {
     const [useApi, setUseApi] = useState(false)
 
@@ -140,6 +149,11 @@ const StartPrediction = ({
         dispatch({ type: 'SET_STATE', payload: { PS: true } })
 
         if (useApi) {
+            if (!navigator.onLine) {
+                toggleIsOffline()
+                dispatch({ type: 'SET_STATE', payload: { PS: false } })
+                return
+            }
             fetchApi(
                 FD,
                 'Iteration3',

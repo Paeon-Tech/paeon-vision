@@ -1,9 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useState, useRef } from 'react'
+import { useState, useRef, useCallback } from 'react'
 import { useStateStorage } from '../../Hooks'
 import UploadImg from './UploadImg'
 import DisplayImg from './DisplayImg'
 import Modal from './Modal'
+import IsOfflineModal from './IsOfflineModal'
 import Results from './Results'
 import StartPrediction from './StartPrediction'
 import Status from './Status'
@@ -15,6 +16,9 @@ const Prediction = () => {
     // State
     const [centredModal, setCentredModal] = useState(false)
     const [I3, setI3] = useState('')
+
+	const [IsOffline, setIsOffline] = useState(false)
+	const toggleIsOffline = useCallback(() => setIsOffline((IsOffline) => !IsOffline),[IsOffline])
 
     // Arrays for Accepted Images
     const acceptedImageTypes = ['image/jpeg', 'image/png', 'image/gif']
@@ -155,12 +159,14 @@ const Prediction = () => {
                     dispatch,
                     fileInput,
                     toggleShow,
+					toggleIsOffline,
                     PS,
                     FD,
                     setI3,
                 }}
             />
             <Modal state={{ centredModal, setCentredModal, toggleShow }} />
+			<IsOfflineModal state={{IsOffline, setIsOffline, toggleIsOffline}}/>
         </>
     )
 }
