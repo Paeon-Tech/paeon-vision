@@ -12,12 +12,7 @@ const initialState = {
     BC: '',
     IC: '',
     TC: '',
-    P1: '',
-    P2: '',
     P3: '',
-    P4: '',
-    P5: '',
-    PS: '',
 }
 
 const reducer = (state, action) => {

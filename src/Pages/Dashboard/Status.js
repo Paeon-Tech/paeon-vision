@@ -1,7 +1,7 @@
 import { MDBCol, MDBTypography, MDBIcon } from 'mdb-react-ui-kit'
 
 const Status = ({
-    state: { BE, RI, FI, AC, BC, IC, TC, processedImage, I1, I2, I3, I4, I5 },
+    state: { BE, RI, FI, AC, BC, IC, TC, processedImage, I3 },
 }) => {
     return (
         <MDBCol lg="4" className="p-3 small">
@@ -90,28 +90,6 @@ const Status = ({
                     ) : (
                         ''
                     )}
-                    {I1 ? (
-                        <li className="mb-1">
-                            <MDBIcon
-                                icon="check-circle"
-                                className="me-2 text-success"
-                            />
-                            Image send to Iteration 1 endpoint
-                        </li>
-                    ) : (
-                        ''
-                    )}
-                    {I2 ? (
-                        <li className="mb-1">
-                            <MDBIcon
-                                icon="check-circle"
-                                className="me-2 text-success"
-                            />
-                            Image send to Iteration 2 endpoint
-                        </li>
-                    ) : (
-                        ''
-                    )}
                     {I3 ? (
                         <li className="mb-1">
                             <MDBIcon
@@ -119,28 +97,6 @@ const Status = ({
                                 className="me-2 text-success"
                             />
                             Image send to Iteration 3 endpoint
-                        </li>
-                    ) : (
-                        ''
-                    )}
-                    {I4 ? (
-                        <li className="mb-1">
-                            <MDBIcon
-                                icon="check-circle"
-                                className="me-2 text-success"
-                            />
-                            Image send to Iteration 4 endpoint
-                        </li>
-                    ) : (
-                        ''
-                    )}
-                    {I5 ? (
-                        <li className="mb-1">
-                            <MDBIcon
-                                icon="check-circle"
-                                className="me-2 text-success"
-                            />
-                            Image send to Iteration 5 endpoint
                         </li>
                     ) : (
                         ''

@@ -14,11 +14,7 @@ const Prediction = () => {
 
     // State
     const [centredModal, setCentredModal] = useState(false)
-    const [I1, setI1] = useState('')
-    const [I2, setI2] = useState('')
     const [I3, setI3] = useState('')
-    const [I4, setI4] = useState('')
-    const [I5, setI5] = useState('')
 
     // Arrays for Accepted Images
     const acceptedImageTypes = ['image/jpeg', 'image/png', 'image/gif']
@@ -32,11 +28,7 @@ const Prediction = () => {
         BC,
         IC,
         TC,
-        P1,
-        P2,
         P3,
-        P4,
-        P5,
         PS,
         processedImage,
         selectedFile,
@@ -59,20 +51,12 @@ const Prediction = () => {
                 BC: '',
                 IC: '',
                 TC: '',
-                P1: '',
-                P2: '',
                 P3: '',
-                P4: '',
-                P5: '',
                 FD: '',
             },
         })
 
-        setI1('')
-        setI2('')
         setI3('')
-        setI4('')
-        setI5('')
         const file = fileInput.current.files[0]
 
         if (!acceptedImageTypes.includes(file.type)) {
@@ -159,20 +143,12 @@ const Prediction = () => {
                     BC,
                     IC,
                     TC,
-                    P1,
-                    P2,
                     P3,
-                    P4,
-                    P5,
-                    I1,
-                    I2,
                     I3,
-                    I4,
-                    I5,
                     processedImage,
                 }}
             />
-            <Results state={{ P1, P2, P3, P4, P5, I1, I2, I3, I4, I5 }} />
+            <Results state={{ P3, I3 }} />
             <StartPrediction
                 state={{
                     processedImage,
@@ -181,11 +157,7 @@ const Prediction = () => {
                     toggleShow,
                     PS,
                     FD,
-                    setI1,
-                    setI2,
                     setI3,
-                    setI4,
-                    setI5,
                 }}
             />
             <Modal state={{ centredModal, setCentredModal, toggleShow }} />
