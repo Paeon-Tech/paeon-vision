@@ -3,8 +3,8 @@
 /* eslint-disable import/no-anonymous-default-export */
 const worker = async () => {
 	//console.log(navigator.onLine)
-	const LOCAL = 'http://localhost:3000/'
-	//const LOCAL = 'https://paeonvision.tech/'
+	//const LOCAL = 'http://localhost:3000/'
+	const LOCAL = 'https://paeonvision.tech/'
 	importScripts(`${LOCAL}tf.min.js`)
 	tf.setBackend('cpu')
 
@@ -14,7 +14,7 @@ const worker = async () => {
 	}
 
 	const model3 = await tf.loadGraphModel(`${LOCAL}Model3/model.json`);
-
+	console.log('Model loaded')
 	const sendMessage = (code, message = 'No message') => {
 		self.postMessage({code, message})
 	}
