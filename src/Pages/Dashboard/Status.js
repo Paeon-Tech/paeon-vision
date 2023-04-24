@@ -96,7 +96,7 @@ const Status = ({
                                 icon="check-circle"
                                 className="me-2 text-success"
                             />
-                            Image send to Iteration 3 endpoint
+                            Image send to Custom Vision endpoint
                         </li>
                     ) : (
                         ''
