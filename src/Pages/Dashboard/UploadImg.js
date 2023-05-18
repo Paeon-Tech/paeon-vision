@@ -15,7 +15,7 @@ const UploadImg = ({
             <MDBTypography tag="small">
                 <MDBIcon fas icon="info-circle" className="me-1" />
                 Please make sure to upload a file with a supported image format
-                such as <span className="fst-italic">JPEG, PNG, or GIF.</span>
+                such as <span className="fst-italic">JPEG, PNG, GIF or File size less than 4 MB.</span>
             </MDBTypography>
             <div className="mt-4">
                 <MDBInputGroup className="mb-3">

@@ -62,8 +62,11 @@ const Prediction = () => {
 
         setI3('')
         const file = fileInput.current.files[0]
+		console.log(file.size)
+		const fileSize = file.size
+ 		const maxFileSize = 4 * 1024 * 1024
 
-        if (!acceptedImageTypes.includes(file.type)) {
+        if (!acceptedImageTypes.includes(file.type) || fileSize > maxFileSize) {
             toggleShow()
             dispatch({
                 type: 'SET_STATE',

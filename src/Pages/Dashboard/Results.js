@@ -1,6 +1,7 @@
 import { MDBCol, MDBIcon, MDBListGroup, MDBListGroupItem } from 'mdb-react-ui-kit'
 
 const Results = ({ state: { P3, I3 } }) => {
+	console.log(I3)
     return (
         <MDBCol lg="4" className="p-3 small">
             <div>
