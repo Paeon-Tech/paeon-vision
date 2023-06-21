@@ -1,9 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useState, useRef } from 'react'
+import { useState, useRef, useCallback } from 'react'
 import { useStateStorage } from '../../Hooks'
 import UploadImg from './UploadImg'
 import DisplayImg from './DisplayImg'
 import Modal from './Modal'
+import IsOfflineModal from './IsOfflineModal'
 import Results from './Results'
 import StartPrediction from './StartPrediction'
 import Status from './Status'
@@ -14,11 +15,10 @@ const Prediction = () => {
 
     // State
     const [centredModal, setCentredModal] = useState(false)
-    const [I1, setI1] = useState('')
-    const [I2, setI2] = useState('')
     const [I3, setI3] = useState('')
-    const [I4, setI4] = useState('')
-    const [I5, setI5] = useState('')
+
+	const [IsOffline, setIsOffline] = useState(false)
+	const toggleIsOffline = useCallback(() => setIsOffline((IsOffline) => !IsOffline),[IsOffline])
 
     // Arrays for Accepted Images
     const acceptedImageTypes = ['image/jpeg', 'image/png', 'image/gif']
@@ -32,11 +32,7 @@ const Prediction = () => {
         BC,
         IC,
         TC,
-        P1,
-        P2,
         P3,
-        P4,
-        P5,
         PS,
         processedImage,
         selectedFile,
@@ -59,23 +55,18 @@ const Prediction = () => {
                 BC: '',
                 IC: '',
                 TC: '',
-                P1: '',
-                P2: '',
                 P3: '',
-                P4: '',
-                P5: '',
                 FD: '',
             },
         })
 
-        setI1('')
-        setI2('')
         setI3('')
-        setI4('')
-        setI5('')
         const file = fileInput.current.files[0]
+		console.log(file.size)
+		const fileSize = file.size
+ 		const maxFileSize = 4 * 1024 * 1024
 
-        if (!acceptedImageTypes.includes(file.type)) {
+        if (!acceptedImageTypes.includes(file.type) || fileSize > maxFileSize) {
             toggleShow()
             dispatch({
                 type: 'SET_STATE',
@@ -159,36 +150,26 @@ const Prediction = () => {
                     BC,
                     IC,
                     TC,
-                    P1,
-                    P2,
                     P3,
-                    P4,
-                    P5,
-                    I1,
-                    I2,
                     I3,
-                    I4,
-                    I5,
                     processedImage,
                 }}
             />
-            <Results state={{ P1, P2, P3, P4, P5, I1, I2, I3, I4, I5 }} />
+            <Results state={{ P3, I3 }} />
             <StartPrediction
                 state={{
                     processedImage,
                     dispatch,
                     fileInput,
                     toggleShow,
+					toggleIsOffline,
                     PS,
                     FD,
-                    setI1,
-                    setI2,
                     setI3,
-                    setI4,
-                    setI5,
                 }}
             />
             <Modal state={{ centredModal, setCentredModal, toggleShow }} />
+			<IsOfflineModal state={{IsOffline, setIsOffline, toggleIsOffline}}/>
         </>
     )
 }

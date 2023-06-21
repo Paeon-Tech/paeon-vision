@@ -30,7 +30,7 @@ const Modal = (props) => {
                     <MDBModalBody>
                         <p>
                             Please make sure to upload a file with a supported
-                            image format such as JPEG, PNG, or GIF.
+                            image format such as JPEG, PNG, GIF or File size less than 4 MB.
                         </p>
                     </MDBModalBody>
                     <MDBModalFooter>

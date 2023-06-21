@@ -16,7 +16,7 @@ const LogoutModal = () => {
         ModalState()
 
     return (
-        <MDBModal tabIndex="-1" show={centredModal1} setShow={setCentredModal1}>
+        <MDBModal tabIndex="-1" show={centredModal1} setShow={setCentredModal1} className='px-3'>
             <MDBModalDialog centered>
                 <MDBModalContent>
                     <MDBModalHeader>

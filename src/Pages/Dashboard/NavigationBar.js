@@ -51,26 +51,6 @@ const NavigationBar = () => {
                             className="text-start"
                         >
                             <MDBNavbarItem>
-                                <MDBNavbarLink href="#">
-                                    <MDBIcon
-                                        far
-                                        icon="question-circle"
-                                        className="me-2"
-                                    />{' '}
-                                    Help
-                                </MDBNavbarLink>
-                            </MDBNavbarItem>
-                            <MDBNavbarItem>
-                                <MDBNavbarLink href="#">
-                                    <MDBIcon
-                                        fas
-                                        icon="user-circle"
-                                        className="me-2"
-                                    />{' '}
-                                    Account Settings
-                                </MDBNavbarLink>
-                            </MDBNavbarItem>
-                            <MDBNavbarItem>
                                 <MDBNavbarLink
                                     tag={Link}
                                     onClick={handleLogout}

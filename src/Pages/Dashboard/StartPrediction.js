@@ -9,13 +9,10 @@ const StartPrediction = ({
         dispatch,
         fileInput,
         toggleShow,
+        toggleIsOffline,
         PS,
         FD,
-        setI1,
-        setI2,
         setI3,
-        setI4,
-        setI5,
     },
 }) => {
     const [useApi, setUseApi] = useState(false)
@@ -74,19 +71,11 @@ const StartPrediction = ({
                 BC: '',
                 IC: '',
                 TC: '',
-                P1: '',
-                P2: '',
                 P3: '',
-                P4: '',
-                P5: '',
                 PS: '',
             },
         })
-        setI1('')
-        setI2('')
         setI3('')
-        setI4('')
-        setI5('')
         fileInput.current.value = ''
     }
 
@@ -119,47 +108,11 @@ const StartPrediction = ({
             handleState({ TC: true })
         }
 
-        if (e.data.code === 'P1') {
-            handleState({
-                P1: {
-                    result: e.data.message.result1,
-                    time: e.data.message.taskTimeModel1,
-                },
-            })
-        }
-
-        if (e.data.code === 'P2') {
-            handleState({
-                P2: {
-                    result: e.data.message.result2,
-                    time: e.data.message.taskTimeModel2,
-                },
-            })
-        }
-
         if (e.data.code === 'P3') {
             handleState({
                 P3: {
                     result: e.data.message.result3,
                     time: e.data.message.taskTimeModel3,
-                },
-            })
-        }
-
-        if (e.data.code === 'P4') {
-            handleState({
-                P4: {
-                    result: e.data.message.result4,
-                    time: e.data.message.taskTimeModel4,
-                },
-            })
-        }
-
-        if (e.data.code === 'P5') {
-            handleState({
-                P5: {
-                    result: e.data.message.result5,
-                    time: e.data.message.taskTimeModel5,
                 },
                 PS: '',
             })
@@ -181,20 +134,12 @@ const StartPrediction = ({
                 BC: '',
                 IC: '',
                 TC: '',
-                P1: '',
-                P2: '',
                 P3: '',
-                P4: '',
-                P5: '',
                 PS: '',
             },
         })
 
-        setI1('')
-        setI2('')
         setI3('')
-        setI4('')
-        setI5('')
 
         if (!processedImage) {
             toggleShow()
@@ -204,22 +149,11 @@ const StartPrediction = ({
         dispatch({ type: 'SET_STATE', payload: { PS: true } })
 
         if (useApi) {
-            fetchApi(
-                FD,
-                'Iteration1',
-                '7db98f08-4938-4a3c-bfec-6c82b52d7fe9',
-                '1c3e003089e54d4f83ea0af548cf85b7',
-                'southeastasia.api.cognitive.microsoft.com',
-                setI1
-            )
-            fetchApi(
-                FD,
-                'Iteration2',
-                '7db98f08-4938-4a3c-bfec-6c82b52d7fe9',
-                '1c3e003089e54d4f83ea0af548cf85b7',
-                'southeastasia.api.cognitive.microsoft.com',
-                setI2
-            )
+            if (!navigator.onLine) {
+                toggleIsOffline()
+                dispatch({ type: 'SET_STATE', payload: { PS: false } })
+                return
+            }
             fetchApi(
                 FD,
                 'Iteration3',
@@ -227,22 +161,6 @@ const StartPrediction = ({
                 '1c3e003089e54d4f83ea0af548cf85b7',
                 'southeastasia.api.cognitive.microsoft.com',
                 setI3
-            )
-            fetchApi(
-                FD,
-                'Iteration1',
-                'abdc4481-38db-4bb0-b3d2-772cac927696',
-                '8890ab6c61d649688cf22b12a81515da',
-                'southcentralus.api.cognitive.microsoft.com',
-                setI4
-            )
-            fetchApi(
-                FD,
-                'Iteration2',
-                'abdc4481-38db-4bb0-b3d2-772cac927696',
-                '8890ab6c61d649688cf22b12a81515da',
-                'southcentralus.api.cognitive.microsoft.com',
-                setI5
             )
 
             dispatch({ type: 'SET_STATE', payload: { PS: false } })

@@ -42,7 +42,7 @@ const ForgotPassword = () => {
                 xl="4"
                 className="px-md-5 pt-5 bg-theme-color-3 col-height slide-in-bck-center"
             >
-                <DisplayLogo text="Sign in to Paeon Vision" />
+                <DisplayLogo text="Reset Password" />
                 {error && (
                     <div
                         className="alert border form-width small alert-danger mb-3 alert-dismissible fade show"
